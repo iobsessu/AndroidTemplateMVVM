@@ -1,5 +1,7 @@
 package com.example.template.ui.login;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -10,10 +12,12 @@ import com.example.template.R;
 import com.example.template.data.bean.User;
 import com.example.template.http.request.AccountRequest;
 import com.example.template.ui.MainActivity;
+import com.example.template.util.TokenUtil;
 import com.kunminx.architecture.ui.page.BaseActivity;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
+import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 
 public class LoginActivity extends BaseActivity {
 
@@ -34,6 +38,7 @@ public class LoginActivity extends BaseActivity {
 
     public static class LoginState extends StateHolder {
         public final State<String> username = new State<>("");
+        public final State<String> password = new State<>("");
         public final State<Boolean> loadingVisible = new State<>(false);
     }
 
@@ -43,8 +48,20 @@ public class LoginActivity extends BaseActivity {
 //            User user = new User();
 //            user.setUsername(state.username.get());
 //            accountRequest.requestLogin(user);
-
+//            new MaterialDialog.Builder(LoginActivity.this)
+//                    .iconRes(R.mipmap.icon_tip)
+//                    .title(R.string.tips)
+//                    .content("R.string.content_simple_confirm_dialog")
+//                    .positiveText("R.string.lab_submit")
+//                    .show();
+//            MainActivity.actionStart(LoginActivity.this);
+            TokenUtil.setToken("test");
             MainActivity.actionStart(LoginActivity.this);
         }
+    }
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
     }
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="RtlSymmetry">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.template.ui.home.DiscoverFragment.DiscoverState" />
+        <variable
+            name="click"
+            type="com.example.template.ui.home.DiscoverFragment.ClickProxy" />
+        <variable
+            name="bannerHandler"
+            type="com.example.template.ui.home.DiscoverFragment.BannerItemClickHandler" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:toolbarId="@id/header_top">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:paddingHorizontal="@dimen/padding_medium"
+                    android:gravity="center"
+                    android:id="@+id/header_top">
+                    <ImageView
+                        android:layout_width="@dimen/value_28"
+                        android:layout_height="@dimen/value_28"
+                        android:src="@mipmap/menu" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/value_8"
+                        android:text="@string/home" />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{()->click.logout()}"
+                        android:text="logout" />
+                </LinearLayout>
+<!--                <include layout="@layout/header_top"-->
+<!--                    android:fitsSystemWindows="true"-->
+<!--                    app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+<!--                    bind:title="@{vm.title}"/>-->
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+<!--        <androidx.core.widget.NestedScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <include-->
+<!--                    android:id="@+id/banner_layout"-->
+<!--                    layout="@layout/home_banner"-->
+<!--                    vm="@{vm}"-->
+<!--                    click="@{click}"-->
+<!--                    bannerHandler="@{bannerHandler}"/>-->
+
+<!--                <include layout="@layout/home_recommend_play_1"-->
+<!--                    vm="@{vm}" />-->
+
+<!--            </LinearLayout>-->
+<!--        </androidx.core.widget.NestedScrollView>-->
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 从Android9（API28）开始，系统默认禁用了明文流量的支持。即如果采用是http而不是https会遇到问题-->
+<network-security-config>
+    <!--  暂时解决Android9.0上加载http的图片问题  -->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

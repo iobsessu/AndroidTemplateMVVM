@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="RtlSymmetry">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.template.ui.calendar.CalendarFragment.CalendarState" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+            <TextView
+                android:id="@+id/month_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6月22日" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.year}" />
+                <TextView
+                    android:id="@+id/lunar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="初八" />
+            </LinearLayout>
+            <Space
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+            <FrameLayout
+                android:layout_width="32dp"
+                android:layout_height="32dp">
+                <TextView
+                    android:id="@+id/current_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <com.haibin.calendarview.CalendarLayout
+            android:id="@+id/calendar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:orientation="vertical"
+            app:calendar_content_view_id="@+id/recyclerView">
+
+            <com.haibin.calendarview.CalendarView
+                android:id="@+id/calendar_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                app:calendar_padding="10dp"
+                app:current_month_lunar_text_color="#CFCFCF"
+                app:current_month_text_color="#333333"
+                app:min_year="2004"
+                app:month_view="com.example.template.ui.components.calendarview.CustomMonthView"
+                app:month_view_show_mode="mode_only_current"
+                app:other_month_text_color="#e1e1e1"
+                app:scheme_lunar_text_color="#ffffff"
+                app:scheme_text="假"
+                app:scheme_text_color="#fff"
+                app:scheme_theme_color="#128c4b"
+                app:selected_lunar_text_color="#fff"
+                app:selected_text_color="#fff"
+                app:selected_theme_color="#108cd4"
+                app:week_background="#fff"
+                app:week_text_color="#111"
+                app:week_view="com.haibin.calendarviewproject.colorful.ColorfulWeekView"
+                app:year_view_day_text_color="#333333"
+                app:year_view_day_text_size="9sp"
+                app:year_view_month_text_color="#ff0000"
+                app:year_view_month_text_size="20sp"
+                app:year_view_scheme_color="#f17706" />
+
+            <com.example.template.ui.components.calendarview.GroupRecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:group_center="false"
+                app:group_has_header="false"
+                app:group_height="42dp"
+                app:group_padding_left="16dp"
+                app:group_padding_right="16dp"
+                app:group_text_color="#555555"
+                app:group_text_size="14sp" />
+
+        </com.haibin.calendarview.CalendarLayout>
+    </LinearLayout>
+</layout>

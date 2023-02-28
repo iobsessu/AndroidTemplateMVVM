@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">12dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">12dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+
+    <dimen name="home_top_bar_height">75dp</dimen>
+
+    <dimen name="value_4">4dp</dimen>
+    <dimen name="value_6">6dp</dimen>
+    <dimen name="value_8">8dp</dimen>
+    <dimen name="value_10">10dp</dimen>
+    <dimen name="value_12">12dp</dimen>
+    <dimen name="value_14">14dp</dimen>
+    <dimen name="value_16">16dp</dimen>
+    <dimen name="value_18">18dp</dimen>
+    <dimen name="value_20">20dp</dimen>
+    <dimen name="value_22">22dp</dimen>
+    <dimen name="value_24">24dp</dimen>
+    <dimen name="value_26">26dp</dimen>
+    <dimen name="value_28">28dp</dimen>
+    <dimen name="value_30">30dp</dimen>
+
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+</resources>

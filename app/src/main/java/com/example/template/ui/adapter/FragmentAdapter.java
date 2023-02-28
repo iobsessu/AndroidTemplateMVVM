@@ -5,17 +5,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.kunminx.architecture.ui.page.BaseFragment;
+import com.example.template.ui.base.BaseViewPagerFragment;
 
 import java.util.List;
 
 public class FragmentAdapter extends FragmentStateAdapter {
 
-    private List<BaseFragment> fragmentList;
-
-    public FragmentAdapter(@NonNull FragmentActivity fragmentActivity, List<BaseFragment> fragmentList) {
+    private List<BaseViewPagerFragment> fragmentList;
+    private List<String> titleList;
+    public FragmentAdapter(@NonNull FragmentActivity fragmentActivity, List<BaseViewPagerFragment> fragmentList) {
         super(fragmentActivity);
         this.fragmentList = fragmentList;
+        this.titleList = titleList;
     }
 
     @NonNull

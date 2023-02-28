@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "AndroidTemplateMVVM"
 include ':app'
 include ':architecture'
+include ':library'

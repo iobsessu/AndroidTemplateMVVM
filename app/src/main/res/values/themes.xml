@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/white_text</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -28,4 +28,12 @@
         <!-- Required -->
         <item name="postSplashScreenTheme">@style/Theme.AndroidTemplateMVVM</item>
     </style>
+
+    <style name="AppTheme" parent="XUITheme.Phone">
+<!--        <item name="colorPrimary">@color/purple_500</item>-->
+<!--        <item name="colorPrimaryDark">@color/purple_500</item>-->
+<!--        <item name="colorAccent">@color/purple_500</item>-->
+        <item name="android:windowBackground">@color/grey_background</item>
+    </style>
+
 </resources>
