@@ -3,7 +3,6 @@ package com.example.template.ui.product;
 import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.ui.base.BaseViewPagerFragment;
-import com.example.template.ui.home.DiscoverFragment;
 import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;

@@ -3,15 +3,6 @@ package com.example.template.ui.bind;
 import android.view.View;
 
 import androidx.databinding.BindingAdapter;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager2.widget.ViewPager2;
-
-import com.example.template.app.AppApplication;
-import com.example.template.ui.adapter.FragmentAdapter;
-import com.google.android.material.tabs.TabLayout;
-import com.kunminx.architecture.ui.page.BaseFragment;
-
-import java.util.List;
 
 public class CommonBindingAdapter {
 

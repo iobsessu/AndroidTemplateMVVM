@@ -5,6 +5,9 @@ import androidx.annotation.StringRes;
 
 import com.kunminx.architecture.ui.page.BaseFragment;
 
+/**
+ * 此类的属性是为了定义在tab上显示的title和icon
+ */
 public abstract class BaseViewPagerFragment extends BaseFragment {
 
     @StringRes

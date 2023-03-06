@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.example.template.data.bean.Icon" />
+    </data>
+    <LinearLayout
+        android:id="@+id/wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:orientation="vertical"
+        android:gravity="center">
+        <com.xuexiang.xui.widget.imageview.RadiusImageView
+            android:id="@+id/image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:riv_corner_radius="@dimen/value_10"
+            android:src="@{item.iconRes}"
+            tools:src="@mipmap/faxian" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/value_4"
+            android:text="@{item.title}"
+            android:textSize="@dimen/text_size_12"
+            tools:text="每日推荐"
+            android:maxLines="2"
+            android:ellipsize="end" />
+    </LinearLayout>
+</layout>

@@ -3,27 +3,16 @@ package com.example.template.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.TaskStackBuilder;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.template.BR;
 import com.example.template.R;
-import com.example.template.databinding.ActivityMainBinding;
-import com.example.template.ui.adapter.FragmentAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
-import com.example.template.ui.home.DiscoverFragment;
+import com.example.template.ui.home.HomeFragment;
 import com.example.template.ui.product.ProductFragment;
 import com.example.template.ui.calendar.CalendarFragment;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 import com.kunminx.architecture.ui.page.BaseActivity;
-import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
@@ -45,10 +34,10 @@ public class MainActivity extends BaseActivity {
 
     private void initFragmentList() {
         List<BaseViewPagerFragment> fragmentList = new ArrayList<>();
-        DiscoverFragment discoverFragment = new DiscoverFragment();
-        discoverFragment.setTitle(R.string.discover);
-        discoverFragment.setIcon(R.mipmap.faxian);
-        fragmentList.add(discoverFragment);
+        HomeFragment homeFragment = new HomeFragment();
+        homeFragment.setTitle(R.string.discover);
+        homeFragment.setIcon(R.mipmap.faxian);
+        fragmentList.add(homeFragment);
 
         ProductFragment productFragment = new ProductFragment();
         productFragment.setTitle(R.string.community);

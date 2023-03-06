@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="RtlSymmetry">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.template.ui.home.HomeFragment.HomeState" />
+        <variable
+            name="click"
+            type="com.example.template.ui.home.HomeFragment.ClickProxy" />
+        <variable
+            name="bannerHandler"
+            type="com.example.template.ui.home.HomeFragment.BannerItemClickHandler" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:toolbarId="@id/header_top"
+                android:background="@color/top_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:paddingHorizontal="@dimen/padding_medium"
+                    android:id="@+id/header_top"
+                    app:layout_collapseMode="pin">
+
+                    <!-- 不知道为什么，必须得再包一层linearlayout，title的weight=1才生效，可能与CollapsingToolbarLayout有关 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="@dimen/value_46"
+                            android:layout_height="@dimen/value_46"
+                            android:padding="@dimen/value_8"
+                            badgeNum="@{vm.unreadCount}"
+                            android:src="@mipmap/menu" />
+
+<!--                        <com.xuexiang.xui.widget.textview.supertextview.SuperTextView-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginHorizontal="@dimen/value_8"-->
+<!--                            android:layout_marginVertical="@dimen/value_8"-->
+<!--                            android:textColor="@color/C_666666"-->
+<!--                            android:textSize="@dimen/text_size_18"-->
+<!--                            android:textAlignment="center"-->
+<!--                            app:sCenterTextString="dwad"-->
+<!--                            app:sLeftIconRes="@mipmap/maikefeng"-->
+<!--                            app:sUseRipple="false"/>-->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/value_8"
+                            android:paddingVertical="@dimen/value_6"
+                            android:background="@drawable/search_bg"
+                            android:gravity="center">
+                            <ImageView
+                                android:layout_width="@dimen/value_18"
+                                android:layout_height="@dimen/value_18"
+                                android:src="@mipmap/search" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/value_4"
+                                android:text="@{vm.searchKeyWord}"
+                                android:textColor="@color/C_666666"
+                                android:textSize="@dimen/text_size_12"
+                                tools:text="七里香"/>
+                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/value_20"
+                            android:layout_height="@dimen/value_20"
+                            android:src="@mipmap/maikefeng" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/banner_layout"
+                    layout="@layout/home_banner"
+                    vm="@{vm}"
+                    click="@{click}"
+                    bannerHandler="@{bannerHandler}"/>
+
+                <include layout="@layout/home_top_icon"
+                    vm="@{vm}" />
+
+                <include layout="@layout/home_recommend_play_1"
+                    vm="@{vm}" />
+
+                <include layout="@layout/home_recommend_play_2"
+                    vm="@{vm}" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.logout()}"
+                    android:text="logout" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.logout()}"
+                    android:text="logout" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.logout()}"
+                    android:text="logout" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.logout()}"
+                    android:text="logout" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

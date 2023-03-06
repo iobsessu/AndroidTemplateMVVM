@@ -21,7 +21,7 @@ public class RecommendAdapter extends SimpleDataBindingAdapter<PlayList, Recomme
     private Context context;
 
     public RecommendAdapter(Context context) {
-        super(context, R.layout.recommend_play_item, DiffUtils.getInstance().getTestMusicItemCallback());
+        super(context, R.layout.recommend_play_item, DiffUtils.getInstance().getPlayListItemCallback());
         this.context = context;
     }
     @Override

@@ -9,24 +9,23 @@
         <variable
             name="click"
             type="com.example.template.ui.home.HomeFragment.ClickProxy" />
-        <variable
-            name="itemClickListener"
-            type="com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner.OnItemClickListener" />
-        <variable
-            name="bannerHandler"
-            type="com.example.template.ui.home.HomeFragment.BannerItemClickHandler" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
-            android:id="@+id/banner"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/padding_medium">
+
+        <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:bb_scale="0.294"
-            bannerSource="@{vm.bannerList}"
-            itemClickListener="@{bannerHandler}"/>
+            adapter="@{vm.topIconAdapter}"
+            submitList="@{vm.iconList}"
+            app:layoutManager="@{vm.topIconLayout}"
+            app:fastScrollPopupPosition="center"
+            app:fastScrollAutoHide="false"/>
     </LinearLayout>
 
 </layout>

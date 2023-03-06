@@ -24,7 +24,7 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="我推荐的"
+                android:text="刮来一阵热情嘻哈风"
                 android:textSize="@dimen/text_size_16" />
             <ImageView
                 android:layout_width="@dimen/value_12"
@@ -41,13 +41,12 @@
                 android:src="@mipmap/more"/>
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recommend_play_list"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            adapter="@{vm.adapter}"
-            submitList="@{vm.recommendPlayList}"
-            app:layoutManager="@{vm.layout1State}"/>
+            fragmentList1="@{vm.musicListFragmentList}" />
+
     </LinearLayout>
 
 </layout>

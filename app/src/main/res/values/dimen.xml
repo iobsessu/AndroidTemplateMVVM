@@ -11,6 +11,7 @@
 
     <dimen name="home_top_bar_height">75dp</dimen>
 
+    <dimen name="value_2">2dp</dimen>
     <dimen name="value_4">4dp</dimen>
     <dimen name="value_6">6dp</dimen>
     <dimen name="value_8">8dp</dimen>
@@ -25,7 +26,23 @@
     <dimen name="value_26">26dp</dimen>
     <dimen name="value_28">28dp</dimen>
     <dimen name="value_30">30dp</dimen>
+    <dimen name="value_32">32dp</dimen>
+    <dimen name="value_34">34dp</dimen>
+    <dimen name="value_36">36dp</dimen>
+    <dimen name="value_40">40dp</dimen>
+    <dimen name="value_42">42dp</dimen>
+    <dimen name="value_44">44dp</dimen>
+    <dimen name="value_46">46dp</dimen>
+    <dimen name="value_48">48dp</dimen>
+    <dimen name="value_50">50dp</dimen>
+    <dimen name="value_60">60dp</dimen>
+    <dimen name="value_80">80dp</dimen>
 
     <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
     <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_22">22sp</dimen>
 </resources>

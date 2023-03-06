@@ -6,8 +6,8 @@ import com.kunminx.binding_recyclerview.layout_manager.WrapContentGridLayoutMana
 import com.kunminx.binding_recyclerview.layout_manager.WrapContentLinearLayoutManager;
 
 public class Layout1 extends WrapContentLinearLayoutManager {
-    public Layout1(Context context, int orientation, boolean reverseLayout) {
-        super(context, orientation, reverseLayout);
+    public Layout1(Context context, int orientation) {
+        super(context, orientation, false);
     }
 
 //    public Layout1(Context context, int spanCount, int orientation, boolean reverseLayout) {

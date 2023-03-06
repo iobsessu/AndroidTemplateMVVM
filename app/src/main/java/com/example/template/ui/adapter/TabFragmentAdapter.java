@@ -5,18 +5,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.template.ui.components.musicListFragment.MusicListFragment;
-import com.kunminx.architecture.ui.page.BaseFragment;
+import com.example.template.ui.base.BaseViewPagerFragment;
 
 import java.util.List;
 
-public class FragmentAdapter extends FragmentStateAdapter {
+public class TabFragmentAdapter extends FragmentStateAdapter {
 
-    private List<MusicListFragment> fragmentList;
-
-    public FragmentAdapter(@NonNull FragmentActivity activity, List<MusicListFragment> fragmentList) {
-        super(activity);
+    private List<BaseViewPagerFragment> fragmentList;
+    private List<String> titleList;
+    public TabFragmentAdapter(@NonNull FragmentActivity fragmentActivity, List<BaseViewPagerFragment> fragmentList) {
+        super(fragmentActivity);
         this.fragmentList = fragmentList;
+        this.titleList = titleList;
     }
 
     @NonNull

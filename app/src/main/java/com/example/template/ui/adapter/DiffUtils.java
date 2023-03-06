@@ -19,6 +19,8 @@ package com.example.template.ui.adapter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 
+import com.example.template.data.bean.Icon;
+import com.example.template.data.bean.Music;
 import com.example.template.data.bean.PlayList;
 
 
@@ -27,9 +29,11 @@ import com.example.template.data.bean.PlayList;
  */
 public class DiffUtils {
 
-//    private DiffUtil.ItemCallback<LibraryInfo> mLibraryInfoItemCallback;
+    private DiffUtil.ItemCallback<Icon> iconItemCallback;
 
-    private DiffUtil.ItemCallback<PlayList> mTestMusicItemCallback;
+    private DiffUtil.ItemCallback<PlayList> playListItemCallback;
+
+    private DiffUtil.ItemCallback<Music> musicItemCallback;
 
     private DiffUtils() {
     }
@@ -40,26 +44,26 @@ public class DiffUtils {
         return S_DIFF_UTILS;
     }
 
-//    public DiffUtil.ItemCallback<LibraryInfo> getLibraryInfoItemCallback() {
-//        if (mLibraryInfoItemCallback == null) {
-//            mLibraryInfoItemCallback = new DiffUtil.ItemCallback<LibraryInfo>() {
-//                @Override
-//                public boolean areItemsTheSame(@NonNull LibraryInfo oldItem, @NonNull LibraryInfo newItem) {
-//                    return oldItem.equals(newItem);
-//                }
-//
-//                @Override
-//                public boolean areContentsTheSame(@NonNull LibraryInfo oldItem, @NonNull LibraryInfo newItem) {
-//                    return oldItem.getTitle().equals(newItem.getTitle());
-//                }
-//            };
-//        }
-//        return mLibraryInfoItemCallback;
-//    }
+    public DiffUtil.ItemCallback<Icon> getIconItemCallback() {
+        if (iconItemCallback == null) {
+            iconItemCallback = new DiffUtil.ItemCallback<Icon>() {
+                @Override
+                public boolean areItemsTheSame(@NonNull Icon oldItem, @NonNull Icon newItem) {
+                    return oldItem.equals(newItem);
+                }
 
-    public DiffUtil.ItemCallback<PlayList> getTestMusicItemCallback() {
-        if (mTestMusicItemCallback == null) {
-            mTestMusicItemCallback = new DiffUtil.ItemCallback<PlayList>() {
+                @Override
+                public boolean areContentsTheSame(@NonNull Icon oldItem, @NonNull Icon newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
+        }
+        return iconItemCallback;
+    }
+
+    public DiffUtil.ItemCallback<PlayList> getPlayListItemCallback() {
+        if (playListItemCallback == null) {
+            playListItemCallback = new DiffUtil.ItemCallback<PlayList>() {
                 @Override
                 public boolean areItemsTheSame(@NonNull PlayList oldItem, @NonNull PlayList newItem) {
                     return oldItem.equals(newItem);
@@ -71,6 +75,24 @@ public class DiffUtils {
                 }
             };
         }
-        return mTestMusicItemCallback;
+        return playListItemCallback;
     }
+
+    public DiffUtil.ItemCallback<Music> getMusicItemCallback() {
+        if (musicItemCallback == null) {
+            musicItemCallback = new DiffUtil.ItemCallback<Music>() {
+                @Override
+                public boolean areItemsTheSame(@NonNull Music oldItem, @NonNull Music newItem) {
+                    return oldItem.equals(newItem);
+                }
+
+                @Override
+                public boolean areContentsTheSame(@NonNull Music oldItem, @NonNull Music newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
+        }
+        return musicItemCallback;
+    }
+
 }
