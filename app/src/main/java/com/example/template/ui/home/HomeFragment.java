@@ -1,5 +1,6 @@
 package com.example.template.ui.home;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,9 +18,11 @@ import com.example.template.data.bean.PlayList;
 import com.example.template.ui.adapter.HomeTopIconAdapter;
 import com.example.template.ui.adapter.RecommendAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
+import com.example.template.ui.components.dialog.DialogBuilder;
 import com.example.template.ui.components.musicListFragment.MusicListFragment;
 import com.example.template.ui.layout_manager.Layout1;
 import com.example.template.util.TokenUtil;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
@@ -156,8 +159,10 @@ public class HomeFragment extends BaseViewPagerFragment {
 
     public class ClickProxy {
         public void logout() {
-            TokenUtil.clearToken();
-            getActivity().finish();
+            DialogBuilder.showSimpleDialog(getActivity(), R.string.tips, R.string.logout_tips, R.string.confirm, (dialogInterface, i) -> {
+                TokenUtil.clearToken();
+                getActivity().finish();
+            });
         }
     }
 

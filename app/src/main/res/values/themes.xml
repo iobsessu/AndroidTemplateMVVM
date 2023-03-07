@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AndroidTemplateMVVM" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.AndroidTemplateMVVM" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -36,4 +36,8 @@
         <item name="android:windowBackground">@color/grey_background</item>
     </style>
 
+    <style name="scroll_view" parent="@android:style/Widget.ScrollView">
+        <item name="android:scrollbarThumbVertical">@color/C_333333</item>
+        <item name="android:scrollbarThumbHorizontal">@color/C_999999</item>
+    </style>
 </resources>

@@ -47,24 +47,10 @@
                         android:layout_height="match_parent"
                         android:gravity="center">
                         <ImageView
-                            android:layout_width="@dimen/value_46"
-                            android:layout_height="@dimen/value_46"
-                            android:padding="@dimen/value_8"
+                            android:layout_width="@dimen/value_36"
+                            android:layout_height="@dimen/value_36"
                             badgeNum="@{vm.unreadCount}"
                             android:src="@mipmap/menu" />
-
-<!--                        <com.xuexiang.xui.widget.textview.supertextview.SuperTextView-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginHorizontal="@dimen/value_8"-->
-<!--                            android:layout_marginVertical="@dimen/value_8"-->
-<!--                            android:textColor="@color/C_666666"-->
-<!--                            android:textSize="@dimen/text_size_18"-->
-<!--                            android:textAlignment="center"-->
-<!--                            app:sCenterTextString="dwad"-->
-<!--                            app:sLeftIconRes="@mipmap/maikefeng"-->
-<!--                            app:sUseRipple="false"/>-->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_weight="1"

@@ -17,7 +17,8 @@
         android:orientation="vertical"
         android:paddingVertical="@dimen/padding_medium">
 
-        <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
+        <androidx.recyclerview.widget.RecyclerView
+            style="@style/recycler_view"
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

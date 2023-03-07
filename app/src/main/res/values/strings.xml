@@ -8,6 +8,7 @@
     <string name="discover">发现</string>
     <string name="follow">关注</string>
     <string name="community">社区</string>
+    <string name="my">我的</string>
 
     <string name="recommend">推荐</string>
 
@@ -16,5 +17,10 @@
     <string name="other_login">第三方免注册登录</string>
     <string name="agree_">我已阅读并同意《用户协议》和《隐私政策》</string>
 
+
+    <string name="ok">好的</string>
     <string name="tips">提示</string>
+    <string name="warning">警告</string>
+    <string name="logout_tips">确认退出登录吗？</string>
+    <string name="confirm">确定</string>
 </resources>

@@ -10,6 +10,7 @@ import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.home.HomeFragment;
+import com.example.template.ui.my.MyFragment;
 import com.example.template.ui.product.ProductFragment;
 import com.example.template.ui.calendar.CalendarFragment;
 import com.kunminx.architecture.ui.page.BaseActivity;
@@ -48,6 +49,12 @@ public class MainActivity extends BaseActivity {
         calendarFragment.setTitle(R.string.follow);
         calendarFragment.setIcon(R.mipmap.wodeguanzhu);
         fragmentList.add(calendarFragment);
+
+        MyFragment myFragment = new MyFragment();
+        myFragment.setTitle(R.string.my);
+        myFragment.setIcon(R.mipmap.wodeguanzhu);
+        fragmentList.add(myFragment);
+
 
         state.fragmentList.set(fragmentList);
     }
