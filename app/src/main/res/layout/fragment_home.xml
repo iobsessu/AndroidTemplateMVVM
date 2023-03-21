@@ -28,7 +28,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingHorizontal="@dimen/padding_large"
+                android:paddingHorizontal="@dimen/padding_medium"
                 android:gravity="center_vertical">
 
                 <ImageView
@@ -38,18 +38,22 @@
                     android:scaleType="centerCrop"
                     android:src="@mipmap/menu"
                     android:tintMode="multiply" />
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/value_4"
-                    android:layout_alignRight="@id/iv_header_bg"
-                    android:layout_alignLeft="@id/mm"
-                    android:textAlignment="center"
-                    android:text="@{vm.searchKeyWord}"
-                    android:textColor="@color/C_666666"
-                    android:textSize="@dimen/text_size_12"
-                    tools:text="七里香"/>
+                    android:layout_height="wrap_content"/>
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/value_4"-->
+<!--                    android:layout_alignRight="@id/iv_header_bg"-->
+<!--                    android:layout_alignLeft="@id/mm"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:text="@{vm.searchKeyWord}"-->
+<!--                    android:textColor="@color/C_666666"-->
+<!--                    android:textSize="@dimen/text_size_12"-->
+<!--                    tools:text="七里香"/>-->
                 <ImageView
                     android:id="@+id/mm"
                     android:layout_width="@dimen/value_20"
@@ -83,7 +87,9 @@
 
                 <include layout="@layout/home_recommend_play_2"
                     vm="@{vm}" />
-
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <Button
                     android:layout_width="wrap_content"
