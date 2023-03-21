@@ -11,76 +11,47 @@
         <variable
             name="click"
             type="com.example.template.ui.home.HomeFragment.ClickProxy" />
-        <variable
-            name="bannerHandler"
-            type="com.example.template.ui.home.HomeFragment.BannerItemClickHandler" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <LinearLayout
+            android:id="@+id/top_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
+            android:background="@color/primary_background"
+            android:gravity="center_vertical"
             android:fitsSystemWindows="true">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/iv_header_bg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/menu"
+                android:tintMode="multiply" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:fitsSystemWindows="true"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:toolbarId="@id/header_top"
-                android:background="@color/top_background">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:paddingHorizontal="@dimen/padding_medium"
-                    android:id="@+id/header_top"
-                    app:layout_collapseMode="pin">
-
-                    <!-- 不知道为什么，必须得再包一层linearlayout，title的weight=1才生效，可能与CollapsingToolbarLayout有关 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center">
-                        <ImageView
-                            android:layout_width="@dimen/value_36"
-                            android:layout_height="@dimen/value_36"
-                            badgeNum="@{vm.unreadCount}"
-                            android:src="@mipmap/menu" />
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/value_8"
-                            android:paddingVertical="@dimen/value_6"
-                            android:background="@drawable/search_bg"
-                            android:gravity="center">
-                            <ImageView
-                                android:layout_width="@dimen/value_18"
-                                android:layout_height="@dimen/value_18"
-                                android:src="@mipmap/search" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/value_4"
-                                android:text="@{vm.searchKeyWord}"
-                                android:textColor="@color/C_666666"
-                                android:textSize="@dimen/text_size_12"
-                                tools:text="七里香"/>
-                        </LinearLayout>
-                        <ImageView
-                            android:layout_width="@dimen/value_20"
-                            android:layout_height="@dimen/value_20"
-                            android:src="@mipmap/maikefeng" />
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
-
+                android:layout_marginLeft="@dimen/value_4"
+                android:layout_alignRight="@id/iv_header_bg"
+                android:layout_alignLeft="@id/mm"
+                android:textAlignment="center"
+                android:text="@{vm.searchKeyWord}"
+                android:textColor="@color/C_666666"
+                android:textSize="@dimen/text_size_12"
+                tools:text="七里香"/>
+            <ImageView
+                android:id="@+id/mm"
+                android:layout_width="@dimen/value_20"
+                android:layout_height="@dimen/value_20"
+                android:layout_alignParentEnd="true"
+                android:src="@mipmap/maikefeng" />
+        </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -96,8 +67,7 @@
                     android:id="@+id/banner_layout"
                     layout="@layout/home_banner"
                     vm="@{vm}"
-                    click="@{click}"
-                    bannerHandler="@{bannerHandler}"/>
+                    click="@{click}"/>
 
                 <include layout="@layout/home_top_icon"
                     vm="@{vm}" />
@@ -108,21 +78,27 @@
                 <include layout="@layout/home_recommend_play_2"
                     vm="@{vm}" />
 
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
-                    android:onClick="@{()->click.logout()}"
-                    android:text="logout" />
+                    android:onClick="@{()->click.toPlaying()}"
+                    android:text="去播放页" />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
-                    android:onClick="@{()->click.logout()}"
-                    android:text="logout" />
+                    android:onClick="@{()->click.start()}"
+                    android:text="播放" />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
-                    android:onClick="@{()->click.logout()}"
-                    android:text="logout" />
+                    android:onClick="@{()->click.pause()}"
+                    android:text="暂停" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.resume()}"
+                    android:text="继续" />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
@@ -132,5 +108,5 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
 </layout>

@@ -9,12 +9,6 @@
         <variable
             name="click"
             type="com.example.template.ui.home.HomeFragment.ClickProxy" />
-        <variable
-            name="itemClickListener"
-            type="com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner.OnItemClickListener" />
-        <variable
-            name="bannerHandler"
-            type="com.example.template.ui.home.HomeFragment.BannerItemClickHandler" />
     </data>
 
     <LinearLayout
@@ -26,7 +20,7 @@
             android:layout_height="wrap_content"
             app:bb_scale="0.294"
             bannerSource="@{vm.bannerList}"
-            itemClickListener="@{bannerHandler}"/>
+            itemClickListener="@{click.bannerClickListener}"/>
     </LinearLayout>
 
 </layout>

@@ -2,17 +2,25 @@ package com.example.template.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
+import androidx.core.view.WindowCompat;
 
 import com.example.template.BR;
 import com.example.template.R;
+import com.example.template.app.AppApplication;
+import com.example.template.databinding.ActivityMainBinding;
 import com.example.template.ui.base.BaseViewPagerFragment;
+import com.example.template.ui.global.PlayerState;
 import com.example.template.ui.home.HomeFragment;
 import com.example.template.ui.my.MyFragment;
+import com.example.template.ui.play.PlayingActivity;
 import com.example.template.ui.product.ProductFragment;
 import com.example.template.ui.calendar.CalendarFragment;
+import com.example.template.util.StatusBarUtil;
 import com.kunminx.architecture.ui.page.BaseActivity;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
@@ -24,12 +32,12 @@ import java.util.List;
 public class MainActivity extends BaseActivity {
 
     private MainActivityState state;
-//    private ActivityMainBinding binding;
+    private PlayerState playerState;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        binding = (ActivityMainBinding) getBinding();
+        StatusBarUtil.setTransparentForImageView(this, null);
         initFragmentList();
     }
 
@@ -66,18 +74,26 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initViewModel() {
-//
         state = getActivityScopeViewModel(MainActivityState.class);
+        playerState = getApplicationScopeViewModel(PlayerState.class);
     }
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        return new DataBindingConfig(R.layout.activity_main, BR.vm, state);
+        return new DataBindingConfig(R.layout.activity_main, BR.vm, state)
+                .addBindingParam(BR.playerVm, playerState)
+                .addBindingParam(BR.click, new ClickProxy());
     }
 
     public static class MainActivityState extends StateHolder {
         public State<List<BaseViewPagerFragment>> fragmentList = new State<>(new ArrayList<>());
         public State<Boolean> scrollEnabled = new State<>(false);
+    }
+
+    public class ClickProxy {
+        public void toPlaying() {
+            PlayingActivity.actionStart(MainActivity.this);
+        }
     }
 
 }

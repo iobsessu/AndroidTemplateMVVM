@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="RtlSymmetry">
+    <data>
+        <variable
+            name="playerVm"
+            type="com.example.template.ui.global.PlayerState" />
+        <variable
+            name="click"
+            type="com.example.template.ui.MainActivity.ClickProxy" />
+    </data>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/padding_medium"
+        android:paddingVertical="@dimen/padding_small"
+        android:gravity="center"
+        android:onClick="@{()->click.toPlaying()}">
+
+        <ImageView
+            android:layout_width="@dimen/value_42"
+            android:layout_height="@dimen/value_42"
+            android:src="@mipmap/image_test"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/value_6"
+            android:text="@{playerVm.musicName}"/>
+        <ImageView
+            android:layout_width="@dimen/value_26"
+            android:layout_height="@dimen/value_26"
+            android:src="@mipmap/play_2"/>
+        <ImageView
+            android:layout_width="@dimen/value_26"
+            android:layout_height="@dimen/value_26"
+            android:layout_marginLeft="@dimen/value_8"
+            android:src="@mipmap/menu" />
+    </LinearLayout>
+</layout>

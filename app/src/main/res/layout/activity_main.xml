@@ -8,12 +8,19 @@
         <variable
             name="vm"
             type="com.example.template.ui.MainActivity.MainActivityState" />
+        <variable
+            name="playerVm"
+            type="com.example.template.ui.global.PlayerState" />
+        <variable
+            name="click"
+            type="com.example.template.ui.MainActivity.ClickProxy" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
@@ -22,6 +29,12 @@
             android:touchscreenBlocksFocus="true"
             fragmentList="@{vm.fragmentList}"
             scrollEnabled="@{vm.scrollEnabled}" />
+
+        <include
+            layout="@layout/bottom_play_bar"
+            click="@{click}"
+            playerVm="@{playerVm}"/>
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"

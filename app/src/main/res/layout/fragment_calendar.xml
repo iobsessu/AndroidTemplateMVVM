@@ -17,25 +17,25 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/home_top_bar_height"
             android:fitsSystemWindows="true">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:toolbarId="@id/header_top"
-                android:background="@color/top_background">
-
+                app:toolbarId="@id/header_top">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
                     android:paddingHorizontal="@dimen/padding_medium"
                     android:id="@+id/header_top"
+                    android:gravity="center_vertical"
                     app:layout_collapseMode="pin">
 
-                    <!-- 不知道为什么，必须得再包一层linearlayout，title的weight=1才生效，可能与CollapsingToolbarLayout有关 -->
+                    <!--                     不知道为什么，必须得再包一层linearlayout，title的weight=1才生效，可能与CollapsingToolbarLayout有关 -->
                     <LinearLayout
                         android:id="@+id/header"
                         android:layout_width="match_parent"
@@ -78,54 +78,68 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.haibin.calendarview.CalendarLayout
-            android:id="@+id/calendar_layout"
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#fff"
-            android:orientation="vertical"
-            app:calendar_content_view_id="@+id/recyclerView">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <com.haibin.calendarview.CalendarView
-                android:id="@+id/calendar_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#fff"
-                app:calendar_padding="10dp"
-                app:current_month_lunar_text_color="#CFCFCF"
-                app:current_month_text_color="#333333"
-                app:min_year="2004"
-                app:month_view="com.example.template.ui.components.calendarview.CustomMonthView"
-                app:month_view_show_mode="mode_only_current"
-                app:other_month_text_color="#e1e1e1"
-                app:scheme_lunar_text_color="#ffffff"
-                app:scheme_text="假"
-                app:scheme_text_color="#fff"
-                app:scheme_theme_color="#128c4b"
-                app:selected_lunar_text_color="#fff"
-                app:selected_text_color="#fff"
-                app:selected_theme_color="#108cd4"
-                app:week_background="#fff"
-                app:week_text_color="#111"
-                app:week_view="com.haibin.calendarviewproject.colorful.ColorfulWeekView"
-                app:year_view_day_text_color="#333333"
-                app:year_view_day_text_size="9sp"
-                app:year_view_month_text_color="#ff0000"
-                app:year_view_month_text_size="20sp"
-                app:year_view_scheme_color="#f17706" />
-
-            <com.example.template.ui.components.calendarview.GroupRecyclerView
-                android:id="@+id/recycler_view"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:group_center="false"
-                app:group_has_header="false"
-                app:group_height="42dp"
-                app:group_padding_left="16dp"
-                app:group_padding_right="16dp"
-                app:group_text_color="#555555"
-                app:group_text_size="14sp" />
+                android:orientation="vertical">
+                <com.haibin.calendarview.CalendarLayout
+                    android:id="@+id/calendar_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fff"
+                    android:orientation="vertical"
+                    app:calendar_content_view_id="@+id/recyclerView">
 
-        </com.haibin.calendarview.CalendarLayout>
+                    <com.haibin.calendarview.CalendarView
+                        android:id="@+id/calendar_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        app:calendar_padding="10dp"
+                        app:current_month_lunar_text_color="#CFCFCF"
+                        app:current_month_text_color="#333333"
+                        app:min_year="2004"
+                        app:month_view="com.example.template.ui.components.calendarview.CustomMonthView"
+                        app:month_view_show_mode="mode_only_current"
+                        app:other_month_text_color="#e1e1e1"
+                        app:scheme_lunar_text_color="#ffffff"
+                        app:scheme_text="假"
+                        app:scheme_text_color="#fff"
+                        app:scheme_theme_color="#128c4b"
+                        app:selected_lunar_text_color="#fff"
+                        app:selected_text_color="#fff"
+                        app:selected_theme_color="#108cd4"
+                        app:week_background="#fff"
+                        app:week_text_color="#111"
+                        app:week_view="com.haibin.calendarviewproject.colorful.ColorfulWeekView"
+                        app:year_view_day_text_color="#333333"
+                        app:year_view_day_text_size="9sp"
+                        app:year_view_month_text_color="#ff0000"
+                        app:year_view_month_text_size="20sp"
+                        app:year_view_scheme_color="#f17706" />
+
+                    <com.example.template.ui.components.calendarview.GroupRecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:group_center="false"
+                        app:group_has_header="false"
+                        app:group_height="42dp"
+                        app:group_padding_left="16dp"
+                        app:group_padding_right="16dp"
+                        app:group_text_color="#555555"
+                        app:group_text_size="14sp" />
+
+                </com.haibin.calendarview.CalendarLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

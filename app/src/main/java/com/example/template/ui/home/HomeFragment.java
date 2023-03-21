@@ -1,12 +1,16 @@
 package com.example.template.ui.home;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.template.BR;
@@ -15,20 +19,26 @@ import com.example.template.app.AppApplication;
 import com.example.template.data.bean.Icon;
 import com.example.template.data.bean.Music;
 import com.example.template.data.bean.PlayList;
+import com.example.template.databinding.FragmentHomeBinding;
 import com.example.template.ui.adapter.HomeTopIconAdapter;
 import com.example.template.ui.adapter.RecommendAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.components.dialog.DialogBuilder;
 import com.example.template.ui.components.musicListFragment.MusicListFragment;
 import com.example.template.ui.layout_manager.Layout1;
+import com.example.template.ui.play.PlayingActivity;
+import com.example.template.util.StatusBarUtil;
+import com.example.template.util.SystemBarUtil;
 import com.example.template.util.TokenUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
+import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +51,6 @@ public class HomeFragment extends BaseViewPagerFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        BarUtils.setStatusBarColor((AppCompatActivity) getActivity(), getActivity().getColor(R.color.primary_background));
-//        BarUtils.setStatusBarLightMode((AppCompatActivity) getActivity(), true);
         initBanner();
         initData();
 
@@ -54,6 +62,7 @@ public class HomeFragment extends BaseViewPagerFragment {
             musicListFragmentList.add(MusicListFragment.getInstance(musicList1));
         }
         state.musicListFragmentList.set(musicListFragmentList);
+//        WindowInsetsControllerCompat controller = ViewCompat.getWindowInsetsController(getActivity().getWindow().getDecorView());
     }
 
     @Override
@@ -64,8 +73,7 @@ public class HomeFragment extends BaseViewPagerFragment {
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         return new DataBindingConfig(R.layout.fragment_home, BR.vm, state)
-                .addBindingParam(BR.click, new ClickProxy())
-                .addBindingParam(BR.bannerHandler, new BannerItemClickHandler());
+                .addBindingParam(BR.click, new ClickProxy());
     }
 
     private void initBanner() {
@@ -157,19 +165,54 @@ public class HomeFragment extends BaseViewPagerFragment {
 
     }
 
+    MediaPlayer mediaPlayer;
+
     public class ClickProxy {
+
+        public void toPlaying() {
+            PlayingActivity.actionStart(getActivity());
+        }
+
         public void logout() {
             DialogBuilder.showSimpleDialog(getActivity(), R.string.tips, R.string.logout_tips, R.string.confirm, (dialogInterface, i) -> {
                 TokenUtil.clearToken();
                 getActivity().finish();
             });
         }
+
+        public void start() {
+//            mediaPlayer = MediaPlayer.create(getActivity(), R.raw.tiantiande);
+//            mediaPlayer.start();
+            mediaPlayer = new MediaPlayer();
+            try {
+                //https://www.gequbao.com/
+                mediaPlayer.setDataSource("https://win-web-rf01-sycdn.kuwo.cn/28f0deb2271b8562938b97cf8510c673/64088a43/resource/n3/60/43/3916978711.mp3");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            mediaPlayer.prepareAsync();
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mp.start();
+                }
+            });
+        }
+
+        public void pause() {
+            mediaPlayer.pause();
+        }
+
+        public void resume() {
+            mediaPlayer.start();
+        }
+
+        public BaseBanner.OnItemClickListener<BannerItem> bannerClickListener = new BaseBanner.OnItemClickListener<BannerItem>() {
+            @Override
+            public void onItemClick(View view, BannerItem item, int position) {
+                Log.e("onItemClickxx:", item.title + " --- " + position);
+            }
+        };
     }
 
-    public class BannerItemClickHandler implements BaseBanner.OnItemClickListener<BannerItem> {
-        @Override
-        public void onItemClick(View view, BannerItem item, int position) {
-            Log.e("onItemClick:", item.title + " --- " + position);
-        }
-    }
 }
