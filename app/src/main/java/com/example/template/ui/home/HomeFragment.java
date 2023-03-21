@@ -62,7 +62,6 @@ public class HomeFragment extends BaseViewPagerFragment {
             musicListFragmentList.add(MusicListFragment.getInstance(musicList1));
         }
         state.musicListFragmentList.set(musicListFragmentList);
-//        WindowInsetsControllerCompat controller = ViewCompat.getWindowInsetsController(getActivity().getWindow().getDecorView());
     }
 
     @Override
