@@ -18,6 +18,7 @@ import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.components.musicListFragment.MusicListFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.kunminx.architecture.ui.page.BaseFragment;
 
 import java.util.List;
 
@@ -34,38 +35,17 @@ public class TabPageBindingAdapter {
             tab = tabLayout.newTab();
             tabLayout.addTab(tab);
         }
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                View view = tab.getCustomView();
-                ImageView icon = view.findViewById(R.id.icon);
-                TextView title = view.findViewById(R.id.title);
-                title.setTextColor(AppApplication.getInstance().getColor(R.color.primary_text));
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                View view = tab.getCustomView();
-                ImageView icon = view.findViewById(R.id.icon);
-                TextView title = view.findViewById(R.id.title);
-                title.setTextColor(AppApplication.getInstance().getColor(R.color.C_666666));
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
 
         new TabLayoutMediator(tabLayout, viewPager2,
-                (tab1, position) -> {
+                (tabItem, position) -> {
 
-                    View view = LayoutInflater.from(viewPager2.getContext()).inflate(R.layout.custom_tab, null);
-                    ImageView icon = view.findViewById(R.id.icon);
-                    TextView title = view.findViewById(R.id.title);
-                    title.setText(fragmentList.get(position).getTitle());
-                    icon.setImageResource(fragmentList.get(position).getIcon());
-                    tab1.setCustomView(view);
+                    tabItem.setText(fragmentList.get(position).getTitle());
+//                    View view = LayoutInflater.from(viewPager2.getContext()).inflate(R.layout.custom_tab, null);
+//                    ImageView icon = view.findViewById(R.id.icon);
+//                    TextView title = view.findViewById(R.id.title);
+//                    title.setText(fragmentList.get(position).getTitle());
+//                    icon.setImageResource(fragmentList.get(position).getIcon());
+//                    tab1.setCustomView(view);
                 }
         ).attach();
     }

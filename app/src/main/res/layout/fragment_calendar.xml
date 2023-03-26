@@ -10,74 +10,60 @@
             type="com.example.template.ui.calendar.CalendarFragment.CalendarState" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <LinearLayout
+            android:id="@+id/top_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/home_top_bar_height"
+            android:background="@color/background_top"
             android:fitsSystemWindows="true">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:toolbarId="@id/header_top">
+                android:paddingHorizontal="@dimen/padding_small"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/month_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6月22日" />
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="@dimen/padding_medium"
-                    android:id="@+id/header_top"
-                    android:gravity="center_vertical"
-                    app:layout_collapseMode="pin">
-
-                    <!--                     不知道为什么，必须得再包一层linearlayout，title的weight=1才生效，可能与CollapsingToolbarLayout有关 -->
-                    <LinearLayout
-                        android:id="@+id/header"
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp">
-                        <TextView
-                            android:id="@+id/month_day"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="6月22日" />
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-                            <TextView
-                                android:id="@+id/year"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{vm.year}" />
-                            <TextView
-                                android:id="@+id/lunar"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="初八" />
-                        </LinearLayout>
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="match_parent"/>
-                        <FrameLayout
-                            android:layout_width="32dp"
-                            android:layout_height="32dp">
-                            <TextView
-                                android:id="@+id/current_day"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="13" />
-                        </FrameLayout>
-                    </LinearLayout>
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:id="@+id/year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.year}" />
+                    <TextView
+                        android:id="@+id/lunar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="初八" />
                 </LinearLayout>
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
-
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"/>
+                <FrameLayout
+                    android:layout_width="32dp"
+                    android:layout_height="32dp">
+                    <TextView
+                        android:id="@+id/current_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="13" />
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -140,6 +126,6 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

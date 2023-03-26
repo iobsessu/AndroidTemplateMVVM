@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.template.ui.base.BaseViewPagerFragment;
+import com.kunminx.architecture.ui.page.BaseFragment;
 
 import java.util.List;
 

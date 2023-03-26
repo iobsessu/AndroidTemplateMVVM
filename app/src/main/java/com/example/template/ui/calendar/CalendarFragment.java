@@ -38,6 +38,7 @@ public class CalendarFragment extends BaseViewPagerFragment implements
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
+        Log.d("xxx", "calendar");
         return new DataBindingConfig(R.layout.fragment_calendar, BR.vm, state);
     }
 

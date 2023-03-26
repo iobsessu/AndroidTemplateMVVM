@@ -8,81 +8,33 @@
 
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <LinearLayout
+            android:id="@+id/top_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/home_top_bar_height"
+            android:background="@color/background_top"
             android:fitsSystemWindows="true">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:toolbarId="@id/header_top">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="@dimen/padding_medium"
-                    android:id="@+id/header_top"
-                    android:gravity="center_vertical"
-                    app:layout_collapseMode="pin">
+                android:paddingHorizontal="@dimen/padding_small"
+                android:gravity="center_vertical">
 
-                    <!--                     不知道为什么，必须得再包一层linearlayout，title的weight=1才生效，可能与CollapsingToolbarLayout有关 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center">
-                        <ImageView
-                            android:id="@+id/iv_header_bg"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:scaleType="centerCrop"
-                            android:src="@mipmap/menu"
-                            android:tintMode="multiply" />
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/value_8"
-                            android:paddingVertical="@dimen/value_6"
-                            android:background="@drawable/search_bg"
-                            android:gravity="center">
-                            <ImageView
-                                android:layout_width="@dimen/value_18"
-                                android:layout_height="@dimen/value_18"
-                                android:src="@mipmap/search" />
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/value_4"
-                                android:layout_alignRight="@id/iv_header_bg"
-                                android:layout_alignLeft="@id/mm"
-                                android:textAlignment="center"
-                                android:text="xxx"
-                                android:textColor="@color/C_666666"
-                                android:textSize="@dimen/text_size_12"
-                                tools:text="七里香"/>
-                        </LinearLayout>
-                        <ImageView
-                            android:id="@+id/mm"
-                            android:layout_width="@dimen/value_20"
-                            android:layout_height="@dimen/value_20"
-                            android:layout_alignParentEnd="true"
-                            android:src="@mipmap/maikefeng" />
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
-
+                <ImageView
+                    android:id="@+id/iv_header_bg"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/menu"
+                    android:tintMode="multiply" />
+            </LinearLayout>
+        </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -96,10 +48,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="My" />
+                    android:text="我的" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
 </layout>

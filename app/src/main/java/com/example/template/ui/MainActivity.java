@@ -1,5 +1,6 @@
 package com.example.template.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,6 +9,10 @@ import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import androidx.core.view.WindowCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.example.template.BR;
 import com.example.template.R;
@@ -37,33 +42,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initFragmentList();
-    }
-
-    private void initFragmentList() {
-        List<BaseViewPagerFragment> fragmentList = new ArrayList<>();
-        HomeFragment homeFragment = new HomeFragment();
-        homeFragment.setTitle(R.string.discover);
-        homeFragment.setIcon(R.mipmap.faxian);
-        fragmentList.add(homeFragment);
-
-        ProductFragment productFragment = new ProductFragment();
-        productFragment.setTitle(R.string.community);
-        productFragment.setIcon(R.mipmap.shequ);
-        fragmentList.add(productFragment);
-
-        CalendarFragment calendarFragment = new CalendarFragment();
-        calendarFragment.setTitle(R.string.follow);
-        calendarFragment.setIcon(R.mipmap.wodeguanzhu);
-        fragmentList.add(calendarFragment);
-
-        MyFragment myFragment = new MyFragment();
-        myFragment.setTitle(R.string.my);
-        myFragment.setIcon(R.mipmap.wodeguanzhu);
-        fragmentList.add(myFragment);
-
-
-        state.fragmentList.set(fragmentList);
+        state.navController = new State<>(Navigation.findNavController(this, R.id.nav_host_fragment_activity_main));
     }
 
     public static void actionStart(Context context) {
@@ -85,8 +64,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public static class MainActivityState extends StateHolder {
-        public State<List<BaseViewPagerFragment>> fragmentList = new State<>(new ArrayList<>());
-        public State<Boolean> scrollEnabled = new State<>(false);
+        public State<NavController> navController ;
     }
 
     public class ClickProxy {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@mipmap/faxian"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/navigation_product"
+        android:icon="@mipmap/shequ"
+        android:title="@string/product" />
+
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@mipmap/wodeguanzhu"
+        android:title="@string/community" />
+
+    <item
+        android:id="@+id/navigation_my"
+        android:icon="@mipmap/setting"
+        android:title="@string/my" />
+
+</menu>

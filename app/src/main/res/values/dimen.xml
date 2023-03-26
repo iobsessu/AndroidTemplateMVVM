@@ -9,7 +9,8 @@
     <dimen name="margin_medium">12dp</dimen>
     <dimen name="margin_large">16dp</dimen>
 
-    <dimen name="home_top_bar_height">75dp</dimen>
+    <dimen name="home_top_bar_height">90dp</dimen>
+    <dimen name="divider_1">0.5dp</dimen>
 
     <dimen name="value_2">2dp</dimen>
     <dimen name="value_4">4dp</dimen>

@@ -23,4 +23,21 @@
     <string name="warning">警告</string>
     <string name="logout_tips">确认退出登录吗？</string>
     <string name="confirm">确定</string>
+
+    <string name="basic_info">基本</string>
+    <string name="additional_info">其它</string>
+
+    <string name="name">姓名</string>
+    <string name="gender">性别</string>
+    <string name="age">年龄</string>
+    <string name="id_number">身份证号</string>
+    <string name="phone_number">手机号</string>
+
+
+    <string name="name_placeholder">请输入姓名</string>
+    <string name="age_placeholder">请输入年龄</string>
+    <string name="id_number_placeholder">请输入身份证号</string>
+    <string name="phone_number_placeholder">请输入姓名</string>
+
+    <string name="id_number_error">请输入合法的身份证号</string>
 </resources>

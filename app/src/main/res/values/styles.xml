@@ -7,4 +7,29 @@
         <item name="android:overScrollMode">ifContentScrolls</item>
         <item name="android:cacheColorHint">@android:color/transparent</item>
     </style>
+
+    <style name="home_bottom_tab_title_active">
+        <item name="android:textSize">@dimen/text_size_14</item>
+    </style>
+
+    <style name="home_bottom_tab_title_inactive">
+        <item name="android:textSize">@dimen/text_size_12</item>
+    </style>
+
+    <style name="MyTextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="boxStrokeColor">@color/background_primary</item>
+        <item name="hintTextColor">@color/background_primary</item>
+        <item name="counterTextColor">@color/background_primary</item>
+        <item name="counterOverflowTextColor">@color/background_primary</item>
+        <item name="errorTextColor">@color/background_primary</item>
+        <item name="helperTextTextColor">@color/background_primary</item>
+        <item name="endIconTint">@color/background_primary</item>
+        <item name="startIconTint">@color/background_primary</item>
+    </style>
+
+    <style name="MyEditText" parent="Widget.Design.TextInputEditText">
+        <item name="android:textColor">@color/C_666666</item>
+        <item name="android:textColorHint">@color/C_999999</item>
+    </style>
+
 </resources>

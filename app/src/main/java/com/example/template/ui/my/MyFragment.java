@@ -1,5 +1,7 @@
 package com.example.template.ui.my;
 
+import android.util.Log;
+
 import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.ui.base.BaseViewPagerFragment;
@@ -17,6 +19,7 @@ public class MyFragment extends BaseViewPagerFragment {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
+        Log.d("xxx", "my");
         return new DataBindingConfig(R.layout.fragment_my, BR.vm, state);
     }
 

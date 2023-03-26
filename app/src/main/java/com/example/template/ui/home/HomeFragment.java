@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -34,7 +35,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
+import com.kunminx.architecture.utils.BarUtils;
+import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.utils.StatusBarUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 
@@ -51,6 +55,7 @@ public class HomeFragment extends BaseViewPagerFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         initBanner();
         initData();
 
@@ -71,6 +76,7 @@ public class HomeFragment extends BaseViewPagerFragment {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
+        Log.d("xxx", "home");
         return new DataBindingConfig(R.layout.fragment_home, BR.vm, state)
                 .addBindingParam(BR.click, new ClickProxy());
     }
@@ -149,7 +155,8 @@ public class HomeFragment extends BaseViewPagerFragment {
 
     public static class HomeState extends StateHolder {
         public State<Integer> unreadCount = new State<>(2);
-        public State<String> searchKeyWord = new State<>("英语");
+        public State<String> searchValue = new State<>("英语");
+        public State<String> searchPlaceholder = new State<>("浪漫手机");
         public State<List<Icon>> iconList = new State<>(new ArrayList<>());
         public HomeTopIconAdapter topIconAdapter = new HomeTopIconAdapter(AppApplication.getInstance());
         public State<Layout1> topIconLayout = new State<>(new Layout1(AppApplication.getInstance(),  GridLayoutManager.HORIZONTAL));
@@ -209,7 +216,19 @@ public class HomeFragment extends BaseViewPagerFragment {
         public BaseBanner.OnItemClickListener<BannerItem> bannerClickListener = new BaseBanner.OnItemClickListener<BannerItem>() {
             @Override
             public void onItemClick(View view, BannerItem item, int position) {
-                Log.e("onItemClickxx:", item.title + " --- " + position);
+                Log.e("onItemClick:", item.title + " --- " + position);
+            }
+        };
+
+        public View.OnKeyListener onSearchKeyListener = new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    XToastUtils.info("点击了搜索");
+                    KeyboardUtils.hideSoftInput(view);
+                    return true;
+                }
+                return false;
             }
         };
     }
