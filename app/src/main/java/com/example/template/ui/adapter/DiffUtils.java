@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import com.example.template.data.bean.Icon;
 import com.example.template.data.bean.Music;
 import com.example.template.data.bean.PlayList;
+import com.example.template.data.bean.Staff;
 
 
 /**
@@ -34,6 +35,7 @@ public class DiffUtils {
     private DiffUtil.ItemCallback<PlayList> playListItemCallback;
 
     private DiffUtil.ItemCallback<Music> musicItemCallback;
+    private DiffUtil.ItemCallback<Staff> staffItemCallback;
 
     private DiffUtils() {
     }
@@ -93,6 +95,23 @@ public class DiffUtils {
             };
         }
         return musicItemCallback;
+    }
+
+    public DiffUtil.ItemCallback<Staff> getStaffItemCallback() {
+        if (staffItemCallback == null) {
+            staffItemCallback = new DiffUtil.ItemCallback<Staff>() {
+                @Override
+                public boolean areItemsTheSame(@NonNull Staff oldItem, @NonNull Staff newItem) {
+                    return oldItem.equals(newItem);
+                }
+
+                @Override
+                public boolean areContentsTheSame(@NonNull Staff oldItem, @NonNull Staff newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
+        }
+        return staffItemCallback;
     }
 
 }

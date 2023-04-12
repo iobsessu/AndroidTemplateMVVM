@@ -18,5 +18,6 @@ public class StaffFormState extends StateHolder {
     public State<List<OptionItem>> genderOptionList = new State<>(new ArrayList<>());
 
     public State<String> idNumberError = new State<>("");
+    public State<String> emailError = new State<>("");
 
 }

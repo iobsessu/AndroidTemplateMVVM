@@ -3,25 +3,11 @@
     <style name="Theme.AndroidTemplateMVVM" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/background_primary</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="android:windowBackground">@color/background_grey</item>
-        <item name="colorControlNormal">#FF0000</item>
-
-
-<!--        <item name="android:windowIsTranslucent">true</item>-->
-<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
-<!--        <item name="android:windowTranslucentStatus">true</item>-->
-<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
-<!--        <item name="colorOnPrimary">@color/white_text</item>-->
-<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
-<!--        <item name="colorSecondary">@color/teal_200</item>-->
-<!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
-<!--        <item name="colorOnSecondary">@color/black</item>-->
-        <!-- Status bar color. -->
-<!--        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>-->
-        <!-- Customize your theme here. -->
         <item name="textInputStyle">@style/MyTextInputLayout</item>
         <item name="editTextStyle">@style/MyEditText</item>
+        <item name="colorControlNormal">@color/edit_text_underline</item>
+        <item name="colorControlActivated">@color/background_primary</item>
     </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">

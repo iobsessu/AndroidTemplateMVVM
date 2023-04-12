@@ -17,18 +17,17 @@
     </style>
 
     <style name="MyTextInputLayout" parent="Widget.Design.TextInputLayout">
-        <item name="boxStrokeColor">@color/background_primary</item>
-        <item name="hintTextColor">@color/background_primary</item>
-        <item name="counterTextColor">@color/background_primary</item>
+        <item name="hintTextColor">@color/C_666666</item>
+        <item name="counterTextColor">@color/C_666666</item>
         <item name="counterOverflowTextColor">@color/background_primary</item>
-        <item name="errorTextColor">@color/background_primary</item>
+        <item name="errorTextColor">@color/text_error</item>
         <item name="helperTextTextColor">@color/background_primary</item>
         <item name="endIconTint">@color/background_primary</item>
         <item name="startIconTint">@color/background_primary</item>
     </style>
 
     <style name="MyEditText" parent="Widget.Design.TextInputEditText">
-        <item name="android:textColor">@color/C_666666</item>
+        <item name="android:textColor">@color/C_333333</item>
         <item name="android:textColorHint">@color/C_999999</item>
     </style>
 

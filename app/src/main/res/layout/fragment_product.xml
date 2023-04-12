@@ -6,6 +6,9 @@
 
     <data>
         <variable
+            name="vm"
+            type="com.example.template.ui.product.ProductFragment.ProductState" />
+        <variable
             name="click"
             type="com.example.template.ui.product.ProductFragment.ClickProxy" />
     </data>
@@ -63,7 +66,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Product" />
-
+                <androidx.recyclerview.widget.RecyclerView
+                    style="@style/recycler_view"
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    adapter="@{vm.staffAdapter}"
+                    submitList="@{vm.staffList}"
+                    app:layoutManager="com.kunminx.binding_recyclerview.layout_manager.WrapContentLinearLayoutManager"
+                    app:fastScrollPopupPosition="center"
+                    app:fastScrollAutoHide="false"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

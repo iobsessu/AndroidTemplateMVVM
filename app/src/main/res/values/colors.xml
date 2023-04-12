@@ -10,6 +10,7 @@
     <!-- text -->
     <color name="text_primary">#409EFF</color>
     <color name="text_white">#FFFFFFFF</color>
+    <color name="text_error">#B00020</color>
     <color name="C_333333">#333333</color>
     <color name="C_666666">#666666</color>
     <color name="C_999999">#999999</color>
@@ -23,6 +24,7 @@
 
     <!-- divider -->
     <color name="divider">#D4D4D4</color>
+    <color name="edit_text_underline">#666666</color>
 
     <color name="play_progress">#1a1a1a</color>
 
