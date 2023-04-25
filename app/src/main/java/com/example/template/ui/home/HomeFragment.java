@@ -154,6 +154,7 @@ public class HomeFragment extends BaseViewPagerFragment {
 
 
     public static class HomeState extends StateHolder {
+        public State<String> test = new State<>("我的测试");
         public State<Integer> unreadCount = new State<>(2);
         public State<String> searchValue = new State<>("英语");
         public State<String> searchPlaceholder = new State<>("浪漫手机");
@@ -177,6 +178,9 @@ public class HomeFragment extends BaseViewPagerFragment {
 
         public void toPlaying() {
             PlayingActivity.actionStart(getActivity());
+        }
+        public void test() {
+            state.test.set("改后的值");
         }
 
         public void logout() {
