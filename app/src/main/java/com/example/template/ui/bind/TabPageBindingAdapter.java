@@ -2,6 +2,8 @@ package com.example.template.ui.bind;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,8 +30,31 @@ public class TabPageBindingAdapter {
     public static void fragmentList(ViewPager2 viewPager2, List<BaseViewPagerFragment> fragmentList) {
         TabFragmentAdapter tabFragmentAdapter = new TabFragmentAdapter((FragmentActivity) viewPager2.getContext(), fragmentList);
         viewPager2.setAdapter(tabFragmentAdapter);
+        bindViewPager2WithTabLayout(viewPager2, fragmentList);
+    }
 
-        TabLayout tabLayout = viewPager2.getRootView().findViewById(R.id.tab_layout);
+    /**
+     * 将ViewPager2与第一个同级的TabLayout绑定
+     * （为了不在activity里用getBinding()手动获取视图）
+     * 目前没有找到更好的解决方案。希望以后会碰到。
+     */
+    private static void bindViewPager2WithTabLayout(ViewPager2 viewPager2, List<BaseViewPagerFragment> fragmentList) {
+        ViewParent view = viewPager2.getParent();
+        TabLayout tabLayout = null;
+//        TabLayout tabLayout = viewPager2.getRootView().findViewById(R.id.tab_layout);
+        if (view instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) view;
+            for (int i = 0; i < viewGroup.getChildCount(); ++i) {
+                View child = viewGroup.getChildAt(i);
+                if (child instanceof TabLayout) {
+                    tabLayout = (TabLayout) child;
+                    break;
+                }
+            }
+        }
+        if(tabLayout == null) {
+            return;
+        }
         TabLayout.Tab tab;
         for(int i = 0; i < fragmentList.size(); i++) {
             tab = tabLayout.newTab();
@@ -38,14 +63,13 @@ public class TabPageBindingAdapter {
 
         new TabLayoutMediator(tabLayout, viewPager2,
                 (tabItem, position) -> {
-
                     tabItem.setText(fragmentList.get(position).getTitle());
-//                    View view = LayoutInflater.from(viewPager2.getContext()).inflate(R.layout.custom_tab, null);
-//                    ImageView icon = view.findViewById(R.id.icon);
-//                    TextView title = view.findViewById(R.id.title);
-//                    title.setText(fragmentList.get(position).getTitle());
-//                    icon.setImageResource(fragmentList.get(position).getIcon());
-//                    tab1.setCustomView(view);
+////                    View view = LayoutInflater.from(viewPager2.getContext()).inflate(R.layout.custom_tab, null);
+////                    ImageView icon = view.findViewById(R.id.icon);
+////                    TextView title = view.findViewById(R.id.title);
+////                    title.setText(fragmentList.get(position).getTitle());
+////                    icon.setImageResource(fragmentList.get(position).getIcon());
+////                    tab1.setCustomView(view);
                 }
         ).attach();
     }

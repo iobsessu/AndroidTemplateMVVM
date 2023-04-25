@@ -6,24 +6,28 @@
             name="item"
             type="com.example.template.data.bean.Staff" />
     </data>
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_medium"
         android:orientation="horizontal"
         android:background="@color/C_999999">
-        <com.xuexiang.xui.widget.imageview.RadiusImageView
-            android:id="@+id/image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:riv_corner_radius="@dimen/value_10"/>
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/avatar"
+            app:layout_constraintTop_toTopOf="parent"
             android:paddingVertical="@dimen/value_4"
             android:text="@{item.name}"
             android:maxLines="2"
             android:ellipsize="end" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
