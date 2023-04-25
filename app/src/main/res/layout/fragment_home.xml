@@ -114,6 +114,11 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
+                    android:onClick="@{()->click.test()}"
+                    android:text="@{vm.test}" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
                     android:onClick="@{()->click.logout()}"
                     android:text="logout" />
 
