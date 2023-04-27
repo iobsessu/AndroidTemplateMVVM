@@ -28,42 +28,52 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:paddingHorizontal="@dimen/padding_small">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/iv_header_bg"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:scaleType="centerCrop"-->
+<!--                    android:src="@mipmap/menu"-->
+<!--                    android:tintMode="multiply"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/add_staff"-->
+<!--                    android:textColor="@color/C_333333"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+<!--                <com.google.android.material.button.MaterialButton-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:onClick="@{()->click.submit()}"-->
+<!--                    android:text="提交"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent" />-->
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="@dimen/padding_small">
-
-                <ImageView
-                    android:id="@+id/iv_header_bg"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/menu"
-                    android:tintMode="multiply"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add_staff"
-                    android:textColor="@color/C_333333"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="@{()->click.submit()}"
-                    android:text="提交"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/add_staff"
+                app:menu="@menu/staff_form"
+                app:navigationIcon="@mipmap/menu"
+                navigationIconSize
+                app:titleCentered="true"
+                navagationIconSize="15"/>
         </LinearLayout>
 
         <com.google.android.material.divider.MaterialDivider
