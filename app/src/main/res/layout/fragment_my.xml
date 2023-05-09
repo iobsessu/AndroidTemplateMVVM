@@ -50,6 +50,10 @@
                     android:layout_height="wrap_content"
                     android:text="我的" />
 
+                <com.example.template.ui.components.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    app:label_string="标题1" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

@@ -71,7 +71,6 @@
                 app:title="@string/add_staff"
                 app:menu="@menu/staff_form"
                 app:navigationIcon="@mipmap/menu"
-                navigationIconSize
                 app:titleCentered="true"
                 navagationIconSize="15"/>
         </LinearLayout>
