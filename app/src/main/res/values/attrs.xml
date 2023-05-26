@@ -21,12 +21,15 @@
         <attr name="textSize" format="dimension"/>
     </declare-styleable>
 
-    <declare-styleable name="SuperTextView">
+    <declare-styleable name="MySuperTextView">
         <attr name="label_color" format="color"/>
         <attr name="value_color" format="color"/>
+        <attr name="background_color" format="color"/>
         <attr name="label_text_size" format="dimension" />
         <attr name="value_text_size" format="dimension"/>
         <attr name="label_string" format="string"/>
         <attr name="value_string" format="string"/>
     </declare-styleable>
+
+    <attr name="SuperTextViewStyle" format="reference" />
 </resources>

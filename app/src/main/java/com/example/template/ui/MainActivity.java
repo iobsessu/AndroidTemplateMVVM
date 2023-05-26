@@ -17,7 +17,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.app.AppApplication;
-import com.example.template.databinding.ActivityMainBinding;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.global.PlayerState;
 import com.example.template.ui.home.HomeFragment;
@@ -42,9 +41,33 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        state.navController = new State<>(Navigation.findNavController(this, R.id.nav_host_fragment_activity_main));
+        initFragmentList();
     }
 
+    private void initFragmentList() {
+        List<BaseViewPagerFragment> fragmentList = new ArrayList<>();
+        HomeFragment homeFragment = new HomeFragment();
+        homeFragment.setTitle(R.string.discover);
+        homeFragment.setIcon(R.mipmap.faxian);
+        fragmentList.add(homeFragment);
+
+        ProductFragment productFragment = new ProductFragment();
+        productFragment.setTitle(R.string.community);
+        productFragment.setIcon(R.mipmap.shequ);
+        fragmentList.add(productFragment);
+
+        CalendarFragment calendarFragment = new CalendarFragment();
+        calendarFragment.setTitle(R.string.follow);
+        calendarFragment.setIcon(R.mipmap.wodeguanzhu);
+        fragmentList.add(calendarFragment);
+
+        MyFragment myFragment = new MyFragment();
+        myFragment.setTitle(R.string.my);
+        myFragment.setIcon(R.mipmap.wodeguanzhu);
+        fragmentList.add(myFragment);
+
+        state.fragmentList.set(fragmentList);
+    }
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
@@ -64,7 +87,8 @@ public class MainActivity extends BaseActivity {
     }
 
     public static class MainActivityState extends StateHolder {
-        public State<NavController> navController ;
+        public State<List<BaseViewPagerFragment>> fragmentList = new State<>(new ArrayList<>());
+        public State<Boolean> scrollEnabled = new State<>(false);
     }
 
     public class ClickProxy {

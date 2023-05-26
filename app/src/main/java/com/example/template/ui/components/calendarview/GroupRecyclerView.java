@@ -47,7 +47,7 @@ public class GroupRecyclerView extends RecyclerView {
 
     @Override
     public void setAdapter(Adapter adapter) {
-        if (adapter instanceof GroupRecyclerAdapter) {
+        if (adapter instanceof MyGroupRecyclerAdapter) {
             super.setAdapter(adapter);
         } else {
             throw new IllegalStateException("Adapter must instanceof " +
@@ -75,7 +75,7 @@ public class GroupRecyclerView extends RecyclerView {
     }
 
     public void notifyDataSetChanged() {
-        mItemDecoration.notifyDataSetChanged((GroupRecyclerAdapter) getAdapter());
+        mItemDecoration.notifyDataSetChanged((MyGroupRecyclerAdapter) getAdapter());
     }
 
     public void setOnGroupChangeListener(OnGroupChangeListener listener) {

@@ -31,4 +31,12 @@
         <item name="android:textColorHint">@color/C_999999</item>
     </style>
 
+    <style name="SuperTextViewStyle">
+        <item name="background_color">@color/background_primary</item>
+        <item name="label_color">@color/C_333333</item>
+        <item name="value_color">@color/C_666666</item>
+        <item name="label_text_size">@dimen/text_size_18</item>
+        <item name="value_text_size">@dimen/text_size_18</item>
+    </style>
+
 </resources>
