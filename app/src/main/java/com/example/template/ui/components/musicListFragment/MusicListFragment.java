@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.template.BR;
+//import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.app.AppApplication;
 import com.example.template.data.bean.Music;
@@ -51,7 +51,8 @@ public class MusicListFragment extends BaseFragment {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        return new DataBindingConfig(R.layout.fragment_music_list, BR.vm, state);
+//        return new DataBindingConfig(R.layout.fragment_music_list, BR.vm, state);
+        return null;
     }
 
     @Override

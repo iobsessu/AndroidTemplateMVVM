@@ -13,8 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.template.BR;
 import com.example.template.R;
+import com.example.template.app.AppApplication;
+import com.example.template.data.bean.Article;
+import com.example.template.data.bean.Staff;
 import com.example.template.databinding.FragmentCalendarBinding;
+import com.example.template.ui.adapter.ArticleAdapter;
+import com.example.template.ui.adapter.StaffAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
+import com.example.template.ui.components.calendarview.GroupItemDecoration;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarView;
 import com.kunminx.architecture.ui.page.BaseFragment;
@@ -22,7 +28,9 @@ import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CalendarFragment extends BaseViewPagerFragment implements
@@ -42,13 +50,17 @@ public class CalendarFragment extends BaseViewPagerFragment implements
         return new DataBindingConfig(R.layout.fragment_calendar, BR.vm, state);
     }
 
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        binding = (FragmentCalendarBinding) getBinding();
+//    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding = (FragmentCalendarBinding) getBinding();
-
         initCalendarView();
-
+        initData();
     }
 
     private void initCalendarView() {
@@ -92,6 +104,19 @@ public class CalendarFragment extends BaseViewPagerFragment implements
         });
         binding.calendarView.setOnCalendarSelectListener(this);
         binding.calendarView.setOnYearChangeListener(this);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.recyclerView.addItemDecoration(new GroupItemDecoration<String, Article>());
+        binding.recyclerView.setAdapter(new ArticleAdapter(getActivity()));
+        binding.recyclerView.notifyDataSetChanged();
+    }
+
+    private void initData() {
+        Article article = new Article();
+        article.setTitle("今日热点");
+        state.articleList.get().add(article);
+        article = new Article();
+        article.setTitle("紧急资讯");
+        state.articleList.get().add(article);
     }
 
     private Calendar getSchemeCalendar(int year, int month, int day, int color, String text) {
@@ -125,7 +150,8 @@ public class CalendarFragment extends BaseViewPagerFragment implements
 
     public static class CalendarState extends StateHolder {
 
-        public final State<String> year = new State<String>("");
-//        public final State<String>
+        public final State<String> year = new State("");
+        public ArticleAdapter articleAdapter = new ArticleAdapter(AppApplication.getInstance());
+        public State<List<Article>> articleList = new State<>(new ArrayList<>());
     }
 }

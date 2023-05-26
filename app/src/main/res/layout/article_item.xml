@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.example.template.data.bean.Article" />
+    </data>
+    <LinearLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/value_50"
+            android:layout_marginVertical="@dimen/value_4"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <com.xuexiang.xui.widget.imageview.RadiusImageView
+                android:id="@+id/image"
+                android:layout_width="@dimen/value_50"
+                android:layout_height="@dimen/value_50"
+                app:riv_corner_radius="@dimen/value_6"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/value_8"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/value_4"
+                    android:text="@{item.title}"
+                    android:textSize="@dimen/text_size_12"
+                    tools:text="这是一个标题"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/value_4"
+                    android:text="@{item.desc}"
+                    android:textSize="@dimen/text_size_10"
+                    tools:text="这是描述部分"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

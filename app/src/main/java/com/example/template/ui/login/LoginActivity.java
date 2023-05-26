@@ -55,8 +55,9 @@ public class LoginActivity extends BaseActivity {
 //                    .positiveText("R.string.lab_submit")
 //                    .show();
 //            MainActivity.actionStart(LoginActivity.this);
-            TokenUtil.setToken("test");
+            TokenUtil.setToken("test_token_string");
             MainActivity.actionStart(LoginActivity.this);
+            finish();
         }
     }
 

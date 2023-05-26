@@ -43,6 +43,7 @@ public class Staff implements Serializable {
     private String emergencyContactPhoneNumber;
     // 备注
     private String remark;
+    private String avatar;
 
     public Staff() {}
 
@@ -51,7 +52,7 @@ public class Staff implements Serializable {
                  String jobNumber, Date hireDate, Date leaveDate, boolean workingStatus,
                  String workLocation, int weeklyWorkingHours, double salary,
                  int annualLeaveDays, String healthStatus, String emergencyContactName,
-                 String emergencyContactPhoneNumber, String remark) {
+                 String emergencyContactPhoneNumber, String remark, String avatar) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -74,6 +75,7 @@ public class Staff implements Serializable {
         this.emergencyContactName = emergencyContactName;
         this.emergencyContactPhoneNumber = emergencyContactPhoneNumber;
         this.remark = remark;
+        this.avatar = avatar;
     }
 
     public int getId() {
@@ -252,16 +254,24 @@ public class Staff implements Serializable {
         this.remark = remark;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Staff staff = (Staff) o;
-        return id == staff.id && workingStatus == staff.workingStatus && weeklyWorkingHours == staff.weeklyWorkingHours && Double.compare(staff.salary, salary) == 0 && annualLeaveDays == staff.annualLeaveDays && Objects.equals(name, staff.name) && Objects.equals(gender, staff.gender) && Objects.equals(age, staff.age) && Objects.equals(idNumber, staff.idNumber) && Objects.equals(phoneNumber, staff.phoneNumber) && Objects.equals(email, staff.email) && Objects.equals(address, staff.address) && Objects.equals(departmentName, staff.departmentName) && Objects.equals(positionName, staff.positionName) && Objects.equals(jobNumber, staff.jobNumber) && Objects.equals(hireDate, staff.hireDate) && Objects.equals(leaveDate, staff.leaveDate) && Objects.equals(workLocation, staff.workLocation) && Objects.equals(healthStatus, staff.healthStatus) && Objects.equals(emergencyContactName, staff.emergencyContactName) && Objects.equals(emergencyContactPhoneNumber, staff.emergencyContactPhoneNumber) && Objects.equals(remark, staff.remark);
+        return id == staff.id && workingStatus == staff.workingStatus && weeklyWorkingHours == staff.weeklyWorkingHours && Double.compare(staff.salary, salary) == 0 && annualLeaveDays == staff.annualLeaveDays && Objects.equals(name, staff.name) && Objects.equals(gender, staff.gender) && Objects.equals(age, staff.age) && Objects.equals(idNumber, staff.idNumber) && Objects.equals(phoneNumber, staff.phoneNumber) && Objects.equals(email, staff.email) && Objects.equals(address, staff.address) && Objects.equals(departmentName, staff.departmentName) && Objects.equals(positionName, staff.positionName) && Objects.equals(jobNumber, staff.jobNumber) && Objects.equals(hireDate, staff.hireDate) && Objects.equals(leaveDate, staff.leaveDate) && Objects.equals(workLocation, staff.workLocation) && Objects.equals(healthStatus, staff.healthStatus) && Objects.equals(emergencyContactName, staff.emergencyContactName) && Objects.equals(emergencyContactPhoneNumber, staff.emergencyContactPhoneNumber) && Objects.equals(remark, staff.remark) && Objects.equals(avatar, staff.avatar);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, gender, age, idNumber, phoneNumber, email, address, departmentName, positionName, jobNumber, hireDate, leaveDate, workingStatus, workLocation, weeklyWorkingHours, salary, annualLeaveDays, healthStatus, emergencyContactName, emergencyContactPhoneNumber, remark);
+        return Objects.hash(id, name, gender, age, idNumber, phoneNumber, email, address, departmentName, positionName, jobNumber, hireDate, leaveDate, workingStatus, workLocation, weeklyWorkingHours, salary, annualLeaveDays, healthStatus, emergencyContactName, emergencyContactPhoneNumber, remark, avatar);
     }
 }

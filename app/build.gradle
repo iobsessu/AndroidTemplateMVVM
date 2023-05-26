@@ -52,6 +52,9 @@ dependencies {
     implementation 'com.github.xuexiangjys:XUI:1.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation ('com.github.bumptech.glide:recyclerview-integration:4.12.0') {
+        transitive = false
+    }
 
     implementation 'com.github.angcyo:CalendarView:3.7.1.37'
     implementation 'com.tencent:mmkv:1.2.15'
