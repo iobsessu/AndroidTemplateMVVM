@@ -76,7 +76,6 @@ public class HomeFragment extends BaseViewPagerFragment {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        Log.d("xxx", "home");
         return new DataBindingConfig(R.layout.fragment_home, BR.vm, state)
                 .addBindingParam(BR.click, new ClickProxy());
     }

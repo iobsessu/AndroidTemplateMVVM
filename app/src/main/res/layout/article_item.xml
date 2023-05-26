@@ -33,6 +33,7 @@
                 android:layout_marginLeft="@dimen/value_8"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/value_4"
