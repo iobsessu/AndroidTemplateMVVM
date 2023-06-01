@@ -61,7 +61,7 @@ public class TabPageBindingAdapter {
             tabLayout.addTab(tab);
         }
 
-        new TabLayoutMediator(tabLayout, viewPager2,
+        new TabLayoutMediator(tabLayout, viewPager2, false, false,
                 (tabItem, position) -> {
                     tabItem.setText(fragmentList.get(position).getTitle());
 ////                    View view = LayoutInflater.from(viewPager2.getContext()).inflate(R.layout.custom_tab, null);

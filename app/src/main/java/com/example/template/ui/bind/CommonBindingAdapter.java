@@ -4,6 +4,8 @@ import android.view.View;
 
 import androidx.databinding.BindingAdapter;
 
+import com.kunminx.architecture.utils.ClickUtils;
+
 public class CommonBindingAdapter {
 
     @BindingAdapter(value = {"visible"}, requireAll = false)
@@ -22,6 +24,11 @@ public class CommonBindingAdapter {
         } else if (!visible && view.getVisibility() == View.VISIBLE) {
             view.setVisibility(View.INVISIBLE);
         }
+    }
+
+    @BindingAdapter(value = {"onClickWithDebouncing"}, requireAll = false)
+    public static void onClickWithDebouncing(View view, View.OnClickListener clickListener) {
+        ClickUtils.applySingleDebouncing(view, clickListener);
     }
 
 //    @BindingAdapter(value = {"headerTitle"}, requireAll = false)

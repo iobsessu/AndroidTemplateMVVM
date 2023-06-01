@@ -3,7 +3,7 @@
     <style name="Theme.AndroidTemplateMVVM" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/background_primary</item>
-        <item name="android:windowBackground">@color/background_grey</item>
+        <item name="android:windowBackground">@color/background_page</item>
         <item name="textInputStyle">@style/MyTextInputLayout</item>
         <item name="editTextStyle">@style/MyEditText</item>
         <item name="colorControlNormal">@color/edit_text_underline</item>
