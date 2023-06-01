@@ -47,10 +47,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="我的" />
+
+                <com.example.template.ui.components.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    app:label_string="@string/bill"
+                    onClickWithDebouncing="@{()->click.toBill()}" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/value_10"/>
+
+                <com.example.template.ui.components.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    app:label_string="@string/favorite"
+                    onClickWithDebouncing="@{()->click.toFavorite()}" />
+                <com.example.template.ui.components.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    app:label_string="@string/meme"
+                    onClickWithDebouncing="@{()->click.toMeme()}" />
+                <com.example.template.ui.components.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    app:label_string="@string/card_pack"
+                    onClickWithDebouncing="@{()->click.toCardPack()}" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/value_10"/>
 
                 <com.example.template.ui.components.supertextview.SuperTextView
                     android:layout_width="match_parent"

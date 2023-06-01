@@ -31,6 +31,21 @@ public class MyFragment extends BaseViewPagerFragment {
 
     public class ClickProxy {
 
+        public void toBill() {
+            XToastUtils.info("点击了账单");
+        }
+        public void toFavorite() {
+            XToastUtils.info("点击了收藏");
+        }
+
+        public void toMeme() {
+            XToastUtils.info("点击了表情包");
+        }
+
+        public void toCardPack() {
+            XToastUtils.info("点击了卡包");
+        }
+
         public void toSettings() {
             XToastUtils.info("点击了设置");
         }

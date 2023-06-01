@@ -53,4 +53,8 @@
     <string name="add_staff">添加员工</string>
     <string name="save">保存</string>
     <string name="settings">设置</string>
+    <string name="bill">账单</string>
+    <string name="favorite">收藏</string>
+    <string name="meme">表情包</string>
+    <string name="card_pack">卡包</string>
 </resources>
