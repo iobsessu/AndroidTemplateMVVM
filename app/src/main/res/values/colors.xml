@@ -20,6 +20,7 @@
     <color name="background_grey">#EEEEEE</color>
     <color name="background_top">#F7F9FC</color>
     <color name="background_white">#FFFFFF</color>
+    <color name="background_page">#F4F5F7</color>
     <color name="transparent">#00000000</color>
 
     <!-- divider -->

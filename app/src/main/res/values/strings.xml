@@ -52,4 +52,5 @@
 
     <string name="add_staff">添加员工</string>
     <string name="save">保存</string>
+    <string name="settings">设置</string>
 </resources>
