@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import com.example.template.R;
+import com.google.android.material.divider.MaterialDivider;
 import com.xuexiang.xui.utils.ThemeUtils;
 
 public class SuperTextView extends ConstraintLayout {
@@ -30,9 +31,11 @@ public class SuperTextView extends ConstraintLayout {
 
     private String labelString;
     private String valueString;
+    private boolean showDivider;
 
     private ConstraintLayout wrapper;
     private TextView labelView;
+    private MaterialDivider materialDivider;
 
     public SuperTextView(@NonNull Context context) {
         super(context);
@@ -67,10 +70,10 @@ public class SuperTextView extends ConstraintLayout {
 
     private void getAttr(AttributeSet attrs) {
 //        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MySuperTextView);
-
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MySuperTextView, R.attr.SuperTextViewStyle, 0);
         backgroundColor = typedArray.getColor(R.styleable.MySuperTextView_background_color, 0);
         labelColor = typedArray.getColor(R.styleable.MySuperTextView_label_color, 0);
+        showDivider = typedArray.getBoolean(R.styleable.MySuperTextView_show_divider, false);
         labelTextSize = typedArray.getDimensionPixelSize(R.styleable.MySuperTextView_label_text_size, 0);
         labelString = typedArray.getString(R.styleable.MySuperTextView_label_string);
         typedArray.recycle();
@@ -78,14 +81,24 @@ public class SuperTextView extends ConstraintLayout {
 
     private void initView() {
         LayoutInflater.from(context).inflate(R.layout.super_text_view, this);
-
         wrapper = findViewById(R.id.wrapper);
-        wrapper.setBackgroundColor(backgroundColor);
-
         labelView = findViewById(R.id.label);
+        materialDivider = findViewById(R.id.divider);
+
+        initViewByAttrs();
+    }
+
+    private void initViewByAttrs() {
+        wrapper.setBackgroundColor(backgroundColor);
         labelView.setText(labelString);
         labelView.setTextColor(labelColor);
         labelView.setTextSize(TypedValue.COMPLEX_UNIT_PX, labelTextSize);
+
+        if (showDivider) {
+            materialDivider.setVisibility(VISIBLE);
+        } else {
+            materialDivider.setVisibility(GONE);
+        }
     }
 
 }

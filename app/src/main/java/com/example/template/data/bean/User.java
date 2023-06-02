@@ -1,10 +1,19 @@
 package com.example.template.data.bean;
 
-public class User {
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
+import com.example.template.BR;
+
+public class User extends BaseObservable {
 
     private String username;
     private String password;
+    private String nickname;
 
+    public User(String nickname) {
+        this.nickname = nickname;
+    }
     public String getUsername() {
         return username;
     }
@@ -21,4 +30,13 @@ public class User {
         this.password = password;
     }
 
+    @Bindable
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+        notifyPropertyChanged(BR.nickname);
+    }
 }

@@ -134,7 +134,6 @@ public class CalendarFragment extends BaseViewPagerFragment implements
 
     @Override
     public void onCalendarOutOfRange(Calendar calendar) {
-
         Log.e("xxxa", "xxaw");
     }
 

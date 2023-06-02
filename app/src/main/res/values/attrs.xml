@@ -29,6 +29,7 @@
         <attr name="value_text_size" format="dimension"/>
         <attr name="label_string" format="string"/>
         <attr name="value_string" format="string"/>
+        <attr name="show_divider" format="boolean"/>
     </declare-styleable>
 
     <attr name="SuperTextViewStyle" format="reference" />

@@ -43,10 +43,11 @@
                     android:maxLines="1"
                     android:ellipsize="end" />
                 <TextView
+                    android:id="@+id/desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/value_4"
-                    android:text="@{item.desc}"
+                    android:text="@{item.content}"
                     android:textSize="@dimen/text_size_10"
                     tools:text="这是描述部分"
                     android:maxLines="1"
