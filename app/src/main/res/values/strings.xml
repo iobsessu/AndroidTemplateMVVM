@@ -57,4 +57,5 @@
     <string name="favorite">收藏</string>
     <string name="meme">表情包</string>
     <string name="card_pack">卡包</string>
+    <string name="add_status">+ 状态</string>
 </resources>

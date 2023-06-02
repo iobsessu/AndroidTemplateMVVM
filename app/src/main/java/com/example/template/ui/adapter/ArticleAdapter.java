@@ -34,7 +34,11 @@ public class ArticleAdapter extends SimpleDataBindingAdapter<Article, ArticleIte
 
     private void initData() {
         List<Article> list = new ArrayList<>();
-        list.add(new Article());
+        Article article1 = new Article();
+        article1.setId(1);
+        article1.setTitle("新西兰克马德克群岛发生5.7级地震 震源深度10千米");
+        article1.setContent("#地震快讯#中国地震台网正式测定：12月04日08时08分在克马德克群岛（南纬32.82度，西经178.73度）发生5.7级地震，震源深度10千米。");
+        list.add(article1);
         LinkedHashMap<String, List<Article>> groups = new LinkedHashMap<>();
         groups.put("今日推荐", list);
         List<String> groupTitles = new ArrayList<>();
@@ -45,7 +49,8 @@ public class ArticleAdapter extends SimpleDataBindingAdapter<Article, ArticleIte
     @Override
     protected void onBindItem(ArticleItemBinding binding, Article item, RecyclerView.ViewHolder holder) {
         binding.setItem(item);
-        binding.title.setText(item.getTitle());
+//        binding.title.setText(item.getTitle());
+//        binding.title.setText(item.getTitle());
         Glide.with(context)
                 .load(item.getImgUrl())
                 .into(binding.image);
