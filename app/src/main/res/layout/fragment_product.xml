@@ -11,6 +11,9 @@
         <variable
             name="click"
             type="com.example.template.ui.product.ProductFragment.ClickProxy" />
+        <variable
+            name="staffAdapter"
+            type="com.example.template.ui.adapter.StaffAdapter" />
     </data>
 
     <LinearLayout
@@ -49,7 +52,7 @@
                     android:layout_height="@dimen/value_20"
                     android:layout_alignParentEnd="true"
                     android:src="@mipmap/maikefeng"
-                    android:onClick="@{()->click.toAdd()}"/>
+                    android:onClick="@{()->click.toAddStaff()}"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -68,7 +71,7 @@
                     android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    adapter="@{vm.staffAdapter}"
+                    adapter="@{staffAdapter}"
                     submitList="@{vm.staffList}"
                     app:layoutManager="com.kunminx.binding_recyclerview.layout_manager.WrapContentLinearLayoutManager"
                     app:fastScrollPopupPosition="center"

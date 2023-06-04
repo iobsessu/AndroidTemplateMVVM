@@ -34,20 +34,12 @@
             click="@{click}"
             playerVm="@{playerVm}"/>
 
-<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--            android:id="@+id/nav_view"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:menu="@menu/bottom_nav_menu"-->
-<!--            app:labelVisibilityMode="labeled"-->
-<!--            app:itemTextAppearanceActive="@style/home_bottom_tab_title_active"-->
-<!--            app:itemTextAppearanceInactive="@style/home_bottom_tab_title_inactive"-->
-<!--            navController="@{vm.navController}"/>-->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            app:tabIndicator="@null"
+            app:tabTextAppearance="@style/HomeBottomTabLayoutTextStyle"
             android:background="@color/background_white" />
     </LinearLayout>
 </layout>

@@ -39,4 +39,8 @@
         <item name="value_text_size">@dimen/text_size_16</item>
     </style>
 
+    <style name="HomeBottomTabLayoutTextStyle">
+        <item name="android:textSize">@dimen/text_size_10</item>
+    </style>
+
 </resources>

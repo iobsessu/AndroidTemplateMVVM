@@ -25,6 +25,7 @@ import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +33,10 @@ import java.util.List;
 public class ProductFragment extends BaseViewPagerFragment {
 
     private ProductState state;
+    private ClickProxy clickProxy;
     private ViewPreloadSizeProvider<Staff> preloadSizeProvider;
     private FragmentProductBinding binding;
+    public StaffAdapter staffAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,11 +50,8 @@ public class ProductFragment extends BaseViewPagerFragment {
         super.onViewCreated(view, savedInstanceState);
         binding = (FragmentProductBinding) getBinding();
 
-        preloadSizeProvider = new ViewPreloadSizeProvider<>();
-        state.staffAdapter = new StaffAdapter(AppApplication.getInstance(), preloadSizeProvider);
-
         RecyclerViewPreloader<Staff> preLoader = new RecyclerViewPreloader<Staff>(
-                this, state.staffAdapter, preloadSizeProvider, 5
+                this, staffAdapter, preloadSizeProvider, 5
         );
         binding.recyclerView.addOnScrollListener(preLoader);
         binding.recyclerView.setItemViewCacheSize(0);
@@ -64,22 +64,36 @@ public class ProductFragment extends BaseViewPagerFragment {
     @Override
     protected void initViewModel() {
         state = getFragmentScopeViewModel(ProductState.class);
+        clickProxy = new ClickProxy();
     }
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
+        preloadSizeProvider = new ViewPreloadSizeProvider<>();
+        staffAdapter = new StaffAdapter(AppApplication.getInstance(), preloadSizeProvider);
+        staffAdapter.setOnItemClickListener(((viewId, item, position) -> {
+            XToastUtils.info("点击了：" + item.getName());
+            clickProxy.toEditStaff(item);
+        }));
+
         return new DataBindingConfig(R.layout.fragment_product, BR.vm, state)
-                .addBindingParam(BR.click, new ClickProxy());
+                .addBindingParam(BR.click, clickProxy)
+                .addBindingParam(BR.staffAdapter, staffAdapter);
     }
 
     public static class ProductState extends StateHolder {
-        public StaffAdapter staffAdapter;
+
         public State<List<Staff>> staffList = new State<>(new ArrayList<>());
     }
 
     public class ClickProxy {
-        public void toAdd() {
+        public void toAddStaff() {
             StaffFormActivity.actionStart(getActivity());
         }
+
+        public void toEditStaff(Staff staff) {
+            StaffFormActivity.actionStart(getActivity(), staff);
+        }
+
     }
 }

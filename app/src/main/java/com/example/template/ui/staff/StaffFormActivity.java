@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 
 import com.example.template.BR;
 import com.example.template.R;
+import com.example.template.common.Constants;
+import com.example.template.data.bean.Staff;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.staff.vm.StaffFormState;
 import com.example.template.util.StaffFormValidator;
@@ -17,6 +19,7 @@ import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import cn.hutool.core.lang.RegexPool;
@@ -28,7 +31,12 @@ public class StaffFormActivity extends BaseActivity {
     private StaffFormState state;
 
     public static void actionStart(Context context) {
+        actionStart(context, null);
+    }
+
+    public static void actionStart(Context context, Staff staff) {
         Intent intent = new Intent(context, StaffFormActivity.class);
+        intent.putExtra(Constants.STAFF_KEY, staff);
         context.startActivity(intent);
     }
 
@@ -56,17 +64,27 @@ public class StaffFormActivity extends BaseActivity {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
+        getParameters();
         return new DataBindingConfig(R.layout.activity_staff_form, BR.vm, state)
                 .addBindingParam(BR.click, new StaffFormClickProxy());
+    }
+
+    private void getParameters() {
+        Intent intent = getIntent();
+        Staff staff = (Staff) intent.getSerializableExtra(Constants.STAFF_KEY);
+        if (staff != null) {
+            state.staff.set(staff);
+        }
     }
 
     public class StaffFormClickProxy {
 
         public void submit() {
             if (!StaffFormValidator.isValid(state)) {
+                XToastUtils.error(R.string.save_failed);
                 return;
             }
-            XToastUtils.info("执行提交数据的操作");
+            XToastUtils.success(R.string.save_successfully);
         }
 
     }

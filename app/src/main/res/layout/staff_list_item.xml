@@ -10,9 +10,11 @@
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:paddingHorizontal="@dimen/margin_medium"
+        android:paddingVertical="@dimen/value_4"
+        android:layout_marginBottom="@dimen/value_8"
         android:orientation="horizontal"
-        android:background="@color/C_999999">
+        android:background="@color/background_white">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="60dp"

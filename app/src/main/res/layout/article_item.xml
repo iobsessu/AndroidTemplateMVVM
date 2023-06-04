@@ -11,7 +11,9 @@
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:paddingHorizontal="@dimen/margin_medium"
+        android:paddingVertical="@dimen/value_4"
+        android:background="@color/background_white"
         android:orientation="vertical">
 
         <LinearLayout

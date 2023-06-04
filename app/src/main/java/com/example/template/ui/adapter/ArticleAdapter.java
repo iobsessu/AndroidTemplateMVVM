@@ -35,9 +35,13 @@ public class ArticleAdapter extends SimpleDataBindingAdapter<Article, ArticleIte
     private void initData() {
         List<Article> list = new ArrayList<>();
         Article article1 = new Article();
-        article1.setId(1);
         article1.setTitle("新西兰克马德克群岛发生5.7级地震 震源深度10千米");
         article1.setContent("#地震快讯#中国地震台网正式测定：12月04日08时08分在克马德克群岛（南纬32.82度，西经178.73度）发生5.7级地震，震源深度10千米。");
+        article1.setImgUrl("https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1c1OCe.img?w=640&h=422&m=6");
+        list.add(article1);
+        article1 = new Article();
+        article1.setTitle("一些事情");
+        article1.setContent("你猜发生了什么");
         list.add(article1);
         LinkedHashMap<String, List<Article>> groups = new LinkedHashMap<>();
         groups.put("今日推荐", list);

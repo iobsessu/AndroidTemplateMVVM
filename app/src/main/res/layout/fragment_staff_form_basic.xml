@@ -11,6 +11,7 @@
         <variable
             name="click"
             type="com.example.template.ui.staff.StaffBasicFormFragment.ClickProxy" />
+        <import type="com.example.template.util.MyDateUtil" />
     </data>
 
     <LinearLayout
@@ -50,6 +51,8 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
+
+
         <!--        <com.google.android.material.divider.MaterialDivider-->
         <!--            android:layout_width="match_parent"-->
         <!--            android:layout_height="wrap_content"-->
@@ -72,22 +75,42 @@
                         android:onCheckedChanged="@{click.genderCheckListener}"/>
                 </LinearLayout>
 
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
 
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginRight="@dimen/value_4"-->
+<!--                        app:onClickWithDebouncing="@{()->click.showDatePicker()}"-->
+<!--                        android:text="出生日期" />-->
+<!--                </LinearLayout>-->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:hint="@string/age"
-                    app:placeholderText="@string/age_placeholder"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="3">
+                    app:onClickWithDebouncing="@{()->click.showDatePicker()}">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@{vm.staff.age ?? ""}'
-                        android:maxLength="3"
-                        android:inputType="number"
-                        android:afterTextChanged="@{click.ageChangeListener}"/>
+                        android:text="@{MyDateUtil.format(vm.staff.birthDate)}"
+                        android:textSize="@dimen/text_size_14"
+                        android:hint="@string/birth_date"
+                        android:focusable="false"
+                        app:onClickWithDebouncing="@{()->click.showDatePicker()}"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/age"
+                        android:text="@{MyDateUtil.getAge(vm.staff.birthDate)}"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
 

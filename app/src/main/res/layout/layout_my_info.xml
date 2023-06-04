@@ -47,13 +47,13 @@
             android:layout_marginTop="@dimen/value_4"
             android:text="微信号：sun18434392163"
             android:textColor="@color/C_666666"
-            android:textSize="@dimen/text_size_16"/>
+            android:textSize="@dimen/text_size_14"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/value_4"
+            android:layout_marginTop="@dimen/value_8"
             app:layout_constraintStart_toStartOf="@id/nickname"
             app:layout_constraintTop_toBottomOf="@id/wechat_num"
             app:strokeColor="@color/divider"
@@ -66,7 +66,7 @@
                 android:layout_marginVertical="@dimen/value_2"
                 android:text="@string/add_status"
                 android:textColor="@color/C_666666"
-                android:textSize="@dimen/text_size_14"/>
+                android:textSize="@dimen/text_size_12"/>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -86,7 +86,7 @@
                 android:layout_marginVertical="@dimen/value_2"
                 android:text="等9个朋友"
                 android:textColor="@color/C_666666"
-                android:textSize="@dimen/text_size_14"/>
+                android:textSize="@dimen/text_size_12"/>
         </com.google.android.material.card.MaterialCardView>
 
         <com.xuexiang.xui.widget.imageview.RadiusImageView

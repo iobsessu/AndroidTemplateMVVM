@@ -11,10 +11,13 @@ import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.staff.vm.StaffFormState;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.xuexiang.xui.utils.XToastUtils;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ReUtil;
 import cn.hutool.core.util.StrUtil;
 
@@ -43,23 +46,14 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
             }
         };
 
-        public TextViewBindingAdapter.AfterTextChanged ageChangeListener = new TextViewBindingAdapter.AfterTextChanged() {
-            @SuppressLint("RestrictedApi")
-            @Override
-            public void afterTextChanged(Editable s) {
-                try {
-                    String age = StrUtil.trim(s);
-                    if (StrUtil.isEmpty(age)) {
-                        state.staff.get().setAge(null);
-                    } else {
-                        state.staff.get().setAge(Integer.valueOf(age));
-                    }
-                } catch (Exception e) {
-                    state.staff.get().setAge(null);
-                    XToastUtils.info("请输入数字");
-                }
-            }
-        };
+        public void showDatePicker() {
+            MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
+            MaterialDatePicker picker = builder.build();
+            picker.addOnPositiveButtonClickListener((selection)-> {
+                    state.staff.get().setBirthDate(DateUtil.date(Long.parseLong(selection.toString())));
+            });
+            picker.show(getChildFragmentManager(), "");
+        }
     }
 
 }

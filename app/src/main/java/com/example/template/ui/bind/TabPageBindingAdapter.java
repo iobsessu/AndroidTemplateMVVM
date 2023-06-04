@@ -64,6 +64,9 @@ public class TabPageBindingAdapter {
         new TabLayoutMediator(tabLayout, viewPager2, false, false,
                 (tabItem, position) -> {
                     tabItem.setText(fragmentList.get(position).getTitle());
+                    if (fragmentList.get(position).getIcon() != 0) {
+                        tabItem.setIcon(fragmentList.get(position).getIcon());
+                    }
 ////                    View view = LayoutInflater.from(viewPager2.getContext()).inflate(R.layout.custom_tab, null);
 ////                    ImageView icon = view.findViewById(R.id.icon);
 ////                    TextView title = view.findViewById(R.id.title);
