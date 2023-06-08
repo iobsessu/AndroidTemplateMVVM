@@ -2,6 +2,7 @@ package com.example.template.ui.staff;
 
 import android.annotation.SuppressLint;
 import android.text.Editable;
+import android.util.Pair;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
@@ -10,12 +11,20 @@ import androidx.databinding.adapters.TextViewBindingAdapter;
 import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.ui.base.BaseViewPagerFragment;
+import com.example.template.ui.components.datePicker.DatePicker;
 import com.example.template.ui.staff.vm.StaffFormState;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.xuexiang.xui.utils.XToastUtils;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ReUtil;
@@ -47,12 +56,18 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
         };
 
         public void showDatePicker() {
-            MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
-            MaterialDatePicker picker = builder.build();
-            picker.addOnPositiveButtonClickListener((selection)-> {
-                    state.staff.get().setBirthDate(DateUtil.date(Long.parseLong(selection.toString())));
-            });
-            picker.show(getChildFragmentManager(), "");
+            long today = MaterialDatePicker.todayInUtcMilliseconds() -1;
+            Calendar utc = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+            utc.clear();
+            DatePicker datePicker = new DatePicker(getActivity())
+                    .setMin(today)
+                    .setOnPositiveListener(new MaterialPickerOnPositiveButtonClickListener() {
+                        @Override
+                        public void onPositiveButtonClick(Object selection) {
+
+                        }
+                    });
+            datePicker.show();
         }
     }
 

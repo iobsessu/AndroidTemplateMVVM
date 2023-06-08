@@ -1,5 +1,6 @@
 package com.example.template.ui.product;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,8 @@ import com.example.template.ui.adapter.StaffAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.play.PlayingActivity;
 import com.example.template.ui.staff.StaffFormActivity;
+import com.google.mlkit.vision.barcode.BarcodeScannerOptions;
+import com.google.mlkit.vision.barcode.common.Barcode;
 import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
@@ -88,7 +91,10 @@ public class ProductFragment extends BaseViewPagerFragment {
 
     public class ClickProxy {
         public void toAddStaff() {
-            StaffFormActivity.actionStart(getActivity());
+//            StaffFormActivity.actionStart(getActivity());
+            BarcodeScannerOptions options = new BarcodeScannerOptions.Builder()
+                    .setBarcodeFormats(Barcode.FORMAT_QR_CODE, Barcode.FORMAT_AZTEC).build();
+//            Intent intent = new Intent(this, ChooserAc)
         }
 
         public void toEditStaff(Staff staff) {
