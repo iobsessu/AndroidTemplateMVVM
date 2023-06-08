@@ -110,7 +110,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/age"
-                        android:text="@{MyDateUtil.getAge(vm.staff.birthDate)}"/>
+                        android:text="@{MyDateUtil.getAge(vm.staff.birthDate)}"
+                        android:enabled="false"
+                        android:alpha="0.5"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
 

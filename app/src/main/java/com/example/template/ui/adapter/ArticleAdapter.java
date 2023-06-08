@@ -43,6 +43,14 @@ public class ArticleAdapter extends SimpleDataBindingAdapter<Article, ArticleIte
         article1.setTitle("一些事情");
         article1.setContent("你猜发生了什么");
         list.add(article1);
+        article1 = new Article();
+        article1.setTitle("今天周三");
+        article1.setContent("感觉过的很快");
+        list.add(article1);
+        article1 = new Article();
+        article1.setTitle("端午要到了");
+        article1.setContent("不知道该做什么");
+        list.add(article1);
         LinkedHashMap<String, List<Article>> groups = new LinkedHashMap<>();
         groups.put("今日推荐", list);
         List<String> groupTitles = new ArrayList<>();
