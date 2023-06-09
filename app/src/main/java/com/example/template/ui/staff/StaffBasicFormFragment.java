@@ -13,6 +13,7 @@ import com.example.template.R;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.components.datePicker.DatePicker;
 import com.example.template.ui.staff.vm.StaffFormState;
+import com.example.template.util.MyDateUtil;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -56,16 +57,11 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
         };
 
         public void showDatePicker() {
-            long today = MaterialDatePicker.todayInUtcMilliseconds() -1;
-            Calendar utc = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-            utc.clear();
+            long today = MaterialDatePicker.todayInUtcMilliseconds();
             DatePicker datePicker = new DatePicker(getActivity())
-                    .setMin(today)
-                    .setOnPositiveListener(new MaterialPickerOnPositiveButtonClickListener() {
-                        @Override
-                        public void onPositiveButtonClick(Object selection) {
-
-                        }
+                    .setMax(today)
+                    .setOnPositiveListener((selection) -> {
+                        state.staff.get().setBirthDate(DateUtil.date((Long)selection));
                     });
             datePicker.show();
         }
