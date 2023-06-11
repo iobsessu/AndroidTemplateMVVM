@@ -23,6 +23,11 @@ public class MyDateUtil {
         return DateUtil.ageOfNow(DateUtil.format(date, "yyyy-MM-dd")) + AppApplication.getInstance().getString(R.string.years_old);
     }
 
+    /**
+     * 根据年份偏移量返回对应的时间。如offset=1时，return明年今天凌晨的时间
+     * @param offset
+     * @return
+     */
     public static long getTodayByYearOffsetInUtcMilliseconds(int offset) {
         long today = MaterialDatePicker.todayInUtcMilliseconds();
         Date todayDate = DateUtil.date(today);

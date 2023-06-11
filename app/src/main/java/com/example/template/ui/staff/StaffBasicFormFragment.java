@@ -55,11 +55,12 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
                 XToastUtils.info("选择了性别");
             }
         };
-
         public void showDatePicker() {
             long today = MaterialDatePicker.todayInUtcMilliseconds();
             DatePicker datePicker = new DatePicker(getActivity())
                     .setMax(today)
+                    .setStart(MyDateUtil.getTodayByYearOffsetInUtcMilliseconds(-70))
+                    .setEnd(MaterialDatePicker.todayInUtcMilliseconds())
                     .setOnPositiveListener((selection) -> {
                         state.staff.get().setBirthDate(DateUtil.date((Long)selection));
                     });

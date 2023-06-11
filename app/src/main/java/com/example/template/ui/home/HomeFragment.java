@@ -17,10 +17,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.app.AppApplication;
+import com.example.template.data.bean.Carousel;
 import com.example.template.data.bean.Icon;
 import com.example.template.data.bean.Music;
 import com.example.template.data.bean.PlayList;
 import com.example.template.databinding.FragmentHomeBinding;
+import com.example.template.ui.adapter.CarouselAdapter;
 import com.example.template.ui.adapter.HomeTopIconAdapter;
 import com.example.template.ui.adapter.RecommendAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
@@ -31,6 +33,7 @@ import com.example.template.ui.play.PlayingActivity;
 import com.example.template.util.StatusBarUtil;
 import com.example.template.util.SystemBarUtil;
 import com.example.template.util.TokenUtil;
+import com.google.android.material.carousel.CarouselLayoutManager;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
@@ -51,6 +54,7 @@ import cn.hutool.core.collection.ListUtil;
 public class HomeFragment extends BaseViewPagerFragment {
 
     private HomeState state;
+    private CarouselAdapter carouselAdapter;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -76,7 +80,9 @@ public class HomeFragment extends BaseViewPagerFragment {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
+        carouselAdapter = new CarouselAdapter(AppApplication.getInstance());
         return new DataBindingConfig(R.layout.fragment_home, BR.vm, state)
+                .addBindingParam(BR.carouselAdapter, carouselAdapter)
                 .addBindingParam(BR.click, new ClickProxy());
     }
 
@@ -97,23 +103,23 @@ public class HomeFragment extends BaseViewPagerFragment {
 
         state.recommendPlayList.set(list);
 
-        List<BannerItem> bannerItemList = new ArrayList<>();
-        BannerItem bannerItem = new BannerItem();
-        bannerItem.setTitle("Banner1");
-        bannerItem.setImgUrl("https://i0.hdslb.com/bfs/banner/ee98c85722548d630957b4492be4dab9e5264782.jpg@1200w_300h_1c");
-        bannerItemList.add(bannerItem);
+        List<Carousel> carouselList = new ArrayList<>();
+        Carousel carousel = new Carousel();
+        carousel.setTitle("Banner1");
+        carousel.setImgUrl("https://i0.hdslb.com/bfs/banner/ee98c85722548d630957b4492be4dab9e5264782.jpg@1200w_300h_1c");
+        carouselList.add(carousel);
+        state.carouselList.set(carouselList);
 
-        bannerItem = new BannerItem();
-        bannerItem.setTitle("Banner2");
-        bannerItem.setImgUrl("https://i0.hdslb.com/bfs/banner/20b573ed970ed1a9087ba77c88484df4097567dd.jpg@1200w_300h_1c");
-        bannerItemList.add(bannerItem);
+//        bannerItem = new BannerItem();
+//        bannerItem.setTitle("Banner2");
+//        bannerItem.setImgUrl("https://i0.hdslb.com/bfs/banner/20b573ed970ed1a9087ba77c88484df4097567dd.jpg@1200w_300h_1c");
+//        bannerItemList.add(bannerItem);
+//
+//        bannerItem = new BannerItem();
+//        bannerItem.setTitle("Banner3");
+//        bannerItem.setImgUrl("https://i0.hdslb.com/bfs/banner/83ff182d67c3c89ff1836ebda6d3eeeb1e70f292.jpg@1200w_300h_1c.webp");
+//        bannerItemList.add(bannerItem);
 
-        bannerItem = new BannerItem();
-        bannerItem.setTitle("Banner3");
-        bannerItem.setImgUrl("https://i0.hdslb.com/bfs/banner/83ff182d67c3c89ff1836ebda6d3eeeb1e70f292.jpg@1200w_300h_1c.webp");
-        bannerItemList.add(bannerItem);
-
-        state.bannerList.set(bannerItemList);
 
 
         ArrayList<Music> musicList = new ArrayList<>();
@@ -168,6 +174,9 @@ public class HomeFragment extends BaseViewPagerFragment {
 
         public State<ArrayList<Music>> recommendMusicList = new State<>(new ArrayList<>());
         public State<ArrayList<MusicListFragment>> musicListFragmentList = new State<>(new ArrayList<>());
+        public State<Layout1> carouselLayoutManager = new State<>(new Layout1(AppApplication.getInstance(),  GridLayoutManager.VERTICAL));
+        public State<List<Carousel>> carouselList = new State<>(new ArrayList<>());
+        public CarouselAdapter carouselAdapter = new CarouselAdapter(AppApplication.getInstance());
 
     }
 

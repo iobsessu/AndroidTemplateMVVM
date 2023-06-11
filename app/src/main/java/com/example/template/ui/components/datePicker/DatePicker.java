@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.Pair;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.template.util.MyDateUtil;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.CompositeDateValidator;
 import com.google.android.material.datepicker.DateValidatorPointBackward;
@@ -42,6 +43,16 @@ public class DatePicker {
         return this;
     }
 
+    public DatePicker setStart(long startDate) {
+        constraintsBuilder.setStart(startDate);
+        return this;
+    }
+
+    public DatePicker setEnd(long endDate) {
+        constraintsBuilder.setEnd(endDate);
+        return this;
+    }
+
     public DatePicker setOnPositiveListener(MaterialPickerOnPositiveButtonClickListener onPositiveListener) {
         this.onPositiveListener = onPositiveListener;
         return this;
@@ -53,7 +64,6 @@ public class DatePicker {
         datePickerBuilder.setCalendarConstraints(constraintsBuilder.build());
 
         MaterialDatePicker datePicker = datePickerBuilder.build();
-
         if (onPositiveListener != null) {
             datePicker.addOnPositiveButtonClickListener(onPositiveListener);
         }

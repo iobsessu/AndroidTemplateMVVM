@@ -9,18 +9,31 @@
         <variable
             name="click"
             type="com.example.template.ui.home.HomeFragment.ClickProxy" />
+        <variable
+            name="carouselAdapter"
+            type="com.example.template.ui.adapter.CarouselAdapter" />
+
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
-            android:id="@+id/banner"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFF000">
+<!--        <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner-->
+<!--            android:id="@+id/banner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:bb_scale="0.294"-->
+<!--            bannerSource="@{vm.bannerList}"-->
+<!--            itemClickListener="@{click.bannerClickListener}"/>-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/carousel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:bb_scale="0.294"
-            bannerSource="@{vm.bannerList}"
-            itemClickListener="@{click.bannerClickListener}"/>
+            android:layout_height="200dp"
+            app:layoutManager="com.kunminx.binding_recyclerview.layout_manager.WrapContentLinearLayoutManager"
+            submitList="@{vm.carouselList}"
+            adapter="@{carouselAdapter}" />
     </LinearLayout>
 
 </layout>

@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 
 import com.example.template.data.bean.Article;
+import com.example.template.data.bean.Carousel;
 import com.example.template.data.bean.Icon;
 import com.example.template.data.bean.Music;
 import com.example.template.data.bean.PlayList;
@@ -38,6 +39,7 @@ public class DiffUtils {
     private DiffUtil.ItemCallback<Music> musicItemCallback;
     private DiffUtil.ItemCallback<Staff> staffItemCallback;
     private DiffUtil.ItemCallback<Article> articleItemCallback;
+    private DiffUtil.ItemCallback<Carousel> carouselItemCallback;
 
     private DiffUtils() {
     }
@@ -131,6 +133,23 @@ public class DiffUtils {
             };
         }
         return articleItemCallback;
+    }
+
+    public DiffUtil.ItemCallback<Carousel> getCarouselItemCallback() {
+        if (carouselItemCallback == null) {
+            carouselItemCallback = new DiffUtil.ItemCallback<Carousel>() {
+                @Override
+                public boolean areItemsTheSame(@NonNull Carousel oldItem, @NonNull Carousel newItem) {
+                    return oldItem.equals(newItem);
+                }
+
+                @Override
+                public boolean areContentsTheSame(@NonNull Carousel oldItem, @NonNull Carousel newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
+        }
+        return carouselItemCallback;
     }
 
 }
