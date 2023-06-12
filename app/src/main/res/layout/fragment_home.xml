@@ -11,9 +11,6 @@
         <variable
             name="click"
             type="com.example.template.ui.home.HomeFragment.ClickProxy" />
-        <variable
-            name="carouselAdapter"
-            type="com.example.template.ui.adapter.CarouselAdapter" />
     </data>
 
     <LinearLayout
@@ -82,48 +79,48 @@
                     vm="@{vm}"
                     click="@{click}"/>
 
-<!--                <include layout="@layout/home_top_icon"-->
-<!--                    vm="@{vm}" />-->
+                <include layout="@layout/home_top_icon"
+                    vm="@{vm}" />
 
-<!--                <include layout="@layout/home_recommend_play_1"-->
-<!--                    vm="@{vm}" />-->
+                <include layout="@layout/home_recommend_play_1"
+                    vm="@{vm}" />
 
-<!--                <include layout="@layout/home_recommend_play_2"-->
-<!--                    vm="@{vm}" />-->
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"/>-->
+                <include layout="@layout/home_recommend_play_2"
+                    vm="@{vm}" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="100dp"-->
-<!--                    android:onClick="@{()->click.toPlaying()}"-->
-<!--                    android:text="去播放页" />-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="100dp"-->
-<!--                    android:onClick="@{()->click.start()}"-->
-<!--                    android:text="播放" />-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="100dp"-->
-<!--                    android:onClick="@{()->click.pause()}"-->
-<!--                    android:text="暂停" />-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="100dp"-->
-<!--                    android:onClick="@{()->click.resume()}"-->
-<!--                    android:text="继续" />-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="100dp"-->
-<!--                    android:onClick="@{()->click.test()}"-->
-<!--                    android:text="@{vm.test}" />-->
-<!--                <Button-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="100dp"-->
-<!--                    android:onClick="@{()->click.logout()}"-->
-<!--                    android:text="logout" />-->
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.toPlaying()}"
+                    android:text="去播放页" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.start()}"
+                    android:text="播放" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.pause()}"
+                    android:text="暂停" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.resume()}"
+                    android:text="继续" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.test()}"
+                    android:text="@{vm.test}" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:onClick="@{()->click.logout()}"
+                    android:text="logout" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

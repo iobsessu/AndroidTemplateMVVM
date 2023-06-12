@@ -6,29 +6,37 @@
             name="item"
             type="com.example.template.data.bean.Carousel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/wrapper"
+    <com.google.android.material.carousel.MaskableFrameLayout
+        android:id="@+id/carousel_item_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/margin_medium"
-        android:paddingVertical="@dimen/value_4"
-        android:layout_marginBottom="@dimen/value_8"
-        android:orientation="horizontal"
-        android:background="#0000FF">
-        <ImageView
-            android:id="@+id/carousel_image_view"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp">
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/wrapper"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:paddingHorizontal="@dimen/margin_medium"-->
+<!--            android:paddingVertical="@dimen/value_4"-->
+<!--            android:layout_marginBottom="@dimen/value_8"-->
+<!--            android:orientation="horizontal">-->
+            <ImageView
+                android:id="@+id/carousel_image_view"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="21312312"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@{item.title}"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+    </com.google.android.material.carousel.MaskableFrameLayout>
+
+
 </layout>
