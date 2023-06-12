@@ -21,6 +21,7 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.xuexiang.xui.utils.XToastUtils;
+import com.xuexiang.xui.widget.toast.XToast;
 
 import java.util.ArrayList;
 import java.util.Calendar;

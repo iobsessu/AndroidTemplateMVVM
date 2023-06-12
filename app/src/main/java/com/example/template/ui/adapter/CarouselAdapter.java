@@ -24,7 +24,8 @@ public class CarouselAdapter extends SimpleDataBindingAdapter<Carousel, Carousel
     @Override
     protected void onBindItem(CarouselItemBinding binding, Carousel item, RecyclerView.ViewHolder holder) {
         binding.setItem(item);
-        Glide.with(context).load(item.imgUrl).centerCrop().into(binding.carouselImageView);
+        Glide.with(context).load(item.imgUrl2).centerCrop().into(binding.carouselImageView);
+//        binding.carouselItemContainer.setOnClickListener(view -> listener.onItemClicked(item, item));
     }
 
 }

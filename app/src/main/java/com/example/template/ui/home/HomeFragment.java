@@ -54,13 +54,15 @@ import cn.hutool.core.collection.ListUtil;
 public class HomeFragment extends BaseViewPagerFragment {
 
     private HomeState state;
-    private CarouselAdapter carouselAdapter;
+    private FragmentHomeBinding binding;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        initBanner();
+        binding = (FragmentHomeBinding) getBinding();
+        state.carouselAdapter.setOnItemClickListener(((viewId, item, position) ->
+            binding.bannerLayout.recyclerView.smoothScrollToPosition(position)
+        ));
         initData();
 
         ArrayList<Music> musicList = state.recommendMusicList.get();
@@ -80,14 +82,10 @@ public class HomeFragment extends BaseViewPagerFragment {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        carouselAdapter = new CarouselAdapter(AppApplication.getInstance());
         return new DataBindingConfig(R.layout.fragment_home, BR.vm, state)
-                .addBindingParam(BR.carouselAdapter, carouselAdapter)
                 .addBindingParam(BR.click, new ClickProxy());
     }
 
-    private void initBanner() {
-    }
 
     private void initData() {
         List<PlayList> list = new ArrayList<>();
@@ -107,20 +105,21 @@ public class HomeFragment extends BaseViewPagerFragment {
         Carousel carousel = new Carousel();
         carousel.setTitle("Banner1");
         carousel.setImgUrl("https://i0.hdslb.com/bfs/banner/ee98c85722548d630957b4492be4dab9e5264782.jpg@1200w_300h_1c");
+        carousel.setImgUrl2(R.mipmap.image_1);
+        carouselList.add(carousel);
+
+        carousel = new Carousel();
+        carousel.setTitle("Banner2");
+        carousel.setImgUrl2(R.mipmap.image_2);
+        carousel.setImgUrl("https://i0.hdslb.com/bfs/banner/20b573ed970ed1a9087ba77c88484df4097567dd.jpg@1200w_300h_1c");
+        carouselList.add(carousel);
+
+        carousel = new Carousel();
+        carousel.setTitle("Banner3");
+        carousel.setImgUrl2(R.mipmap.image_3);
+        carousel.setImgUrl("https://i0.hdslb.com/bfs/banner/83ff182d67c3c89ff1836ebda6d3eeeb1e70f292.jpg@1200w_300h_1c.webp");
         carouselList.add(carousel);
         state.carouselList.set(carouselList);
-
-//        bannerItem = new BannerItem();
-//        bannerItem.setTitle("Banner2");
-//        bannerItem.setImgUrl("https://i0.hdslb.com/bfs/banner/20b573ed970ed1a9087ba77c88484df4097567dd.jpg@1200w_300h_1c");
-//        bannerItemList.add(bannerItem);
-//
-//        bannerItem = new BannerItem();
-//        bannerItem.setTitle("Banner3");
-//        bannerItem.setImgUrl("https://i0.hdslb.com/bfs/banner/83ff182d67c3c89ff1836ebda6d3eeeb1e70f292.jpg@1200w_300h_1c.webp");
-//        bannerItemList.add(bannerItem);
-
-
 
         ArrayList<Music> musicList = new ArrayList<>();
         Music music = new Music(1, "深度睡眠 |重度失眠者专用歌单", 69466562, "http://p2.music.126.net/g2_Gv0dtAicJ3ChTYu28_g==/1393081239628722.jpg?imageView=1&type=webp&thumbnail=246x0", 0, "ZZ");
@@ -156,28 +155,24 @@ public class HomeFragment extends BaseViewPagerFragment {
         state.iconList.set(iconList);
     }
 
-
-
     public static class HomeState extends StateHolder {
         public State<String> test = new State<>("我的测试");
         public State<Integer> unreadCount = new State<>(2);
         public State<String> searchValue = new State<>("英语");
         public State<String> searchPlaceholder = new State<>("浪漫手机");
+        public CarouselAdapter carouselAdapter = new CarouselAdapter(AppApplication.getInstance());
+        public State<CarouselLayoutManager> carouselLayoutManager = new State<>(new CarouselLayoutManager());
+        public State<List<Carousel>> carouselList = new State<>(new ArrayList<>());
+        public State<Boolean> nestedScrollingEnabled = new State<>(false);
         public State<List<Icon>> iconList = new State<>(new ArrayList<>());
         public HomeTopIconAdapter topIconAdapter = new HomeTopIconAdapter(AppApplication.getInstance());
         public State<Layout1> topIconLayout = new State<>(new Layout1(AppApplication.getInstance(),  GridLayoutManager.HORIZONTAL));
 
         public RecommendAdapter adapter = new RecommendAdapter(AppApplication.getInstance());
-        public State<List<BannerItem>> bannerList = new State<>(new ArrayList<>());
         public State<List<PlayList>> recommendPlayList = new State<>(new ArrayList<>());
         public State<Layout1> layout1State = new State<>(new Layout1(AppApplication.getInstance(),  GridLayoutManager.HORIZONTAL));
-
         public State<ArrayList<Music>> recommendMusicList = new State<>(new ArrayList<>());
         public State<ArrayList<MusicListFragment>> musicListFragmentList = new State<>(new ArrayList<>());
-        public State<Layout1> carouselLayoutManager = new State<>(new Layout1(AppApplication.getInstance(),  GridLayoutManager.VERTICAL));
-        public State<List<Carousel>> carouselList = new State<>(new ArrayList<>());
-        public CarouselAdapter carouselAdapter = new CarouselAdapter(AppApplication.getInstance());
-
     }
 
     MediaPlayer mediaPlayer;

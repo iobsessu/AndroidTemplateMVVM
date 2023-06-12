@@ -33,9 +33,9 @@ import com.xuexiang.xui.utils.XToastUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductFragment extends BaseViewPagerFragment {
+public class StaffListFragment extends BaseViewPagerFragment {
 
-    private ProductState state;
+    private StaffListState state;
     private ClickProxy clickProxy;
     private ViewPreloadSizeProvider<Staff> preloadSizeProvider;
     private FragmentProductBinding binding;
@@ -66,7 +66,7 @@ public class ProductFragment extends BaseViewPagerFragment {
 
     @Override
     protected void initViewModel() {
-        state = getFragmentScopeViewModel(ProductState.class);
+        state = getFragmentScopeViewModel(StaffListState.class);
         clickProxy = new ClickProxy();
     }
 
@@ -84,7 +84,7 @@ public class ProductFragment extends BaseViewPagerFragment {
                 .addBindingParam(BR.staffAdapter, staffAdapter);
     }
 
-    public static class ProductState extends StateHolder {
+    public static class StaffListState extends StateHolder {
 
         public State<List<Staff>> staffList = new State<>(new ArrayList<>());
     }
