@@ -22,7 +22,7 @@ import com.example.template.ui.global.PlayerState;
 import com.example.template.ui.home.HomeFragment;
 import com.example.template.ui.my.MyFragment;
 import com.example.template.ui.play.PlayingActivity;
-import com.example.template.ui.product.ProductFragment;
+import com.example.template.ui.staff.StaffListFragment;
 import com.example.template.ui.calendar.CalendarFragment;
 import com.example.template.util.StatusBarUtil;
 import com.kunminx.architecture.ui.page.BaseActivity;
@@ -51,10 +51,10 @@ public class MainActivity extends BaseActivity {
         homeFragment.setIcon(R.mipmap.faxian);
         fragmentList.add(homeFragment);
 
-        ProductFragment productFragment = new ProductFragment();
-        productFragment.setTitle(R.string.community);
-        productFragment.setIcon(R.mipmap.shequ);
-        fragmentList.add(productFragment);
+        StaffListFragment staffListFragment = new StaffListFragment();
+        staffListFragment.setTitle(R.string.community);
+        staffListFragment.setIcon(R.mipmap.shequ);
+        fragmentList.add(staffListFragment);
 
         CalendarFragment calendarFragment = new CalendarFragment();
         calendarFragment.setTitle(R.string.follow);

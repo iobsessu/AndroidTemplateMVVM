@@ -7,10 +7,10 @@
     <data>
         <variable
             name="vm"
-            type="com.example.template.ui.product.ProductFragment.ProductState" />
+            type="com.example.template.ui.staff.StaffListFragment.StaffListState" />
         <variable
             name="click"
-            type="com.example.template.ui.product.ProductFragment.ClickProxy" />
+            type="com.example.template.ui.staff.StaffListFragment.ClickProxy" />
         <variable
             name="staffAdapter"
             type="com.example.template.ui.adapter.StaffAdapter" />

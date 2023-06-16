@@ -9,7 +9,7 @@ import com.example.template.data.bean.User;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.global.UserState;
 import com.example.template.ui.play.PlayingActivity;
-import com.example.template.ui.product.ProductFragment;
+import com.example.template.ui.staff.StaffListFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.xuexiang.xui.utils.XToastUtils;

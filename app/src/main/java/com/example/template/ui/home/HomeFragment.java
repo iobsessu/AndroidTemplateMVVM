@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
+import androidx.databinding.adapters.Converters;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.template.BR;
@@ -65,6 +66,7 @@ public class HomeFragment extends BaseViewPagerFragment {
         ));
         initData();
 
+
         ArrayList<Music> musicList = state.recommendMusicList.get();
         ArrayList<MusicListFragment> musicListFragmentList = new ArrayList<>();
 
@@ -105,18 +107,18 @@ public class HomeFragment extends BaseViewPagerFragment {
         Carousel carousel = new Carousel();
         carousel.setTitle("Banner1");
         carousel.setImgUrl("https://i0.hdslb.com/bfs/banner/ee98c85722548d630957b4492be4dab9e5264782.jpg@1200w_300h_1c");
-        carousel.setImgUrl2(R.mipmap.image_1);
+        carousel.setImgUrl2(R.mipmap.image_2);
         carouselList.add(carousel);
 
         carousel = new Carousel();
         carousel.setTitle("Banner2");
-        carousel.setImgUrl2(R.mipmap.image_2);
+        carousel.setImgUrl2(R.mipmap.image_4);
         carousel.setImgUrl("https://i0.hdslb.com/bfs/banner/20b573ed970ed1a9087ba77c88484df4097567dd.jpg@1200w_300h_1c");
         carouselList.add(carousel);
 
         carousel = new Carousel();
         carousel.setTitle("Banner3");
-        carousel.setImgUrl2(R.mipmap.image_3);
+        carousel.setImgUrl2(R.mipmap.image_6);
         carousel.setImgUrl("https://i0.hdslb.com/bfs/banner/83ff182d67c3c89ff1836ebda6d3eeeb1e70f292.jpg@1200w_300h_1c.webp");
         carouselList.add(carousel);
         state.carouselList.set(carouselList);
