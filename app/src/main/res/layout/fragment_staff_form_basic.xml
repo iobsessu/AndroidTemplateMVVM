@@ -42,7 +42,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="20dp"
                         android:text="@={vm.staff.name}"
                         android:textSize="@dimen/text_size_14"
                         android:maxLines="1"
@@ -50,30 +49,21 @@
                         android:inputType="text"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
-        <!--        <com.google.android.material.divider.MaterialDivider-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="@dimen/value_4"/>-->
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/value_4"
-                        android:text="@string/gender" />
-                    <RadioGroup
-                        android:checkedButton="@+id/gender"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        radioItems="@{vm.genderOptionList}"
-                        android:onCheckedChanged="@{click.genderCheckListener}"/>
-                </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginRight="@dimen/value_4"-->
+<!--                        android:text="@string/gender" />-->
+<!--                    <RadioGroup-->
+<!--                        android:checkedButton="@+id/gender"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        radioItems="@{vm.genderOptionList}"-->
+<!--                        android:onCheckedChanged="@{click.genderCheckListener}"/>-->
+<!--                </LinearLayout>-->
 
 <!--                <LinearLayout-->
 <!--                    android:layout_width="match_parent"-->
@@ -105,7 +95,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal">
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/value_10">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -124,7 +115,8 @@
                     app:placeholderText="@string/id_number_placeholder"
                     app:counterEnabled="true"
                     app:counterMaxLength="18"
-                    editTextErrorMessage="@{vm.idNumberError}">
+                    editTextErrorMessage="@{vm.idNumberError}"
+                    android:layout_marginTop="@dimen/value_10">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -166,7 +158,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="20dp"
                         android:text="@={vm.staff.email}"
                         android:textSize="@dimen/text_size_14"
                         android:maxLines="1"
@@ -187,7 +178,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="20dp"
                         android:text="@={vm.staff.address}"
                         android:textSize="@dimen/text_size_14"
                         android:maxLines="1"
@@ -208,7 +198,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="20dp"
                         android:text="@={vm.staff.departmentName}"
                         android:textSize="@dimen/text_size_14"
                         android:maxLines="1"
@@ -228,7 +217,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="20dp"
                         android:text="@={vm.staff.positionName}"
                         android:textSize="@dimen/text_size_14"
                         android:maxLines="1"
@@ -241,15 +229,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/value_4"
                     android:layout_gravity="center_horizontal"
-                    android:hint="ddda"
-                    app:placeholderText="@string/name_placeholder"
+                    android:hint="@string/job_number"
+                    app:placeholderText="@string/job_number_placeholder"
                     app:counterEnabled="true"
                     app:counterMaxLength="10">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="20dp"
-                        android:text="@={vm.staff.name}"
+                        android:text="@={vm.staff.jobNumber}"
                         android:textSize="@dimen/text_size_14"
                         android:maxLines="1"
                         android:maxLength="10"
@@ -261,21 +248,38 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/value_4"
                     android:layout_gravity="center_horizontal"
-                    android:hint="fffe"
-                    app:placeholderText="@string/name_placeholder"
+                    android:hint="@string/working_status"
+                    app:placeholderText="@string/working_status_placeholder"
                     app:counterEnabled="true"
                     app:counterMaxLength="10">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="20dp"
-                        android:text="@={vm.staff.name}"
+                        android:text="@={vm.staff.workingStatus}"
                         android:textSize="@dimen/text_size_14"
                         android:maxLines="1"
                         android:maxLength="10"
                         android:inputType="text"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/value_4"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="@string/salary"
+                    app:placeholderText="@string/salary_placeholder"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="10">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={vm.staff.salary}"
+                        android:textSize="@dimen/text_size_14"
+                        android:maxLines="1"
+                        android:maxLength="10"
+                        android:inputType="text"/>
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

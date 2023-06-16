@@ -1,4 +1,4 @@
-package com.example.template.ui.product;
+package com.example.template.ui.staff;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import com.example.template.app.AppApplication;
 import com.example.template.data.bean.Icon;
 import com.example.template.data.bean.Staff;
 import com.example.template.data.dataserver.StaffData;
-import com.example.template.databinding.FragmentProductBinding;
+import com.example.template.databinding.FragmentStaffListBinding;
 import com.example.template.ui.adapter.RecommendAdapter;
 import com.example.template.ui.adapter.StaffAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
@@ -38,7 +38,7 @@ public class StaffListFragment extends BaseViewPagerFragment {
     private StaffListState state;
     private ClickProxy clickProxy;
     private ViewPreloadSizeProvider<Staff> preloadSizeProvider;
-    private FragmentProductBinding binding;
+    private FragmentStaffListBinding binding;
     public StaffAdapter staffAdapter;
 
     @Override
@@ -51,7 +51,7 @@ public class StaffListFragment extends BaseViewPagerFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding = (FragmentProductBinding) getBinding();
+        binding = (FragmentStaffListBinding) getBinding();
 
         RecyclerViewPreloader<Staff> preLoader = new RecyclerViewPreloader<Staff>(
                 this, staffAdapter, preloadSizeProvider, 5
@@ -79,7 +79,7 @@ public class StaffListFragment extends BaseViewPagerFragment {
             clickProxy.toEditStaff(item);
         }));
 
-        return new DataBindingConfig(R.layout.fragment_product, BR.vm, state)
+        return new DataBindingConfig(R.layout.fragment_staff_list, BR.vm, state)
                 .addBindingParam(BR.click, clickProxy)
                 .addBindingParam(BR.staffAdapter, staffAdapter);
     }
