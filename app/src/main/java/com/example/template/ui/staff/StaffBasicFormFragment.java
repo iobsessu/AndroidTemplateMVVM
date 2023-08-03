@@ -10,6 +10,9 @@ import androidx.databinding.adapters.TextViewBindingAdapter;
 
 import com.example.template.BR;
 import com.example.template.R;
+import com.example.template.data.bean.FormItem;
+import com.example.template.ui.adapter.FormAdapter;
+import com.example.template.ui.adapter.StaffAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.components.datePicker.DatePicker;
 import com.example.template.ui.staff.vm.StaffFormState;
@@ -26,6 +29,7 @@ import com.xuexiang.xui.widget.toast.XToast;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 import cn.hutool.core.date.DateUtil;
@@ -35,16 +39,31 @@ import cn.hutool.core.util.StrUtil;
 public class StaffBasicFormFragment extends BaseViewPagerFragment {
 
     private StaffFormState state;
+    public FormAdapter formAdapter;
 
     @Override
     protected void initViewModel() {
         state = getActivityScopeViewModel(StaffFormState.class);
+        List<FormItem> basicFormList = new ArrayList<>();
+        FormItem formItem = new FormItem();
+        formItem.setLabel(getString(R.string.name));
+        formItem.setFieldName("name");
+        basicFormList.add(formItem);
+
+        formItem = new FormItem();
+        formItem.setLabel(getString(R.string.gender));
+        formItem.setFieldName("gender");
+        formItem.setType(FormItem.SWITCH);
+        basicFormList.add(formItem);
+        state.basicFormList.set(basicFormList);
     }
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
+        formAdapter = new FormAdapter(getActivity());
         return new DataBindingConfig(R.layout.fragment_staff_form_basic, BR.vm, state)
-                .addBindingParam(BR.click, new ClickProxy());
+                .addBindingParam(BR.click, new ClickProxy())
+                .addBindingParam(BR.formAdapter, formAdapter);
     }
 
     public class ClickProxy {

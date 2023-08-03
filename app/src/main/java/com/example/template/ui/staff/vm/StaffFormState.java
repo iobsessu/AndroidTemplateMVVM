@@ -1,5 +1,6 @@
 package com.example.template.ui.staff.vm;
 
+import com.example.template.data.bean.FormItem;
 import com.example.template.data.bean.OptionItem;
 import com.example.template.data.bean.Staff;
 import com.example.template.ui.base.BaseViewPagerFragment;
@@ -21,6 +22,8 @@ public class StaffFormState extends StateHolder {
 
     public State<String> idNumberError = new State<>("");
     public State<String> emailError = new State<>("");
+
+    public State<List<FormItem>> basicFormList = new State<>(new ArrayList<>());
 
 
 }
