@@ -17,7 +17,6 @@ import com.kunminx.architecture.ui.page.BaseActivity;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
-import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 
 public class LoginActivity extends BaseActivity {
 

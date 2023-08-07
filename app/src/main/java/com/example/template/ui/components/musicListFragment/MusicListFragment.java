@@ -21,7 +21,6 @@ import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
-import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -21,25 +21,46 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_pager"
+<!--        <androidx.viewpager2.widget.ViewPager2-->
+<!--            android:id="@+id/view_pager"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            fragmentList="@{vm.fragmentList}"-->
+<!--            scrollEnabled="@{vm.scrollEnabled}" />-->
+
+
+<!--        <include-->
+<!--            layout="@layout/bottom_play_bar"-->
+<!--            click="@{click}"-->
+<!--            playerVm="@{playerVm}"/>-->
+
+<!--        <com.google.android.material.tabs.TabLayout-->
+<!--            android:id="@+id/tab_layout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:tabIndicator="@null"-->
+<!--            app:tabTextAppearance="@style/HomeBottomTabLayoutTextStyle"-->
+<!--            android:background="@color/background_white" />-->
+
+        <fragment
+            android:id="@+id/nav_host_fragment_activity_main"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            fragmentList="@{vm.fragmentList}"
-            scrollEnabled="@{vm.scrollEnabled}" />
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/home_bottom_navigation" />
 
-        <include
-            layout="@layout/bottom_play_bar"
-            click="@{click}"
-            playerVm="@{playerVm}"/>
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicator="@null"
-            app:tabTextAppearance="@style/HomeBottomTabLayoutTextStyle"
-            android:background="@color/background_white" />
+            app:menu="@menu/bottom_nav_menu"
+            app:labelVisibilityMode="labeled"
+            app:itemTextAppearanceActive="@style/home_bottom_tab_title_active"
+            app:itemTextAppearanceInactive="@style/home_bottom_tab_title_inactive"
+            navController="@{vm.navController}"/>
+
     </LinearLayout>
 </layout>

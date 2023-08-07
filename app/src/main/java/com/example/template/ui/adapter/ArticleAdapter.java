@@ -63,9 +63,9 @@ public class ArticleAdapter extends SimpleDataBindingAdapter<Article, ArticleIte
         binding.setItem(item);
 //        binding.title.setText(item.getTitle());
 //        binding.title.setText(item.getTitle());
-        Glide.with(context)
-                .load(item.getImgUrl())
-                .into(binding.image);
+//        Glide.with(context)
+//                .load(item.getImgUrl())
+//                .into(binding.image);
     }
 
     @Override

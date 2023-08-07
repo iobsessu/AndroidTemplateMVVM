@@ -19,7 +19,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/testtt">
 
         <LinearLayout
             android:id="@+id/top_bar"
@@ -65,7 +66,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
                 <androidx.recyclerview.widget.RecyclerView
                     style="@style/recycler_view"
                     android:id="@+id/recycler_view"

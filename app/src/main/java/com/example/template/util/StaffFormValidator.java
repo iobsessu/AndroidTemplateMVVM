@@ -2,7 +2,6 @@ package com.example.template.util;
 
 import com.example.template.R;
 import com.example.template.ui.staff.vm.StaffFormState;
-import com.xuexiang.xui.utils.ResUtils;
 
 import cn.hutool.core.lang.RegexPool;
 import cn.hutool.core.util.IdcardUtil;

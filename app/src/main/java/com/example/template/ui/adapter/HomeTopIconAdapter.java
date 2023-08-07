@@ -22,9 +22,9 @@ public class HomeTopIconAdapter extends SimpleDataBindingAdapter<Icon, HomeTopIc
     protected void onBindItem(HomeTopIconItemBinding binding, Icon item, RecyclerView.ViewHolder holder) {
         binding.setItem(item);
 
-        Glide.with(context)
-                .load(item.getIconRes())
-                .into(binding.image);
+//        Glide.with(context)
+//                .load(item.getIconRes())
+//                .into(binding.image);
     }
 
 }

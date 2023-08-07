@@ -23,8 +23,6 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
-import com.xuexiang.xui.utils.XToastUtils;
-import com.xuexiang.xui.widget.toast.XToast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,6 +46,7 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
         FormItem formItem = new FormItem();
         formItem.setLabel(getString(R.string.name));
         formItem.setFieldName("name");
+        formItem.setValue("珊珊");
         basicFormList.add(formItem);
 
         formItem = new FormItem();
@@ -72,7 +71,7 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 radioGroup.getCheckedRadioButtonId();
-                XToastUtils.info("选择了性别");
+//                XToastUtils.info("选择了性别");
             }
         };
         public void showDatePicker() {

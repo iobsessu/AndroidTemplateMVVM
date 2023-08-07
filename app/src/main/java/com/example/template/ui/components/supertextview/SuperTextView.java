@@ -16,7 +16,6 @@ import androidx.core.content.ContextCompat;
 
 import com.example.template.R;
 import com.google.android.material.divider.MaterialDivider;
-import com.xuexiang.xui.utils.ThemeUtils;
 
 public class SuperTextView extends ConstraintLayout {
 

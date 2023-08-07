@@ -15,16 +15,16 @@
         android:paddingHorizontal="@dimen/padding_medium"
         android:background="@color/background_white">
 
-        <com.xuexiang.xui.widget.imageview.RadiusImageView
-            android:id="@+id/avatar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginVertical="@dimen/value_50"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius="@dimen/value_6"
-            android:src="@mipmap/image_test"/>
+<!--        <com.xuexiang.xui.widget.imageview.RadiusImageView-->
+<!--            android:id="@+id/avatar"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginVertical="@dimen/value_50"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:riv_corner_radius="@dimen/value_6"-->
+<!--            android:src="@mipmap/image_test"/>-->
 
         <TextView
             android:id="@+id/nickname"
@@ -89,24 +89,24 @@
                 android:textSize="@dimen/text_size_12"/>
         </com.google.android.material.card.MaterialCardView>
 
-        <com.xuexiang.xui.widget.imageview.RadiusImageView
-            android:id="@+id/right_arrow"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@mipmap/right_arrow"/>
+<!--        <com.xuexiang.xui.widget.imageview.RadiusImageView-->
+<!--            android:id="@+id/right_arrow"-->
+<!--            android:layout_width="12dp"-->
+<!--            android:layout_height="12dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:src="@mipmap/right_arrow"/>-->
 
-        <com.xuexiang.xui.widget.imageview.RadiusImageView
-            android:id="@+id/qr_code_btn"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/right_arrow"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginRight="@dimen/margin_medium"
-            android:src="@mipmap/more"/>
+<!--        <com.xuexiang.xui.widget.imageview.RadiusImageView-->
+<!--            android:id="@+id/qr_code_btn"-->
+<!--            android:layout_width="12dp"-->
+<!--            android:layout_height="12dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/right_arrow"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:layout_marginRight="@dimen/margin_medium"-->
+<!--            android:src="@mipmap/more"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

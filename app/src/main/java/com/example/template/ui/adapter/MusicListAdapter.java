@@ -28,9 +28,9 @@ public class MusicListAdapter extends SimpleDataBindingAdapter<Music, MusicItem1
     protected void onBindItem(MusicItem1Binding binding, Music item, RecyclerView.ViewHolder holder) {
         binding.setItem(item);
 
-        Glide.with(context)
-                .load(item.getImageUrl())
-                .into(binding.image);
+//        Glide.with(context)
+//                .load(item.getImageUrl())
+//                .into(binding.image);
 //        setLastItemMargin(binding, item);
     }
 

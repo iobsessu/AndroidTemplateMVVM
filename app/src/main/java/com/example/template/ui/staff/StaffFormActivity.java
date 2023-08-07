@@ -3,6 +3,7 @@ package com.example.template.ui.staff;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -16,7 +17,6 @@ import com.example.template.util.StaffFormValidator;
 import com.kunminx.architecture.ui.page.BaseActivity;
 import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +25,7 @@ import java.util.List;
 import cn.hutool.core.lang.RegexPool;
 import cn.hutool.core.util.IdcardUtil;
 import cn.hutool.core.util.ReUtil;
+import es.dmoral.toasty.Toasty;
 
 public class StaffFormActivity extends BaseActivity {
 
@@ -80,11 +81,12 @@ public class StaffFormActivity extends BaseActivity {
     public class StaffFormClickProxy {
 
         public void submit() {
+            Toasty.info(StaffFormActivity.this, "Here is some info for you.", Toast.LENGTH_SHORT, true).show();
             if (!StaffFormValidator.isValid(state)) {
-                XToastUtils.error(R.string.save_failed);
+//                XToastUtils.error(R.string.save_failed);
                 return;
             }
-            XToastUtils.success(R.string.save_successfully);
+//            XToastUtils.success(R.string.save_successfully);
         }
 
     }

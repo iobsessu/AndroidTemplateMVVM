@@ -40,11 +40,6 @@ import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
 import com.kunminx.architecture.utils.BarUtils;
-import com.xuexiang.xui.utils.KeyboardUtils;
-import com.xuexiang.xui.utils.StatusBarUtils;
-import com.xuexiang.xui.utils.XToastUtils;
-import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
-import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,9 +56,9 @@ public class HomeFragment extends BaseViewPagerFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding = (FragmentHomeBinding) getBinding();
-        state.carouselAdapter.setOnItemClickListener(((viewId, item, position) ->
-            binding.bannerLayout.recyclerView.smoothScrollToPosition(position)
-        ));
+//        state.carouselAdapter.setOnItemClickListener(((viewId, item, position) ->
+//            binding.bannerLayout.recyclerView.smoothScrollToPosition(position)
+//        ));
         initData();
 
 
@@ -222,19 +217,19 @@ public class HomeFragment extends BaseViewPagerFragment {
             mediaPlayer.start();
         }
 
-        public BaseBanner.OnItemClickListener<BannerItem> bannerClickListener = new BaseBanner.OnItemClickListener<BannerItem>() {
-            @Override
-            public void onItemClick(View view, BannerItem item, int position) {
-                Log.e("onItemClick:", item.title + " --- " + position);
-            }
-        };
+//        public BaseBanner.OnItemClickListener<BannerItem> bannerClickListener = new BaseBanner.OnItemClickListener<BannerItem>() {
+//            @Override
+//            public void onItemClick(View view, BannerItem item, int position) {
+//                Log.e("onItemClick:", item.title + " --- " + position);
+//            }
+//        };
 
         public View.OnKeyListener onSearchKeyListener = new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    XToastUtils.info("点击了搜索");
-                    KeyboardUtils.hideSoftInput(view);
+//                    XToastUtils.info("点击了搜索");
+//                    KeyboardUtils.hideSoftInput(view);
                     return true;
                 }
                 return false;

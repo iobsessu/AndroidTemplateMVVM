@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_product"
-        android:name="com.example.template.ui.product.ProductFragment"
+        android:name="com.example.template.ui.staff.StaffListFragment"
         android:label="@string/product"
-        tools:layout="@layout/fragment_product" />
+        tools:layout="@layout/fragment_staff_list" />
     <fragment
         android:id="@+id/navigation_calendar"
         android:name="com.example.template.ui.calendar.CalendarFragment"

@@ -67,6 +67,8 @@ public class MainActivity extends BaseActivity {
         fragmentList.add(myFragment);
 
         state.fragmentList.set(fragmentList);
+
+        state.navController = new State<>(Navigation.findNavController(this, R.id.nav_host_fragment_activity_main));
     }
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -89,6 +91,7 @@ public class MainActivity extends BaseActivity {
     public static class MainActivityState extends StateHolder {
         public State<List<BaseViewPagerFragment>> fragmentList = new State<>(new ArrayList<>());
         public State<Boolean> scrollEnabled = new State<>(false);
+        public State<NavController> navController ;
     }
 
     public class ClickProxy {

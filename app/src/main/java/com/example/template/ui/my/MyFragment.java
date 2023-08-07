@@ -12,7 +12,6 @@ import com.example.template.ui.play.PlayingActivity;
 import com.example.template.ui.staff.StaffListFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
-import com.xuexiang.xui.utils.XToastUtils;
 
 public class MyFragment extends BaseViewPagerFragment {
 
@@ -38,23 +37,23 @@ public class MyFragment extends BaseViewPagerFragment {
     public class ClickProxy {
 
         public void toBill() {
-            XToastUtils.info("点击了账单");
+//            XToastUtils.info("点击了账单");
            userState.user.get().setNickname("小学生");
         }
         public void toFavorite() {
-            XToastUtils.info("点击了收藏");
+//            XToastUtils.info("点击了收藏");
         }
 
         public void toMeme() {
-            XToastUtils.info("点击了表情包");
+//            XToastUtils.info("点击了表情包");
         }
 
         public void toCardPack() {
-            XToastUtils.info("点击了卡包");
+//            XToastUtils.info("点击了卡包");
         }
 
         public void toSettings() {
-            XToastUtils.info("点击了设置");
+//            XToastUtils.info("点击了设置");
         }
 
     }

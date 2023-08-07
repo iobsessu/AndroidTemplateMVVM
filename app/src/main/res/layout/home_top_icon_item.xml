@@ -14,13 +14,13 @@
         android:layout_marginHorizontal="@dimen/margin_medium"
         android:orientation="vertical"
         android:gravity="center">
-        <com.xuexiang.xui.widget.imageview.RadiusImageView
-            android:id="@+id/image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:riv_corner_radius="@dimen/value_10"
-            android:src="@{item.iconRes}"
-            tools:src="@mipmap/faxian" />
+<!--        <com.xuexiang.xui.widget.imageview.RadiusImageView-->
+<!--            android:id="@+id/image"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            app:riv_corner_radius="@dimen/value_10"-->
+<!--            android:src="@{item.iconRes}"-->
+<!--            tools:src="@mipmap/faxian" />-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

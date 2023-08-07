@@ -34,13 +34,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <com.xuexiang.xui.widget.edittext.ClearEditText
-                    android:id="@+id/username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@={vm.username}"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="10dp" />
+<!--                <com.xuexiang.xui.widget.edittext.ClearEditText-->
+<!--                    android:id="@+id/username"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@={vm.username}"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    tools:layout_editor_absoluteX="10dp" />-->
 
                 <EditText
                     android:id="@+id/password"

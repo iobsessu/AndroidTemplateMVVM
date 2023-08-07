@@ -28,9 +28,9 @@ public class RecommendAdapter extends SimpleDataBindingAdapter<PlayList, Recomme
     protected void onBindItem(RecommendPlayItemBinding binding, PlayList item, RecyclerView.ViewHolder holder) {
         binding.setItem(item);
 
-        Glide.with(context)
-                .load(item.getImageUrl())
-                .into(binding.image);
+//        Glide.with(context)
+//                .load(item.getImageUrl())
+//                .into(binding.image);
         setLastItemMargin(binding, item);
     }
 

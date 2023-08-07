@@ -7,6 +7,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader;
 import com.bumptech.glide.util.ViewPreloadSizeProvider;
@@ -28,7 +29,6 @@ import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,13 +44,13 @@ public class StaffListFragment extends BaseViewPagerFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initData();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+//        NavHostFragment.findNavController(StaffListFragment.this).navigateUp();
         binding = (FragmentStaffListBinding) getBinding();
 
         RecyclerViewPreloader<Staff> preLoader = new RecyclerViewPreloader<Staff>(
@@ -71,11 +71,16 @@ public class StaffListFragment extends BaseViewPagerFragment {
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
     protected DataBindingConfig getDataBindingConfig() {
         preloadSizeProvider = new ViewPreloadSizeProvider<>();
         staffAdapter = new StaffAdapter(AppApplication.getInstance(), preloadSizeProvider);
         staffAdapter.setOnItemClickListener(((viewId, item, position) -> {
-            XToastUtils.info("点击了：" + item.getName());
+//            XToastUtils.info("点击了：" + item.getName());
             clickProxy.toEditStaff(item);
         }));
 
