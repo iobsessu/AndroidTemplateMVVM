@@ -1,5 +1,6 @@
 package com.example.template.ui.staff.vm;
 
+import com.example.template.common.Constants;
 import com.example.template.data.bean.FormItem;
 import com.example.template.data.bean.OptionItem;
 import com.example.template.data.bean.Staff;
@@ -22,6 +23,7 @@ public class StaffFormState extends StateHolder {
 
     public State<String> idNumberError = new State<>("");
     public State<String> emailError = new State<>("");
+    public State<Integer> formStatus = new State<>(Constants.FORM_STATE_ADD);
 
     public State<List<FormItem>> basicFormList = new State<>(new ArrayList<>());
 

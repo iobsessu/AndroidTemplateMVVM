@@ -75,6 +75,7 @@ public class StaffFormActivity extends BaseActivity {
         Staff staff = (Staff) intent.getSerializableExtra(Constants.STAFF_KEY);
         if (staff != null) {
             state.staff.set(staff);
+            state.formStatus.set(Constants.FORM_STATE_EDIT);
         }
     }
 
