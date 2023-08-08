@@ -1,6 +1,7 @@
 package com.example.template.util;
 
 import com.example.template.R;
+import com.example.template.data.bean.FormItem;
 import com.example.template.ui.staff.vm.StaffFormState;
 
 import cn.hutool.core.lang.RegexPool;
@@ -22,23 +23,35 @@ public class StaffFormValidator {
     }
 
     public static boolean isValidIdNumber(StaffFormState state) {
-        if (IdcardUtil.isValidCard(state.staff.get().getIdNumber())) {
-            state.idNumberError.set("");
-            return true;
-        } else {
-            state.idNumberError.set(ResourceUtil.getString(R.string.id_number_error));
-            return false;
+        for (FormItem formItem: state.basicFormList.get()) {
+            if (formItem.getFieldName().equals("idNumber")) {
+                String value = formItem.getValue();
+                if (IdcardUtil.isValidCard(value)) {
+                    state.idNumberError.set("");
+                    return true;
+                } else {
+                    state.idNumberError.set(ResourceUtil.getString(R.string.id_number_error));
+                    return false;
+                }
+            }
         }
+        return true;
     }
 
     public static boolean isValidEmail(StaffFormState state) {
-        if (ReUtil.isMatch(RegexPool.EMAIL, state.staff.get().getEmail())) {
-            state.emailError.set("");
-            return true;
-        } else {
-            state.emailError.set(ResourceUtil.getString(R.string.email_error));
-            return false;
+        for (FormItem formItem: state.basicFormList.get()) {
+            if (formItem.getFieldName().equals("email")) {
+                String value = formItem.getValue();
+                if (ReUtil.isMatch(RegexPool.EMAIL, value)) {
+                    state.emailError.set("");
+                    return true;
+                } else {
+                    state.emailError.set(ResourceUtil.getString(R.string.email_error));
+                    return false;
+                }
+            }
         }
+        return true;
     }
 
 }
