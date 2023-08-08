@@ -54,6 +54,13 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
         formItem.setFieldName("gender");
         formItem.setType(FormItem.SWITCH);
         basicFormList.add(formItem);
+
+        formItem = new FormItem();
+        formItem.setLabel(getString(R.string.birth_date));
+        formItem.setFieldName("birthDate");
+        formItem.setValue("1996-06-22");
+        formItem.setType(FormItem.DATE);
+        basicFormList.add(formItem);
         state.basicFormList.set(basicFormList);
     }
 
