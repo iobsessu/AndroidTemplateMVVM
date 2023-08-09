@@ -15,16 +15,15 @@
         android:paddingHorizontal="@dimen/padding_medium"
         android:background="@color/background_white">
 
-<!--        <com.xuexiang.xui.widget.imageview.RadiusImageView-->
-<!--            android:id="@+id/avatar"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginVertical="@dimen/value_50"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:riv_corner_radius="@dimen/value_6"-->
-<!--            android:src="@mipmap/image_test"/>-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="@dimen/value_50"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/image_test"/>
 
         <TextView
             android:id="@+id/nickname"

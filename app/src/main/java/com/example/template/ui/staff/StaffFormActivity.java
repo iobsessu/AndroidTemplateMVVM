@@ -15,16 +15,11 @@ import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.staff.vm.StaffFormState;
 import com.example.template.util.StaffFormValidator;
 import com.kunminx.architecture.ui.page.BaseActivity;
-import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import cn.hutool.core.lang.RegexPool;
-import cn.hutool.core.util.IdcardUtil;
-import cn.hutool.core.util.ReUtil;
 import es.dmoral.toasty.Toasty;
 
 public class StaffFormActivity extends BaseActivity {
@@ -75,7 +70,7 @@ public class StaffFormActivity extends BaseActivity {
         Staff staff = (Staff) intent.getSerializableExtra(Constants.STAFF_KEY);
         if (staff != null) {
             state.staff.set(staff);
-            state.formStatus.set(Constants.FORM_STATE_EDIT);
+            state.formStatus.set(Constants.FORM_STATUS_EDIT);
         }
     }
 

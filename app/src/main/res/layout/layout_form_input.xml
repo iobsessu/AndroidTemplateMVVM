@@ -12,15 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingVertical="@dimen/value_2">
+        android:paddingTop="@dimen/value_8">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{item.label}" />
-        <com.example.template.ui.components.editText.ClearEditText
+            android:text="@{item.label}"
+            tools:text="姓名"/>
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@{item.hint}"
-            android:text="@={item.value}"/>
+            android:text="@={item.value}"
+            app:met_underlineColor="@color/divider"/>
     </LinearLayout>
 </layout>
