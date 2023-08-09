@@ -19,6 +19,12 @@ public class FormItem implements Serializable {
     private String errorMessage;
     private String hint;
 
+    public FormItem(String label, String value, String fieldName) {
+        this.label = label;
+        this.value = value;
+        this.fieldName = fieldName;
+    }
+
     public String getLabel() {
         return label;
     }

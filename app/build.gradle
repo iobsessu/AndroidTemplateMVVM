@@ -68,5 +68,6 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.google.mlkit:barcode-scanning:17.1.0'
     implementation 'com.github.GrenderG:Toasty:1.5.2'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
 
 }

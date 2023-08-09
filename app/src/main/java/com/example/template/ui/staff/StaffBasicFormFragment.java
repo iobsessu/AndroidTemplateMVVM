@@ -16,6 +16,7 @@ import com.example.template.ui.adapter.StaffAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.components.datePicker.DatePicker;
 import com.example.template.ui.staff.vm.StaffFormState;
+import com.example.template.util.FormUtil;
 import com.example.template.util.MyDateUtil;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
@@ -42,19 +43,7 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
     @Override
     protected void initViewModel() {
         state = getActivityScopeViewModel(StaffFormState.class);
-        List<FormItem> basicFormList = new ArrayList<>();
-        FormItem formItem = new FormItem();
-        formItem.setLabel(getString(R.string.name));
-        formItem.setFieldName("name");
-        formItem.setValue("珊珊");
-        basicFormList.add(formItem);
-
-        formItem = new FormItem();
-        formItem.setLabel(getString(R.string.gender));
-        formItem.setFieldName("gender");
-        formItem.setType(FormItem.SWITCH);
-        basicFormList.add(formItem);
-        state.basicFormList.set(basicFormList);
+        state.basicFormList.set(FormUtil.generateStaffBasicFormItemList(state.staff.get()));
     }
 
     @Override
