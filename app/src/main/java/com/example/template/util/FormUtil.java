@@ -16,7 +16,10 @@ public class FormUtil {
         FormItem formItem = new FormItem(ResourceUtil.getString(R.string.name), staff.getName(), "name");
         list.add(formItem);
         formItem = new FormItem(ResourceUtil.getString(R.string.gender), staff.getGender(), "gender");
-        formItem.setType(FormItem.SWITCH);
+        formItem.setType(FormItem.SINGLE_SELECT);
+        list.add(formItem);
+        formItem = new FormItem(ResourceUtil.getString(R.string.birth_date), staff.getBirthDate() +"", "birthDate");
+        formItem.setType(FormItem.DATE);
         list.add(formItem);
         return list;
     }

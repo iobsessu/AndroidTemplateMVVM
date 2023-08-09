@@ -8,6 +8,7 @@ public class FormItem implements Serializable {
     public static final int INPUT = 0;
     public static final int SWITCH = 1;
     public static final int DATE = 2;
+    public static final int SINGLE_SELECT = 3;
 
     public String label;
     private String value;

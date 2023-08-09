@@ -10,26 +10,35 @@
     <LinearLayout
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/value_40"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingVertical="@dimen/value_2">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{item.label}"
-            tools:text="生日" />
-        <Space
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/value_4"
-            android:text="@{item.value}"
-            android:gravity="center|end"
-            tools:text="1996-06-23"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:paddingVertical="4dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.label}" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/value_4"
+                android:text="@{item.value}"
+                android:gravity="center|end"
+                tools:text="1996-06-23"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
     </LinearLayout>
 </layout>
