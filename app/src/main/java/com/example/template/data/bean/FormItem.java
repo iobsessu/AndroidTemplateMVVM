@@ -1,9 +1,14 @@
 package com.example.template.data.bean;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
+import com.example.template.BR;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public class FormItem implements Serializable {
+public class FormItem extends BaseObservable implements Serializable {
 
     public static final int INPUT = 0;
     public static final int SWITCH = 1;
@@ -35,12 +40,14 @@ public class FormItem implements Serializable {
         this.label = label;
     }
 
+    @Bindable
     public String getValue() {
         return value;
     }
 
     public void setValue(String value) {
         this.value = value;
+        notifyPropertyChanged(BR.value);
     }
 
     public String getFieldName() {

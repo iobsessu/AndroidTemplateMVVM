@@ -16,6 +16,10 @@ public class MyDateUtil {
         return DateUtil.format(date, DatePattern.CHINESE_DATE_PATTERN);
     }
 
+    public static String parse(String date) {
+        return format(DateUtil.parse(date));
+    }
+
     public static String getAge(Date date) {
         if (date == null) {
             return AppApplication.getInstance().getString(R.string.unknown);

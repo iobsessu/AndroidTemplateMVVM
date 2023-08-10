@@ -13,7 +13,7 @@ public class Staff extends BaseObservable implements Serializable {
 
     private int id;
     private String name;
-    private String gender;
+    private int gender;
     private Date birthDate;
     private String idNumber;
     private String phoneNumber;
@@ -52,7 +52,7 @@ public class Staff extends BaseObservable implements Serializable {
 
     public Staff() {}
 
-    public Staff(int id, String name, String gender, Date birthDate, String idNumber, String phoneNumber,
+    public Staff(int id, String name, int gender, Date birthDate, String idNumber, String phoneNumber,
                  String email, String address, String departmentName, String positionName,
                  String jobNumber, Date hireDate, Date leaveDate, boolean workingStatus,
                  String workLocation, int weeklyWorkingHours, double salary,
@@ -99,11 +99,11 @@ public class Staff extends BaseObservable implements Serializable {
         this.name = name;
     }
 
-    public String getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -274,7 +274,7 @@ public class Staff extends BaseObservable implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Staff staff = (Staff) o;
-        return id == staff.id && workingStatus == staff.workingStatus && weeklyWorkingHours == staff.weeklyWorkingHours && Double.compare(staff.salary, salary) == 0 && annualLeaveDays == staff.annualLeaveDays && Objects.equals(name, staff.name) && Objects.equals(gender, staff.gender) && Objects.equals(birthDate, staff.birthDate) && Objects.equals(idNumber, staff.idNumber) && Objects.equals(phoneNumber, staff.phoneNumber) && Objects.equals(email, staff.email) && Objects.equals(address, staff.address) && Objects.equals(departmentName, staff.departmentName) && Objects.equals(positionName, staff.positionName) && Objects.equals(jobNumber, staff.jobNumber) && Objects.equals(hireDate, staff.hireDate) && Objects.equals(leaveDate, staff.leaveDate) && Objects.equals(workLocation, staff.workLocation) && Objects.equals(healthStatus, staff.healthStatus) && Objects.equals(emergencyContactName, staff.emergencyContactName) && Objects.equals(emergencyContactPhoneNumber, staff.emergencyContactPhoneNumber) && Objects.equals(remark, staff.remark) && Objects.equals(avatar, staff.avatar);
+        return id == staff.id && workingStatus == staff.workingStatus && weeklyWorkingHours == staff.weeklyWorkingHours && Double.compare(staff.salary, salary) == 0 && annualLeaveDays == staff.annualLeaveDays && Objects.equals(name, staff.name) && gender == staff.gender && Objects.equals(birthDate, staff.birthDate) && Objects.equals(idNumber, staff.idNumber) && Objects.equals(phoneNumber, staff.phoneNumber) && Objects.equals(email, staff.email) && Objects.equals(address, staff.address) && Objects.equals(departmentName, staff.departmentName) && Objects.equals(positionName, staff.positionName) && Objects.equals(jobNumber, staff.jobNumber) && Objects.equals(hireDate, staff.hireDate) && Objects.equals(leaveDate, staff.leaveDate) && Objects.equals(workLocation, staff.workLocation) && Objects.equals(healthStatus, staff.healthStatus) && Objects.equals(emergencyContactName, staff.emergencyContactName) && Objects.equals(emergencyContactPhoneNumber, staff.emergencyContactPhoneNumber) && Objects.equals(remark, staff.remark) && Objects.equals(avatar, staff.avatar);
     }
 
     @Override

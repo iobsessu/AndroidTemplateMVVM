@@ -71,4 +71,6 @@
     <string name="save_failed">保存失败</string>
     <string name="unknown">未知</string>
 
+    <string name="please_select_gender">请选择性别</string>
+
 </resources>
