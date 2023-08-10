@@ -7,7 +7,6 @@ import com.example.template.ui.staff.vm.StaffFormState;
 import cn.hutool.core.lang.RegexPool;
 import cn.hutool.core.util.IdcardUtil;
 import cn.hutool.core.util.ReUtil;
-import cn.hutool.core.util.StrUtil;
 
 public class StaffFormValidator {
 
@@ -30,7 +29,7 @@ public class StaffFormValidator {
                     state.idNumberError.set("");
                     return true;
                 } else {
-                    state.idNumberError.set(ResourceUtil.getString(R.string.id_number_error));
+                    state.idNumberError.set(ResUtil.getString(R.string.id_number_error));
                     return false;
                 }
             }
@@ -46,7 +45,7 @@ public class StaffFormValidator {
                     state.emailError.set("");
                     return true;
                 } else {
-                    state.emailError.set(ResourceUtil.getString(R.string.email_error));
+                    state.emailError.set(ResUtil.getString(R.string.email_error));
                     return false;
                 }
             }

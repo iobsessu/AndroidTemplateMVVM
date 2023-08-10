@@ -6,4 +6,7 @@ public interface Constants {
     int FORM_STATUS_ADD = 0;
     int FORM_STATUS_EDIT = 1;
 
+    String MALE = "1";
+    String FEMALE = "2";
+
 }

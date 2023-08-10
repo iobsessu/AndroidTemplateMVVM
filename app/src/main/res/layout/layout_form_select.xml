@@ -35,7 +35,7 @@
                 android:padding="@dimen/value_4"
                 android:text="@{item.value}"
                 android:gravity="center|end"
-                tools:text="1996-06-23"/>
+                tools:text="男"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
