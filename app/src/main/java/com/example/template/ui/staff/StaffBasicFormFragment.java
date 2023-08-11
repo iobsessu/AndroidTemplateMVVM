@@ -1,13 +1,10 @@
 package com.example.template.ui.staff;
 
-import android.content.DialogInterface;
 import android.widget.RadioGroup;
 
 import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.data.bean.FormItem;
-import com.example.template.data.bean.OptionItem;
-import com.example.template.data.bean.Staff;
 import com.example.template.ui.adapter.FormAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.components.datePicker.DatePicker;
@@ -20,10 +17,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.binding_recyclerview.adapter.BaseDataBindingAdapter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ArrayUtil;
@@ -36,12 +30,12 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
     @Override
     protected void initViewModel() {
         state = getActivityScopeViewModel(StaffFormState.class);
-        state.basicFormList.set(FormUtil.generateStaffBasicFormItemList(state.staff.get()));
+        state.basicFormList.set(FormUtil.generateBasicFormItemListByStaff(state.staff.get()));
     }
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        formAdapter = new FormAdapter(getActivity());
+        formAdapter = new FormAdapter(getActivity(), state.staff.get());
         ClickProxy clickProxy = new ClickProxy();
         formAdapter.setOnItemClickListener(clickProxy.onItemClickListener);
         return new DataBindingConfig(R.layout.fragment_staff_form_basic, BR.vm, state)
@@ -64,22 +58,27 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
             boolean a = (viewId == R.id.wrapper);
             switch (formItem.getFieldName()) {
                 case "gender":
-                    showGenderPicker(formItem);
+                    showGenderPicker(position);
                     break;
                 case "birthDate":
                     showBirthDatePicker(formItem);
                     break;
+                case "workingStatus":
+                    showWorkingStatusPicker(position);
+                    break;
             }
         };
 
-        private void showGenderPicker(FormItem formItem) {
-            String[] genders = ResUtil.getArray(R.array.gender_values);
-            int selectedIndex = ArrayUtil.indexOf(genders, formItem.getValue());
+        private void showGenderPicker(int position) {
+            String[] genderArray = ResUtil.getArray(R.array.gender_values);
+            int gender = state.staff.get().getGender();
+            int selectedIndex = gender < genderArray.length ? gender : -1;
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity())
                     .setTitle(R.string.please_select_gender)
-                    .setSingleChoiceItems(genders, selectedIndex, (dialogInterface, index) -> {
-                        formItem.setValue(genders[index]);
+                    .setSingleChoiceItems(genderArray, selectedIndex, (dialogInterface, index) -> {
+                        state.staff.get().setGender(index);
                         dialogInterface.dismiss();
+                        formAdapter.notifyItemChanged(position);
                     });
             builder.show();
         }
@@ -95,6 +94,20 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
                         formItem.setValue(MyDateUtil.format(selectedDate));
                     });
             datePicker.show();
+        }
+
+        private void showWorkingStatusPicker(int position) {
+            String[] workingStatusArray = ResUtil.getArray(R.array.working_status_values);
+            int workingStatus = state.staff.get().getWorkingStatus();
+            int selectedIndex = workingStatus < workingStatusArray.length ? workingStatus : -1;
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity())
+                    .setTitle(R.string.please_select_working_status)
+                    .setSingleChoiceItems(workingStatusArray, selectedIndex, (dialogInterface, index) -> {
+                        state.staff.get().setWorkingStatus(index);
+                        dialogInterface.dismiss();
+                        formAdapter.notifyItemChanged(position);
+                    });
+            builder.show();
         }
     }
 

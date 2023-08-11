@@ -5,4 +5,9 @@
         <item>男</item>
         <item>女</item>
     </string-array>
+
+    <string-array name="working_status_values">
+        <item>在职</item>
+        <item>离职</item>
+    </string-array>
 </resources>

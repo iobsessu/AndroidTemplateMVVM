@@ -11,18 +11,20 @@
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="8dp">
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="8dp">
+            android:layout_marginVertical="8dp"
+            android:gravity="center">
             <TextView
+                android:id="@+id/label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{item.label}"
+                android:textSize="@dimen/form_item_label"
+                android:textColor="@color/C_333333"
                 tools:text="label" />
             <Space
                 android:layout_width="0dp"

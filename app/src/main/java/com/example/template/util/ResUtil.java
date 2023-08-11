@@ -24,7 +24,7 @@ public class ResUtil {
     }
 
     public static String[] getArray(@ArrayRes int resId) {
-        return getResources().getStringArray(R.array.gender_values);
+        return getResources().getStringArray(resId);
     }
 
 }

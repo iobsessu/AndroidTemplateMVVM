@@ -25,14 +25,21 @@
                 android:text="@{item.label}"
                 android:textSize="@dimen/form_item_label"
                 android:textColor="@color/C_333333"
-                tools:text="label"/>
+                tools:text="label" />
             <Space
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"/>
-            <Switch
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/value"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:hint="@string/add_staff"
+                android:text="@{item.value}"
+                tools:text="1996-06-23"
+                android:textSize="14sp"
+                app:met_hideUnderline="true"
+                android:gravity="right"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
