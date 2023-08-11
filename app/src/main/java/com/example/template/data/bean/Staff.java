@@ -31,7 +31,7 @@ public class Staff extends BaseObservable implements Serializable {
     // 离职日期
     private Date leaveDate;
     // 工作状态（在职/离职）
-    private boolean workingStatus;
+    private int workingStatus;
     // 工作地点
     private String workLocation;
     // 工作时间（每周工作小时数）
@@ -54,7 +54,7 @@ public class Staff extends BaseObservable implements Serializable {
 
     public Staff(int id, String name, int gender, Date birthDate, String idNumber, String phoneNumber,
                  String email, String address, String departmentName, String positionName,
-                 String jobNumber, Date hireDate, Date leaveDate, boolean workingStatus,
+                 String jobNumber, Date hireDate, Date leaveDate, int workingStatus,
                  String workLocation, int weeklyWorkingHours, double salary,
                  int annualLeaveDays, String healthStatus, String emergencyContactName,
                  String emergencyContactPhoneNumber, String remark, String avatar) {
@@ -188,13 +188,14 @@ public class Staff extends BaseObservable implements Serializable {
     public void setLeaveDate(Date leaveDate) {
         this.leaveDate = leaveDate;
     }
-
-    public boolean isWorkingStatus() {
+    @Bindable
+    public int getWorkingStatus() {
         return workingStatus;
     }
 
-    public void setWorkingStatus(boolean workingStatus) {
+    public void setWorkingStatus(int workingStatus) {
         this.workingStatus = workingStatus;
+        notifyPropertyChanged(BR.workingStatus);
     }
 
     public String getWorkLocation() {

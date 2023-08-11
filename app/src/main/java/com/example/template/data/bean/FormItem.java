@@ -10,10 +10,11 @@ import java.util.Objects;
 
 public class FormItem extends BaseObservable implements Serializable {
 
-    public static final int INPUT = 0;
-    public static final int SWITCH = 1;
-    public static final int DATE = 2;
-    public static final int SINGLE_SELECT = 3;
+    public static final int INPUT_HORIZONTAL = 0;
+    public static final int INPUT_VERTICAL = 1;
+    public static final int SWITCH = 2;
+    public static final int DATE = 3;
+    public static final int SINGLE_SELECT = 4;
 
     public String label;
     private String value;
@@ -29,6 +30,11 @@ public class FormItem extends BaseObservable implements Serializable {
     public FormItem(String label, String value, String fieldName) {
         this.label = label;
         this.value = value;
+        this.fieldName = fieldName;
+    }
+
+    public FormItem(String label, String fieldName) {
+        this.label = label;
         this.fieldName = fieldName;
     }
 

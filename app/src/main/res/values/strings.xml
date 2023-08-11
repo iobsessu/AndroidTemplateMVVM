@@ -78,5 +78,6 @@
     <string name="unknown">未知</string>
 
     <string name="please_select_gender">请选择性别</string>
+    <string name="please_select_working_status">请选择工作状态</string>
 
 </resources>

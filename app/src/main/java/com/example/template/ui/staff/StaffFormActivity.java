@@ -77,7 +77,7 @@ public class StaffFormActivity extends BaseActivity {
     public class StaffFormClickProxy {
 
         public void submit() {
-            Toasty.info(StaffFormActivity.this, "Here is some info for you.", Toast.LENGTH_SHORT, true).show();
+            Toasty.info(StaffFormActivity.this, "姓名是：" + state.staff.get().getName(), Toast.LENGTH_SHORT, true).show();
             if (!StaffFormValidator.isValid(state)) {
 //                XToastUtils.error(R.string.save_failed);
                 return;
