@@ -2,6 +2,7 @@ package com.example.template.ui.adapter;
 
 import android.content.Context;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 
 import androidx.databinding.ViewDataBinding;
@@ -49,6 +50,7 @@ public class FormAdapter extends BaseDataBindingAdapter {
             LayoutFormInputHorizontalBinding binding = ((LayoutFormInputHorizontalBinding) dataBinding);
             (binding).setItem(formItem);
             bindTextChangeListener(binding, formItem.getFieldName());
+            bindTextFilter(binding, formItem.getFieldName());
         } else if (dataBinding instanceof LayoutFormSwitchBinding) {
             ((LayoutFormSwitchBinding) dataBinding).setItem((FormItem) item);
         } else if (dataBinding instanceof LayoutFormDateBinding) {
@@ -65,7 +67,6 @@ public class FormAdapter extends BaseDataBindingAdapter {
                     break;
             }
         }
-
     }
 
     @Override
@@ -75,23 +76,28 @@ public class FormAdapter extends BaseDataBindingAdapter {
     }
 
     private void bindTextChangeListener(LayoutFormInputHorizontalBinding binding, String fieldName) {
-            binding.value.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        binding.value.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                switch (fieldName) {
+                    case "name":
+                        staff.setName(editable.toString());
+                        break;
                 }
+            }
+        });
+    }
 
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+    private void bindTextFilter(LayoutFormInputHorizontalBinding binding, String fieldName) {
+        InputFilter[] filters1 = new InputFilter[1];
+        filters1[0] = new InputFilter.LengthFilter(18);
 
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                    switch (formItem.getFieldName()) {
-                        case "name":
-                    staff.setName(editable.toString());
-                }
-            });
+        binding.value.setFilters(filters1);
     }
 }
