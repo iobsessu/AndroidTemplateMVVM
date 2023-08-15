@@ -39,7 +39,8 @@
                 tools:text="1996-06-23"
                 android:textSize="14sp"
                 app:met_hideUnderline="true"
-                android:gravity="right"/>
+                android:gravity="right"
+                app:met_maxCharacters="18"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"

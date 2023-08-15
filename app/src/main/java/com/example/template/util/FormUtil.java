@@ -27,7 +27,6 @@ public class FormUtil {
         formItem.setType(FormItem.DATE);
         list.add(formItem);
         formItem = new FormItem(ResUtil.getString(R.string.id_number), "idNumber");
-        formItem.setType(FormItem.INPUT_VERTICAL);
         list.add(formItem);
         formItem = new FormItem(ResUtil.getString(R.string.phone_number), "phoneNumber");
         list.add(formItem);

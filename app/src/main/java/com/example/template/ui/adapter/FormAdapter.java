@@ -3,6 +3,7 @@ package com.example.template.ui.adapter;
 import android.content.Context;
 import android.text.Editable;
 import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextWatcher;
 
 import androidx.databinding.ViewDataBinding;
@@ -95,9 +96,26 @@ public class FormAdapter extends BaseDataBindingAdapter {
     }
 
     private void bindTextFilter(LayoutFormInputHorizontalBinding binding, String fieldName) {
-        InputFilter[] filters1 = new InputFilter[1];
-        filters1[0] = new InputFilter.LengthFilter(18);
+        switch (fieldName) {
+            case "idNumber":
+                InputFilter[] filters = new InputFilter[2];
+                filters[0] = new InputFilter.LengthFilter(18);
+                filters[1] =  (CharSequence charSequence, int i, int i1, Spanned spanned, int i2, int i3) -> {
+                    // 如果输入的是X，且已经输入了17位数字，允许输入
+                    if (spanned.length() == 17 && (charSequence.equals("X") || charSequence.equals("x"))) {
+                        return charSequence;
+                    }
+                    // 如果输入的是数字，且没有超过18位，允许输入
+                    if (charSequence.toString().matches("[0-9]") && spanned.length() < 18) {
+                        return charSequence;
+                    }
+                    // 其他情况，不允许输入
+                    return "";
+                };
+                binding.value.setFilters(filters);
+                break;
+        }
 
-        binding.value.setFilters(filters1);
+
     }
 }
