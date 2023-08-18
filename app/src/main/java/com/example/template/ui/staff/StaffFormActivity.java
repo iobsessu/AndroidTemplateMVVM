@@ -55,7 +55,7 @@ public class StaffFormActivity extends BaseActivity {
 
     @Override
     protected void initViewModel() {
-        state = getActivityScopeViewModel(StaffFormState.class);
+        state = getApplicationScopeViewModel(StaffFormState.class);
     }
 
     @Override

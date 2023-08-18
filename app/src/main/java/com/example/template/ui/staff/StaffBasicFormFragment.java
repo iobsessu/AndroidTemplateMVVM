@@ -29,7 +29,7 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
 
     @Override
     protected void initViewModel() {
-        state = getActivityScopeViewModel(StaffFormState.class);
+        state = getApplicationScopeViewModel(StaffFormState.class);
         state.basicFormList.set(FormUtil.generateBasicFormItemListByStaff(state.staff.get()));
     }
 

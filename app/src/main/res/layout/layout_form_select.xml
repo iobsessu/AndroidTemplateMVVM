@@ -37,6 +37,10 @@
                 android:padding="@dimen/value_4"
                 android:gravity="center|end"
                 tools:text="男"/>
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@mipmap/right_arrow" />
         </LinearLayout>
         <View
             android:layout_width="match_parent"

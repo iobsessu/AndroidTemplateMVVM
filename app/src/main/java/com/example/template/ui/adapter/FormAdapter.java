@@ -38,7 +38,7 @@ public class FormAdapter extends BaseDataBindingAdapter {
         } else if (viewType == FormItem.SINGLE_SELECT) {
             return R.layout.layout_form_select;
         } else if (viewType == FormItem.INPUT_VERTICAL) {
-            return R.layout.layout_form_input_vertical;
+            return R.layout.layout_form_input_horizontal;
         } else {
             return R.layout.layout_form_input_horizontal;
         }
@@ -114,6 +114,9 @@ public class FormAdapter extends BaseDataBindingAdapter {
                 };
                 binding.value.setFilters(filters);
                 break;
+            default:
+                binding.value.setFilters(new InputFilter[]{});
+
         }
 
 
