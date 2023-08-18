@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.example.template.data.bean.FormItem" />
+    </data>
+    <LinearLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.example.template.ui.components.supertextview.SuperTextView
+            android:id="@+id/text_view"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:label_string="@{item.label}"
+            app:value_string="@{item.value}"
+            app:show_divider="true" />
+    </LinearLayout>
+</layout>
+

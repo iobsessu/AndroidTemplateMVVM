@@ -43,8 +43,8 @@
     <string name="hire_date">入职日期</string>
     <string name="leave_date">离职日期</string>
     <string name="work_location">工作地点</string>
-    <string name="weekly_hours">每周工作时间（小时）</string>
-    <string name="annual_leave_day">年假（天）</string>
+    <string name="weekly_hours">每周工作时间</string>
+    <string name="annual_leave_day">年假</string>
     <string name="health_status">健康状态</string>
 
 
@@ -79,5 +79,7 @@
 
     <string name="please_select_gender">请选择性别</string>
     <string name="please_select_working_status">请选择工作状态</string>
-
+    <string name="yuan">元</string>
+    <string name="day">天</string>
+    <string name="hour">小时</string>
 </resources>

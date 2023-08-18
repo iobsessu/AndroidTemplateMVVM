@@ -29,6 +29,7 @@ import com.kunminx.architecture.ui.page.BaseFragment;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 import com.kunminx.architecture.ui.page.StateHolder;
 import com.kunminx.architecture.ui.state.State;
+import com.kunminx.architecture.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,14 +97,14 @@ public class StaffListFragment extends BaseViewPagerFragment {
 
     public class ClickProxy {
         public void toAddStaff() {
-//            StaffFormActivity.actionStart(getActivity());
-            BarcodeScannerOptions options = new BarcodeScannerOptions.Builder()
-                    .setBarcodeFormats(Barcode.FORMAT_QR_CODE, Barcode.FORMAT_AZTEC).build();
+            StaffFormActivity.actionStart(getActivity());
+//            BarcodeScannerOptions options = new BarcodeScannerOptions.Builder()
+//                    .setBarcodeFormats(Barcode.FORMAT_QR_CODE, Barcode.FORMAT_AZTEC).build();
 //            Intent intent = new Intent(this, ChooserAc)
         }
 
         public void toEditStaff(Staff staff) {
-            StaffFormActivity.actionStart(getActivity(), staff);
+            StaffDetailActivity.actionStart(getActivity(), staff);
         }
 
     }

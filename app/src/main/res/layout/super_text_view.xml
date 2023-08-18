@@ -25,4 +25,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:dividerInsetStart="@dimen/margin_medium"/>
 
+    <LinearLayout
+        android:id="@+id/value_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <TextView
+            android:id="@+id/value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="具体值"/>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

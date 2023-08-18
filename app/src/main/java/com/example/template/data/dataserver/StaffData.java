@@ -15,11 +15,11 @@ public class StaffData {
         List<Staff> staffList = new ArrayList<>();
         Staff staff1 = new Staff(1, "张三", 1, DateUtil.parse("1996-06-22"), "110101199001010001", "13800000001",
                 "zhangsan@example.com", "北京市海淀区", "技术部", "软件工程师", "1001",
-                new Date(2020, 1, 1), null, 0, "北京市海淀区", 40,
+                DateUtil.parse("2020-03-16", "yyyy-MM-dd"), null, 0, "北京市海淀区", 40,
                 8000.0, 10, "良好", "李四", "13800000002", null, "https://www.bing.com/th?id=OHR.SnowdoniaNational_ZH-CN7415540950_1920x1080.jpg");
         Staff staff2 = new Staff(2, "李四", 2, DateUtil.parse("1996-06-22"), "110101199001010002", "13800000003",
                 "lisi@example.com", "北京市朝阳区", "人事部", "人力资源专员", "1002",
-                new Date(2019, 1, 1), null, 1, "北京市朝阳区", 40,
+                DateUtil.parse("2020-03-16", "yyyy-MM-dd"), DateUtil.parse("2023-05-21", "yyyy-MM-dd"), 1, "北京市朝阳区", 40,
                 6000.0, 15, "良好", "王五", "13800000004", null, "https://www.bing.com/th?id=OHR.EuropeFromISS_ZH-CN0722816540_1920x1080.jpg");
         Staff staff3 = new Staff(3, "王五", 0, null, "110101199001010003", "13800000005",
                 "wangwu@example.com", "北京市东城区", "财务部", "会计师", "1003",
@@ -120,7 +120,7 @@ public class StaffData {
                 40,
                 95000.0,15,"良好",null,null,null, "https://www.bing.com/th?id=OHR.EuropeFromISS_ZH-CN0722816540_1920x1080.jpg");
 
-//        staffList.add(staff1);
+        staffList.add(staff1);
         staffList.add(staff2);
         staffList.add(staff3);
         staffList.add(staff4);

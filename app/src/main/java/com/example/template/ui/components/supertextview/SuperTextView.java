@@ -2,17 +2,15 @@ package com.example.template.ui.components.supertextview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
 import com.example.template.R;
 import com.google.android.material.divider.MaterialDivider;
@@ -34,6 +32,8 @@ public class SuperTextView extends ConstraintLayout {
 
     private ConstraintLayout wrapper;
     private TextView labelView;
+    private TextView valueView;
+    private LinearLayout valueLayout;
     private MaterialDivider materialDivider;
 
     public SuperTextView(@NonNull Context context) {
@@ -72,9 +72,12 @@ public class SuperTextView extends ConstraintLayout {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MySuperTextView, R.attr.SuperTextViewStyle, 0);
         backgroundColor = typedArray.getColor(R.styleable.MySuperTextView_background_color, 0);
         labelColor = typedArray.getColor(R.styleable.MySuperTextView_label_color, 0);
+        valueColor = typedArray.getColor(R.styleable.MySuperTextView_value_color, 0);
         showDivider = typedArray.getBoolean(R.styleable.MySuperTextView_show_divider, false);
         labelTextSize = typedArray.getDimensionPixelSize(R.styleable.MySuperTextView_label_text_size, 0);
+        valueTextSize = typedArray.getDimensionPixelSize(R.styleable.MySuperTextView_value_text_size, 0);
         labelString = typedArray.getString(R.styleable.MySuperTextView_label_string);
+        valueString = typedArray.getString(R.styleable.MySuperTextView_value_string);
         typedArray.recycle();
     }
 
@@ -82,6 +85,8 @@ public class SuperTextView extends ConstraintLayout {
         LayoutInflater.from(context).inflate(R.layout.super_text_view, this);
         wrapper = findViewById(R.id.wrapper);
         labelView = findViewById(R.id.label);
+        valueView = findViewById(R.id.value);
+        valueLayout = findViewById(R.id.value_layout);
         materialDivider = findViewById(R.id.divider);
 
         initViewByAttrs();
@@ -92,7 +97,29 @@ public class SuperTextView extends ConstraintLayout {
         labelView.setText(labelString);
         labelView.setTextColor(labelColor);
         labelView.setTextSize(TypedValue.COMPLEX_UNIT_PX, labelTextSize);
+        valueView.setText(valueString);
+        valueView.setTextColor(valueColor);
+        valueView.setTextSize(TypedValue.COMPLEX_UNIT_PX, labelTextSize);
 
+        refreshDivider();
+    }
+
+    public void setLabelString(String str) {
+        this.labelString = str;
+        labelView.setText(str);
+    }
+
+    public void setValueString(String str) {
+        this.valueString = str;
+        valueView.setText(str);
+    }
+
+    public void setShowDivider(boolean visible) {
+        this.showDivider = visible;
+        refreshDivider();
+    }
+
+    private void refreshDivider() {
         if (showDivider) {
             materialDivider.setVisibility(VISIBLE);
         } else {
@@ -100,4 +127,7 @@ public class SuperTextView extends ConstraintLayout {
         }
     }
 
+    public LinearLayout getValueLayout() {
+        return valueLayout;
+    }
 }

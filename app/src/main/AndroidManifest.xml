@@ -28,6 +28,7 @@
         <activity android:name=".ui.MainActivity" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.play.PlayingActivity" />
         <activity android:name=".ui.staff.StaffFormActivity" android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.staff.StaffDetailActivity" />
 
     </application>
 
