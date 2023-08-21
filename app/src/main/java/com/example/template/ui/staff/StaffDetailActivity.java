@@ -32,7 +32,7 @@ public class StaffDetailActivity extends BaseActivity {
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         getParameters();
-        tableAdapter = new TableAdapter(this);
+        tableAdapter = new TableAdapter(this, state.staff.get());
         state.basicFormList.set(FormUtil.generateBasicFormItemListByStaff(state.staff.get()));
         return new DataBindingConfig(R.layout.activity_staff_detail, BR.vm, state)
                 .addBindingParam(BR.click, new StaffDetailActivity.ClickProxy())

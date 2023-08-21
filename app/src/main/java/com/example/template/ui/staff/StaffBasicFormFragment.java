@@ -5,7 +5,7 @@ import android.widget.RadioGroup;
 import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.data.bean.FormItem;
-import com.example.template.ui.adapter.FormAdapter;
+import com.example.template.ui.adapter.BasicFormAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.components.datePicker.DatePicker;
 import com.example.template.ui.staff.vm.StaffFormState;
@@ -25,7 +25,8 @@ import cn.hutool.core.util.ArrayUtil;
 public class StaffBasicFormFragment extends BaseViewPagerFragment {
 
     private StaffFormState state;
-    public FormAdapter formAdapter;
+    private ClickProxy clickProxy;
+    public BasicFormAdapter formAdapter;
 
     @Override
     protected void initViewModel() {
@@ -35,8 +36,8 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        formAdapter = new FormAdapter(getActivity(), state.staff.get());
-        ClickProxy clickProxy = new ClickProxy();
+        formAdapter = new BasicFormAdapter(getActivity(), state.staff.get());
+        clickProxy = new ClickProxy();
         formAdapter.setOnItemClickListener(clickProxy.onItemClickListener);
         return new DataBindingConfig(R.layout.fragment_staff_form_basic, BR.vm, state)
                 .addBindingParam(BR.click, clickProxy)

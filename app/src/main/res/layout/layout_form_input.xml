@@ -24,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@{item.hint}"
-            android:text="@={item.value}"
             android:textSize="16sp"
             app:met_underlineColor="@color/divider"
             app:met_clearButton="true"

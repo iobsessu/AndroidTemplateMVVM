@@ -130,4 +130,8 @@ public class SuperTextView extends ConstraintLayout {
     public LinearLayout getValueLayout() {
         return valueLayout;
     }
+
+    public TextView getValueView() {
+        return valueView;
+    }
 }

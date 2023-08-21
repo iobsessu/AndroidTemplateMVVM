@@ -28,5 +28,7 @@
     <color name="edit_text_underline">#666666</color>
 
     <color name="play_progress">#1a1a1a</color>
+    <color name="successful">#388E3C</color>
+    <color name="error">#D50000</color>
 
 </resources>

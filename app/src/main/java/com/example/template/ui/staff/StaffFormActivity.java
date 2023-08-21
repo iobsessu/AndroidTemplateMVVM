@@ -27,12 +27,7 @@ public class StaffFormActivity extends BaseActivity {
     private StaffFormState state;
 
     public static void actionStart(Context context) {
-        actionStart(context, null);
-    }
-
-    public static void actionStart(Context context, Staff staff) {
         Intent intent = new Intent(context, StaffFormActivity.class);
-        intent.putExtra(Constants.STAFF_KEY, staff);
         context.startActivity(intent);
     }
 
@@ -60,18 +55,8 @@ public class StaffFormActivity extends BaseActivity {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        getParameters();
         return new DataBindingConfig(R.layout.activity_staff_form, BR.vm, state)
                 .addBindingParam(BR.click, new StaffFormClickProxy());
-    }
-
-    private void getParameters() {
-        Intent intent = getIntent();
-        Staff staff = (Staff) intent.getSerializableExtra(Constants.STAFF_KEY);
-        if (staff != null) {
-            state.staff.set(staff);
-            state.formStatus.set(Constants.FORM_STATUS_EDIT);
-        }
     }
 
     public class StaffFormClickProxy {

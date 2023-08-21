@@ -20,11 +20,10 @@ import com.example.template.util.FormUtil;
 import com.kunminx.architecture.ui.state.State;
 import com.kunminx.binding_recyclerview.adapter.BaseDataBindingAdapter;
 
-public class FormAdapter extends BaseDataBindingAdapter {
+public class BasicFormAdapter extends BaseDataBindingAdapter {
 
-    Staff staff;
-
-    public FormAdapter(Context context, Staff staff) {
+    private Staff staff;
+    public BasicFormAdapter(Context context, Staff staff) {
         super(context, DiffUtils.getInstance().getFormItemCallback());
         this.staff = staff;
     }
@@ -37,10 +36,8 @@ public class FormAdapter extends BaseDataBindingAdapter {
             return R.layout.layout_form_date;
         } else if (viewType == FormItem.SINGLE_SELECT) {
             return R.layout.layout_form_select;
-        } else if (viewType == FormItem.INPUT_VERTICAL) {
-            return R.layout.layout_form_input_horizontal;
         } else {
-            return R.layout.layout_form_input_horizontal;
+            return R.layout.layout_form_input;
         }
     }
 
