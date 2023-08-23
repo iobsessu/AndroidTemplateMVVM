@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextWatcher;
+import android.view.View;
 
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import com.example.template.R;
 import com.example.template.data.bean.FormItem;
 import com.example.template.data.bean.Staff;
 import com.example.template.databinding.LayoutFormDateBinding;
+import com.example.template.databinding.LayoutFormInputBinding;
 import com.example.template.databinding.LayoutFormInputHorizontalBinding;
 import com.example.template.databinding.LayoutFormSelectBinding;
 import com.example.template.databinding.LayoutFormSwitchBinding;
@@ -20,9 +22,10 @@ import com.example.template.util.FormUtil;
 import com.kunminx.architecture.ui.state.State;
 import com.kunminx.binding_recyclerview.adapter.BaseDataBindingAdapter;
 
-public class BasicFormAdapter extends BaseDataBindingAdapter {
+public class BasicFormAdapter extends BaseDataBindingAdapter<FormItem, ViewDataBinding> {
 
     private Staff staff;
+
     public BasicFormAdapter(Context context, Staff staff) {
         super(context, DiffUtils.getInstance().getFormItemCallback());
         this.staff = staff;
@@ -42,28 +45,18 @@ public class BasicFormAdapter extends BaseDataBindingAdapter {
     }
 
     @Override
-    protected void onBindItem(ViewDataBinding dataBinding, Object item, RecyclerView.ViewHolder holder) {
-        FormItem formItem = (FormItem) item;
-        if (dataBinding instanceof LayoutFormInputHorizontalBinding) {
-            LayoutFormInputHorizontalBinding binding = ((LayoutFormInputHorizontalBinding) dataBinding);
-            (binding).setItem(formItem);
-            bindTextChangeListener(binding, formItem.getFieldName());
-            bindTextFilter(binding, formItem.getFieldName());
+    protected void onBindItem(ViewDataBinding dataBinding, FormItem formItem, RecyclerView.ViewHolder holder) {
+        if (dataBinding instanceof LayoutFormInputBinding) {
+            LayoutFormInputBinding binding = ((LayoutFormInputBinding) dataBinding);
+            renderInput(binding, formItem, holder);
         } else if (dataBinding instanceof LayoutFormSwitchBinding) {
-            ((LayoutFormSwitchBinding) dataBinding).setItem((FormItem) item);
+            ((LayoutFormSwitchBinding) dataBinding).setItem(formItem);
         } else if (dataBinding instanceof LayoutFormDateBinding) {
-            ((LayoutFormDateBinding) dataBinding).setItem((FormItem) item);
+            LayoutFormDateBinding binding = (LayoutFormDateBinding) dataBinding;
+            renderDate(binding, formItem, holder);
         } else if (dataBinding instanceof LayoutFormSelectBinding) {
             LayoutFormSelectBinding binding = ((LayoutFormSelectBinding) dataBinding);
-            (binding).setItem(formItem);
-            switch (formItem.getFieldName()) {
-                case "gender":
-                    binding.value.setText(FormUtil.formatGender(staff.getGender()));
-                    break;
-                case "workingStatus":
-                    binding.value.setText(FormUtil.formatWorkStatus(staff.getWorkingStatus()));
-                    break;
-            }
+            renderSelect(binding, formItem, holder);
         }
     }
 
@@ -73,7 +66,41 @@ public class BasicFormAdapter extends BaseDataBindingAdapter {
         return formItem.getType();
     }
 
-    private void bindTextChangeListener(LayoutFormInputHorizontalBinding binding, String fieldName) {
+    private void renderInput(LayoutFormInputBinding binding, FormItem formItem, RecyclerView.ViewHolder holder) {
+        binding.setItem(formItem);
+        switch (formItem.getFieldName()) {
+            case "name":
+                binding.value.setText(staff.getName());
+                break;
+            case "idNumber":
+                binding.value.setText(staff.getIdNumber());
+                break;
+            case "phoneNumber":
+                binding.value.setText(staff.getPhoneNumber());
+                break;
+            case "email":
+                binding.value.setText(staff.getEmail());
+                break;
+            case "address":
+                binding.value.setText(staff.getAddress());
+                break;
+            case "departmentName":
+                binding.value.setText(staff.getDepartmentName());
+                break;
+            case "positionName":
+                binding.value.setText(staff.getPositionName());
+                break;
+            case "jobNumber":
+                binding.value.setText(staff.getJobNumber());
+                break;
+            case "workLocation":
+                binding.value.setText(staff.getWorkLocation());
+                break;
+        }
+        bindTextChangeListener(binding, formItem.getFieldName());
+    }
+
+    private void bindTextChangeListener(LayoutFormInputBinding binding, String fieldName) {
         binding.value.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -83,39 +110,43 @@ public class BasicFormAdapter extends BaseDataBindingAdapter {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                String value = editable.toString();
                 switch (fieldName) {
                     case "name":
-                        staff.setName(editable.toString());
+                        staff.setName(value);
+                        break;
+                    case "idNumber":
+                        staff.setIdNumber(value);
                         break;
                 }
             }
         });
     }
 
-    private void bindTextFilter(LayoutFormInputHorizontalBinding binding, String fieldName) {
-        switch (fieldName) {
-            case "idNumber":
-                InputFilter[] filters = new InputFilter[2];
-                filters[0] = new InputFilter.LengthFilter(18);
-                filters[1] =  (CharSequence charSequence, int i, int i1, Spanned spanned, int i2, int i3) -> {
-                    // 如果输入的是X，且已经输入了17位数字，允许输入
-                    if (spanned.length() == 17 && (charSequence.equals("X") || charSequence.equals("x"))) {
-                        return charSequence;
-                    }
-                    // 如果输入的是数字，且没有超过18位，允许输入
-                    if (charSequence.toString().matches("[0-9]") && spanned.length() < 18) {
-                        return charSequence;
-                    }
-                    // 其他情况，不允许输入
-                    return "";
-                };
-                binding.value.setFilters(filters);
+    private void renderDate(LayoutFormDateBinding binding, FormItem formItem, RecyclerView.ViewHolder holder) {
+        binding.setItem(formItem);
+        switch (formItem.getFieldName()) {
+            case "birthDate":
+                binding.value.setText(FormUtil.appendBirthDateStr(staff.getBirthDate()));
                 break;
-            default:
-                binding.value.setFilters(new InputFilter[]{});
-
         }
+        binding.value.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOnItemClickListener.onItemClick(view.getId(), formItem, getCurrentList().indexOf(formItem));
+            }
+        });
+    }
 
-
+    private void renderSelect(LayoutFormSelectBinding binding, FormItem formItem, RecyclerView.ViewHolder holder) {
+        (binding).setItem(formItem);
+        switch (formItem.getFieldName()) {
+            case "gender":
+                binding.value.setText(FormUtil.formatGender(staff.getGender()));
+                break;
+            case "workingStatus":
+                binding.value.setText(FormUtil.formatWorkStatus(staff.getWorkingStatus()));
+                break;
+        }
     }
 }

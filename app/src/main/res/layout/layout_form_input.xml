@@ -12,21 +12,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{item.label}"
-            android:textSize="@dimen/form_item_label"
-            android:textColor="@color/C_333333"
-            tools:text="姓名"/>
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@{item.hint}"
-            android:textSize="16sp"
-            app:met_underlineColor="@color/divider"
-            app:met_clearButton="true"
-            app:met_hideUnderline="true"/>
+            android:layout_marginTop="8dp">
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.label}"
+                android:textSize="@dimen/form_item_label"
+                android:textColor="@color/C_333333"
+                tools:text="姓名"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@{item.hint}"
+                android:textSize="16sp"
+                app:met_clearButton="true"/>
+        </LinearLayout>
     </LinearLayout>
 </layout>

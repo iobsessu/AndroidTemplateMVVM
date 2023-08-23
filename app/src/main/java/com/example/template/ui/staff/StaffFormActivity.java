@@ -9,17 +9,19 @@ import androidx.annotation.Nullable;
 
 import com.example.template.BR;
 import com.example.template.R;
-import com.example.template.common.Constants;
 import com.example.template.data.bean.Staff;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.staff.vm.StaffFormState;
+import com.example.template.util.CloneUtils;
 import com.example.template.util.StaffFormValidator;
 import com.kunminx.architecture.ui.page.BaseActivity;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
 
+import java.nio.file.CopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.hutool.core.bean.BeanUtil;
 import es.dmoral.toasty.Toasty;
 
 public class StaffFormActivity extends BaseActivity {
@@ -55,6 +57,7 @@ public class StaffFormActivity extends BaseActivity {
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
+        state.editingStaff.set(CloneUtils.deepClone(state.originStaff.get()));
         return new DataBindingConfig(R.layout.activity_staff_form, BR.vm, state)
                 .addBindingParam(BR.click, new StaffFormClickProxy());
     }
@@ -62,7 +65,7 @@ public class StaffFormActivity extends BaseActivity {
     public class StaffFormClickProxy {
 
         public void submit() {
-            Toasty.info(StaffFormActivity.this, "姓名是：" + state.staff.get().getName(), Toast.LENGTH_SHORT, true).show();
+            Toasty.info(StaffFormActivity.this, "姓名是：" + state.originStaff.get().getName(), Toast.LENGTH_SHORT, true).show();
             if (!StaffFormValidator.isValid(state)) {
 //                XToastUtils.error(R.string.save_failed);
                 return;

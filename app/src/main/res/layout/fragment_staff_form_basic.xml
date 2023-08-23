@@ -13,7 +13,7 @@
             type="com.example.template.ui.staff.StaffBasicFormFragment.ClickProxy" />
         <variable
             name="formAdapter"
-            type="com.example.template.ui.adapter.FormAdapter" />
+            type="com.example.template.ui.adapter.BasicFormAdapter" />
 
         <import type="com.example.template.util.MyDateUtil" />
     </data>
