@@ -32,8 +32,8 @@ public class StaffDetailActivity extends BaseActivity {
     @Override
     protected DataBindingConfig getDataBindingConfig() {
         getParameters();
-        tableAdapter = new TableAdapter(this);
-        state.basicFormList.set(FormUtil.generateBasicFormItemListByStaff(state.staff.get()));
+        tableAdapter = new TableAdapter(this, state.originStaff.get());
+        state.basicFormList.set(FormUtil.generateBasicFormItemListByStaff(state.originStaff.get()));
         return new DataBindingConfig(R.layout.activity_staff_detail, BR.vm, state)
                 .addBindingParam(BR.click, new StaffDetailActivity.ClickProxy())
                 .addBindingParam(BR.tableAdapter, tableAdapter);
@@ -43,7 +43,7 @@ public class StaffDetailActivity extends BaseActivity {
         Intent intent = getIntent();
         Staff staff = (Staff) intent.getSerializableExtra(Constants.STAFF_KEY);
         if (staff != null) {
-            state.staff.set(staff);
+            state.originStaff.set(staff);
             state.formStatus.set(Constants.FORM_STATUS_EDIT);
         }
     }

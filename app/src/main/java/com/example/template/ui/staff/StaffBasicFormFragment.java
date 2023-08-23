@@ -5,7 +5,7 @@ import android.widget.RadioGroup;
 import com.example.template.BR;
 import com.example.template.R;
 import com.example.template.data.bean.FormItem;
-import com.example.template.ui.adapter.FormAdapter;
+import com.example.template.ui.adapter.BasicFormAdapter;
 import com.example.template.ui.base.BaseViewPagerFragment;
 import com.example.template.ui.components.datePicker.DatePicker;
 import com.example.template.ui.staff.vm.StaffFormState;
@@ -20,23 +20,23 @@ import com.kunminx.binding_recyclerview.adapter.BaseDataBindingAdapter;
 import java.util.Date;
 
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.util.ArrayUtil;
 
 public class StaffBasicFormFragment extends BaseViewPagerFragment {
 
     private StaffFormState state;
-    public FormAdapter formAdapter;
+    private ClickProxy clickProxy;
+    public BasicFormAdapter formAdapter;
 
     @Override
     protected void initViewModel() {
         state = getApplicationScopeViewModel(StaffFormState.class);
-        state.basicFormList.set(FormUtil.generateBasicFormItemListByStaff(state.staff.get()));
+        state.basicFormList.set(FormUtil.generateBasicFormItemListByStaff(state.editingStaff.get()));
     }
 
     @Override
     protected DataBindingConfig getDataBindingConfig() {
-        formAdapter = new FormAdapter(getActivity(), state.staff.get());
-        ClickProxy clickProxy = new ClickProxy();
+        formAdapter = new BasicFormAdapter(getActivity(), state.editingStaff.get());
+        clickProxy = new ClickProxy();
         formAdapter.setOnItemClickListener(clickProxy.onItemClickListener);
         return new DataBindingConfig(R.layout.fragment_staff_form_basic, BR.vm, state)
                 .addBindingParam(BR.click, clickProxy)
@@ -55,13 +55,12 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
 
 
         public BaseDataBindingAdapter.OnItemClickListener<FormItem> onItemClickListener = (viewId, formItem, position) -> {
-            boolean a = (viewId == R.id.wrapper);
             switch (formItem.getFieldName()) {
                 case "gender":
                     showGenderPicker(position);
                     break;
                 case "birthDate":
-                    showBirthDatePicker(formItem);
+                    showBirthDatePicker(position);
                     break;
                 case "workingStatus":
                     showWorkingStatusPicker(position);
@@ -71,19 +70,19 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
 
         private void showGenderPicker(int position) {
             String[] genderArray = ResUtil.getArray(R.array.gender_values);
-            int gender = state.staff.get().getGender();
+            int gender = state.editingStaff.get().getGender();
             int selectedIndex = gender < genderArray.length ? gender : -1;
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity())
                     .setTitle(R.string.please_select_gender)
                     .setSingleChoiceItems(genderArray, selectedIndex, (dialogInterface, index) -> {
-                        state.staff.get().setGender(index);
+                        state.editingStaff.get().setGender(index);
                         dialogInterface.dismiss();
                         formAdapter.notifyItemChanged(position);
                     });
             builder.show();
         }
 
-        public void showBirthDatePicker(FormItem formItem) {
+        public void showBirthDatePicker(int position) {
             long today = MaterialDatePicker.todayInUtcMilliseconds();
             DatePicker datePicker = new DatePicker(getActivity())
                     .setMax(today)
@@ -91,19 +90,20 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
                     .setEnd(MaterialDatePicker.todayInUtcMilliseconds())
                     .setOnPositiveListener((selection) -> {
                         Date selectedDate = DateUtil.date((Long)selection);
-                        formItem.setValue(MyDateUtil.format(selectedDate));
+                        state.editingStaff.get().setBirthDate(selectedDate);
+                        formAdapter.notifyItemChanged(position);
                     });
             datePicker.show();
         }
 
         private void showWorkingStatusPicker(int position) {
             String[] workingStatusArray = ResUtil.getArray(R.array.working_status_values);
-            int workingStatus = state.staff.get().getWorkingStatus();
+            int workingStatus = state.editingStaff.get().getWorkingStatus();
             int selectedIndex = workingStatus < workingStatusArray.length ? workingStatus : -1;
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity())
                     .setTitle(R.string.please_select_working_status)
                     .setSingleChoiceItems(workingStatusArray, selectedIndex, (dialogInterface, index) -> {
-                        state.staff.get().setWorkingStatus(index);
+                        state.editingStaff.get().setWorkingStatus(index);
                         dialogInterface.dismiss();
                         formAdapter.notifyItemChanged(position);
                     });

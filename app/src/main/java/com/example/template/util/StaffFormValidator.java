@@ -24,8 +24,7 @@ public class StaffFormValidator {
     public static boolean isValidIdNumber(StaffFormState state) {
         for (FormItem formItem: state.basicFormList.get()) {
             if (formItem.getFieldName().equals("idNumber")) {
-                String value = formItem.getValue();
-                if (IdcardUtil.isValidCard(value)) {
+                if (IdcardUtil.isValidCard(state.originStaff.get().getIdNumber())) {
                     state.idNumberError.set("");
                     return true;
                 } else {
@@ -40,8 +39,7 @@ public class StaffFormValidator {
     public static boolean isValidEmail(StaffFormState state) {
         for (FormItem formItem: state.basicFormList.get()) {
             if (formItem.getFieldName().equals("email")) {
-                String value = formItem.getValue();
-                if (ReUtil.isMatch(RegexPool.EMAIL, value)) {
+                if (ReUtil.isMatch(RegexPool.EMAIL, state.originStaff.get().getEmail())) {
                     state.emailError.set("");
                     return true;
                 } else {

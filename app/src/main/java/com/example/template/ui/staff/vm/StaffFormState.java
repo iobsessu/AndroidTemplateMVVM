@@ -15,7 +15,8 @@ public class StaffFormState extends StateHolder {
 
     public State<List<BaseViewPagerFragment>> fragmentList = new State<>(new ArrayList<>());
     public State<String> searchValue = new State<>("测试");
-    public State<Staff> staff = new State<>(new Staff());
+    public State<Staff> originStaff = new State<>(new Staff());
+    public State<Staff> editingStaff = new State<>(new Staff());
     public State<List<OptionItem>> genderOptionList = new State<>(new ArrayList<>());
 
     public State<String> idNumberError = new State<>("");

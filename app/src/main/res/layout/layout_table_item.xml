@@ -17,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             app:label_string="@{item.label}"
-            app:value_string="@{item.value}"
             app:show_divider="true" />
     </LinearLayout>
 </layout>

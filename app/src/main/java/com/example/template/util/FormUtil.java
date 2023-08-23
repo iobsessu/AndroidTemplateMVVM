@@ -17,7 +17,7 @@ public class FormUtil {
 
     public static List<FormItem> generateBasicFormItemListByStaff(@NonNull Staff staff) {
         List<FormItem> basicFormItemList = generateStaffBasicFormItemList(staff);
-        return setValueToForm(basicFormItemList, staff);
+        return basicFormItemList;
     }
 
     public static List<FormItem> generateStaffBasicFormItemList(Staff staff) {
@@ -66,75 +66,6 @@ public class FormUtil {
         formItem = new FormItem(ResUtil.getString(R.string.health_status), "healthStatus");
         list.add(formItem);
         return list;
-    }
-
-    /**
-     * 将staff的属性值格式化后set到formItem，方便在adapter中直接显示。
-     * 注：在form中请勿读取此值显示。
-     * @param formItemList
-     * @param staff
-     * @return
-     */
-    public static List<FormItem> setValueToForm(@NonNull List<FormItem> formItemList, Staff staff) {
-        for (FormItem item: formItemList) {
-            switch (item.getFieldName()) {
-                case "name":
-                    item.setValue(staff.getName());
-                    break;
-                case "gender":
-                    item.setValue(formatGender(staff.getGender()));
-                    break;
-                case "birthDate":
-                    item.setValue(appendBirthDateStr(staff.getBirthDate()));
-                    break;
-                case "idNumber":
-                    item.setValue(staff.getIdNumber());
-                    break;
-                case "phoneNumber":
-                    item.setValue(staff.getPhoneNumber());
-                    break;
-                case "email":
-                    item.setValue(staff.getEmail());
-                    break;
-                case "address":
-                    item.setValue(staff.getAddress());
-                    break;
-                case "departmentName":
-                    item.setValue(staff.getDepartmentName());
-                    break;
-                case "positionName":
-                    item.setValue(staff.getPositionName());
-                    break;
-                case "jobNumber":
-                    item.setValue(staff.getJobNumber());
-                    break;
-                case "hireDate":
-                    item.setValue(MyDateUtil.format(staff.getHireDate()));
-                    break;
-                case "workingStatus":
-                    item.setValue(formatWorkStatus(staff.getWorkingStatus()));
-                    break;
-                case "leaveDate":
-                    item.setValue(MyDateUtil.format(staff.getLeaveDate()));
-                    break;
-                case "workLocation":
-                    item.setValue(staff.getWorkLocation());
-                    break;
-                case "weeklyWorkingHours":
-                    item.setValue(staff.getWeeklyWorkingHours() + ResUtil.getString(R.string.hour));
-                    break;
-                case "salary":
-                    item.setValue(NumberUtil.decimalFormat("###,###.00" + ResUtil.getString(R.string.yuan), staff.getSalary()));
-                    break;
-                case "annualLeaveDays":
-                    item.setValue(staff.getAnnualLeaveDays() + ResUtil.getString(R.string.day));
-                    break;
-                case "healthStatus":
-                    item.setValue(staff.getHealthStatus() + "");
-                    break;
-            }
-        }
-        return formItemList;
     }
 
     public static String appendBirthDateStr(Date birthDate) {
