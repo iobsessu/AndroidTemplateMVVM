@@ -25,10 +25,10 @@ public class StaffFormValidator {
         for (FormItem formItem: state.basicFormList.get()) {
             if (formItem.getFieldName().equals("idNumber")) {
                 if (IdcardUtil.isValidCard(state.originStaff.get().getIdNumber())) {
-                    state.idNumberError.set("");
+                    FormUtil.setErrorMessageByField(state.basicFormList.get(), "idNumber", "");
                     return true;
                 } else {
-                    state.idNumberError.set(ResUtil.getString(R.string.id_number_error));
+                    FormUtil.setErrorMessageByField(state.basicFormList.get(), "idNumber", ResUtil.getString(R.string.id_number_error));
                     return false;
                 }
             }
@@ -40,10 +40,10 @@ public class StaffFormValidator {
         for (FormItem formItem: state.basicFormList.get()) {
             if (formItem.getFieldName().equals("email")) {
                 if (ReUtil.isMatch(RegexPool.EMAIL, state.originStaff.get().getEmail())) {
-                    state.emailError.set("");
+//                    state.emailError.set("");
                     return true;
                 } else {
-                    state.emailError.set(ResUtil.getString(R.string.email_error));
+//                    state.emailError.set(ResUtil.getString(R.string.email_error));
                     return false;
                 }
             }

@@ -38,6 +38,7 @@ public class TableAdapter extends SimpleDataBindingAdapter<FormItem, LayoutTable
         }
 
         TextView valueView = binding.textView.getValueView();
+        valueView.setTextColor(ResUtil.getColor(R.color.C_333333));
         switch (item.getFieldName()) {
             case "name":
                 valueView.setText(staff.getName());
@@ -99,5 +100,9 @@ public class TableAdapter extends SimpleDataBindingAdapter<FormItem, LayoutTable
                 valueView.setText(staff.getHealthStatus() + "");
                 break;
         }
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 }
