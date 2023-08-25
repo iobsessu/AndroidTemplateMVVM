@@ -1,11 +1,18 @@
 package com.example.template.ui.staff;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.template.BR;
 import com.example.template.R;
@@ -16,6 +23,7 @@ import com.example.template.util.CloneUtils;
 import com.example.template.util.StaffFormValidator;
 import com.kunminx.architecture.ui.page.BaseActivity;
 import com.kunminx.architecture.ui.page.DataBindingConfig;
+import com.kunminx.architecture.utils.ToastUtils;
 
 import java.nio.file.CopyOption;
 import java.util.ArrayList;
@@ -28,15 +36,19 @@ public class StaffFormActivity extends BaseActivity {
 
     private StaffFormState state;
 
+
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, StaffFormActivity.class);
         context.startActivity(intent);
+
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initFragmentList();
+//        registerForActivityResult()
+
     }
 
     private void initFragmentList() {
@@ -64,13 +76,17 @@ public class StaffFormActivity extends BaseActivity {
 
     public class StaffFormClickProxy {
 
-        public void submit() {
-            Toasty.info(StaffFormActivity.this, "姓名是：" + state.originStaff.get().getName(), Toast.LENGTH_SHORT, true).show();
+        public void onSave() {
             if (!StaffFormValidator.isValid(state)) {
-//                XToastUtils.error(R.string.save_failed);
+                Toasty.error(StaffFormActivity.this, R.string.save_failed);
+                StaffBasicFormFragment basicFormFragment = (StaffBasicFormFragment) state.fragmentList.get().get(0);
+                basicFormFragment.refresh();
                 return;
             }
-//            XToastUtils.success(R.string.save_successfully);
+            Toasty.success(StaffFormActivity.this, R.string.save_successfully);
+            Intent intent = new Intent();
+            setResult(Activity.RESULT_OK, intent);
+            finish();
         }
 
     }

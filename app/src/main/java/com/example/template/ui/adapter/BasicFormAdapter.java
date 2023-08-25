@@ -19,6 +19,7 @@ import com.example.template.databinding.LayoutFormInputHorizontalBinding;
 import com.example.template.databinding.LayoutFormSelectBinding;
 import com.example.template.databinding.LayoutFormSwitchBinding;
 import com.example.template.util.FormUtil;
+import com.example.template.util.ResUtil;
 import com.kunminx.architecture.ui.state.State;
 import com.kunminx.binding_recyclerview.adapter.BaseDataBindingAdapter;
 
@@ -98,6 +99,8 @@ public class BasicFormAdapter extends BaseDataBindingAdapter<FormItem, ViewDataB
                 break;
         }
         bindTextChangeListener(binding, formItem.getFieldName());
+        binding.value.setError(formItem.getErrorMessage());
+        binding.value.setErrorColor(ResUtil.getColor(R.color.successful));
     }
 
     private void bindTextChangeListener(LayoutFormInputBinding binding, String fieldName) {

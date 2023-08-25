@@ -14,13 +14,16 @@ import java.util.List;
 public class StaffFormState extends StateHolder {
 
     public State<List<BaseViewPagerFragment>> fragmentList = new State<>(new ArrayList<>());
-    public State<String> searchValue = new State<>("测试");
+    /**
+     * Detail页面的staff
+     */
     public State<Staff> originStaff = new State<>(new Staff());
+    /**
+     * edit页面的staff
+     */
     public State<Staff> editingStaff = new State<>(new Staff());
     public State<List<OptionItem>> genderOptionList = new State<>(new ArrayList<>());
 
-    public State<String> idNumberError = new State<>("");
-    public State<String> emailError = new State<>("");
     public State<Integer> formStatus = new State<>(Constants.FORM_STATUS_ADD);
 
     public State<List<FormItem>> basicFormList = new State<>(new ArrayList<>());

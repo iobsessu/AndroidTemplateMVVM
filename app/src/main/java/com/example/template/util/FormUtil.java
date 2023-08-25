@@ -91,5 +91,17 @@ public class FormUtil {
         return ResUtil.getString(R.string.unknown);
     }
 
+    public static void setErrorMessageByField(List<FormItem> formItemList, String fieldName, String errorMessage) {
+        if (formItemList == null || fieldName == null) {
+            return;
+        }
+        for (FormItem formItem: formItemList) {
+            if (formItem.getFieldName().equals(fieldName)) {
+                formItem.setErrorMessage(errorMessage);
+                return;
+            }
+        }
+    }
+
 
 }

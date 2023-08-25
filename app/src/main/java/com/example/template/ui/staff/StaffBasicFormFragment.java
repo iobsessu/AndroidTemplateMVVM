@@ -111,4 +111,8 @@ public class StaffBasicFormFragment extends BaseViewPagerFragment {
         }
     }
 
+    public void refresh() {
+        formAdapter.notifyDataSetChanged();
+    }
+
 }
